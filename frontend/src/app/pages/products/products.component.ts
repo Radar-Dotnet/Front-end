@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit{
       id: 0,
       nome: this.product.nome,
       descricao: this.product.descricao,
-      QtdEstoque: this.product.QtdEstoque,
+      qtdEstoque: this.product.qtdEstoque,
       valor: this.product.valor
     });
     this.productObserver.updateQty();
@@ -53,8 +53,8 @@ export class ProductsComponent implements OnInit{
     this.productObserver.updateQty();
   }
 
-  selectProduct(producte: Product){
-    this.product = producte;
+  selectProduct(product: Product){
+    this.product = product;
   }
 
   openDialogForm(){

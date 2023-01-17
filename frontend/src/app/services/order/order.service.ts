@@ -28,7 +28,7 @@ export class OrderService {
         nome: productUpdate.nome,
         descricao: productUpdate.descricao,
         valor: productUpdate.valor,
-        qtd_estoque: productUpdate.QtdEstoque - newOrderProduct.quantity
+        qtd_estoque: productUpdate.qtdEstoque - newOrderProduct.quantity
       }))
       console.log(stockUpdate)
     })
