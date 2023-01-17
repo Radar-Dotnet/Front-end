@@ -38,7 +38,7 @@ export class ProductFormDialogComponent {
       id: 0,
       nome: this.product.nome,
       descricao: this.product.descricao,
-      QtdEstoque: this.product.QtdEstoque,
+      qtdEstoque: this.product.qtdEstoque,
       valor: this.product.valor
     });
     this.productObserver.updateQty();

@@ -106,7 +106,7 @@ export class OrdersComponent implements OnInit{
 
   plusQty(product: String, qty: number){
     const index = this.orderObserver.productsOrdered.map(e=>e.product.nome).indexOf(product);
-    const stock = this.orderObserver.productsOrdered.map(e=>e.product.QtdEstoque);
+    const stock = this.orderObserver.productsOrdered.map(e=>e.product.qtdEstoque);
     if(stock[0]<=this.setQty) return;
     this.setQty = qty+1;
     this.orderObserver.updateProductOrdered(index, this.setQty);

@@ -3,5 +3,5 @@ export interface Product{
     nome: String,
     descricao: String,
     valor: number,
-    QtdEstoque: number
+    qtdEstoque: number
 }

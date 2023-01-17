@@ -25,7 +25,7 @@ export class OrderObserverService {
   }
 
   updateStock(index: number, newStock: number){
-    this.productsOrdered[index].product.QtdEstoque = Number(this.productsOrdered[index].product.QtdEstoque) + newStock;
+    this.productsOrdered[index].product.qtdEstoque = Number(this.productsOrdered[index].product.qtdEstoque) + newStock;
   }
   delete(newOrderedProducts:  {product: Product, qty: number}[]){
     this.productsOrdered = newOrderedProducts;
