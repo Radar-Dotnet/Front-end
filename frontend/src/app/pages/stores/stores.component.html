@@ -66,7 +66,6 @@
     </div>
 
     <!--Espaço para criar geolocalização das lojas-->
-
     <div class="row mt-5">
         <div class="col-8">
             <div class="chart-container px-5 py-4">
@@ -96,22 +95,39 @@
             </div>
         </div>
 
-        <!--Card lateral direito - Definir se será utilizado -->
+        <!--Card lateral direito - Usar para filtrar as lojas e gerar informações pro mapa -->
         <div class="col-4 last-order px-5 py-4">
-            <h3>Ultimo pedido</h3>
-            <p class="text-start text-muted text-small" *ngIf="lastOrder">Pedido #{{ lastOrder.id}}</p>
+            <h3>Encontre uma loja</h3>
             <hr>
-            <div class="row p-2">
-                <h5>Cliente</h5>
-                <div class="col-2 costumerProfile border justify-content-center d-flex align-items-center ms-1"
-                    *ngIf="lastOrderClient">
-                    U
-                </div>
-                <div class="col-9 ms-1">
-                    <div class="row fw-bold">{{lastOrderClient ? lastOrderClient.nome : ''}}</div>
-                    <div class="row text-muted">{{lastOrderClient ?lastOrderClient.email : ''}}</div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selecione o Estado
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Acre</a>
+                    <a class="dropdown-item" href="#">Rio de Janeiro</a>
+                    <a class="dropdown-item" href="#">São Paulo</a>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="listagem-estado">Selecione um Estado</label>
+                <select class="form-control" id="listagem-estado">
+                    <option>Acre</option>
+                    <option>Rio de Janeiro</option>
+                    <option>São Paulo</option>
+                </select>
+            </div>
+            <h5>Cliente</h5>
+            <div class="col-2 costumerProfile border justify-content-center d-flex align-items-center ms-1"
+                *ngIf="lastOrderClient">
+                U
+            </div>
+            <div class="col-9 ms-1">
+                <div class="row fw-bold">{{lastOrderClient ? lastOrderClient.nome : ''}}</div>
+                <div class="row text-muted">{{lastOrderClient ?lastOrderClient.email : ''}}</div>
+            </div>
+
             <div class="row mt-2">
                 <div class="col-6">
                     <h5>Total: </h5>
@@ -119,22 +135,21 @@
                 <div class="col-6">
                     <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.total_value | currency}}</strong></p>
                 </div>
-                <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Ver
-                    Pedido</button>
+                <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
             </div>
         </div>
-
-        <!-- Criação Mapa para posição das Lojas (sobrescrever a parte de cima na aplicação) -->
-        <h2>Teste Mapa</h2>
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">            
-            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
-            [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
-                <agm-info-window>
-                    <strong>{{m.label}}</strong><br />
-                    <!-- <strong>Latitude: {{m.lat}}</strong><br />
-                    <strong>Longitude: {{m.lng}}</strong> -->
-                </agm-info-window>
-            </agm-marker>
-        </agm-map>
-
     </div>
+
+    <!-- Criação Mapa para posição das Lojas (sobrescrever a parte de cima na aplicação) -->
+    <h2>Teste Mapa</h2>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
+        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
+            [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
+            <agm-info-window>
+                <strong>{{m.label}}</strong><br />
+                <!-- <strong>Latitude: {{m.lat}}</strong><br />
+                    <strong>Longitude: {{m.lng}}</strong> -->
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+</div>
