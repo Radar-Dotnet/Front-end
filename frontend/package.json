@@ -22,6 +22,7 @@
     "@angular/router": "^15.0.0",
     "@fortawesome/angular-fontawesome": "^0.12.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@types/googlemaps": "^3.39.13",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.0.1",
     "ng2-charts": "^4.1.0",

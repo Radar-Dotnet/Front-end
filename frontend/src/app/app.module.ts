@@ -32,7 +32,7 @@ import { ProductFormDialogComponent } from './components/product-form-dialog/pro
 import { DetailProductDialogComponent } from './components/detail-product-dialog/detail-product-dialog.component';
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
-
+import { AgmCoreModule } from '@agm/core';
 
 registerLocaleData(ptBr);
 
@@ -66,7 +66,9 @@ registerLocaleData(ptBr);
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NgChartsModule
+    NgChartsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDBlsGROaSYQvNQYjhM_ZXSLuXh9tfTcYM'})
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
