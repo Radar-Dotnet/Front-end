@@ -15,6 +15,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { CashFlowComponent } from './pages/cash-flow/cash-flow.component';
 import { LoginComponent } from './pages/login/login.component';
+import { StoresComponent } from './pages/stores/stores.component';
 
 import { CpfFormatPipe } from './pipes/cpf-format/cpf-format.pipe';
 import { PhoneFormatPipe } from './pipes/phone-format/phone-format.pipe';
@@ -31,6 +32,7 @@ import { ProductFormDialogComponent } from './components/product-form-dialog/pro
 import { DetailProductDialogComponent } from './components/detail-product-dialog/detail-product-dialog.component';
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
+
 
 registerLocaleData(ptBr);
 
@@ -54,6 +56,7 @@ registerLocaleData(ptBr);
     ClientDialogComponent,
     ProductFormDialogComponent,
     DetailProductDialogComponent,
+    StoresComponent,
   ],
   imports: [
     BrowserModule,

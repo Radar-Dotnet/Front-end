@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { StoresComponent } from './pages/stores/stores.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'update', component: ProductsComponent, canDeactivate: [FormLeaveGuard] }
     ]
   },
-  { path: 'cash-flow', component: CashFlowComponent, canActivate: [AuthGuard] }
+  { path: 'cash-flow', component: CashFlowComponent, canActivate: [AuthGuard] },
+  { path: 'stores', component: StoresComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
