@@ -149,9 +149,17 @@ export class OrdersComponent implements OnInit{
       });
     });
 
-   const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
-   this.getOrders();
-    this.creating();
+    console.log(newOrder)
+   let a = await this.orderService.createOrder(newOrder)
+
+
+
+  // precisa passar só o id_cliente, valor total e data
+  //  const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
+
+  //  this.getOrders();
+  //   this.creating();
+
   }
 
 
