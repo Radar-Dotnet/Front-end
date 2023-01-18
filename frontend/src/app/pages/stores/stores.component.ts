@@ -11,6 +11,9 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   styleUrls: ['./stores.component.css']
 })
 export class StoresComponent implements OnInit {
+onChoseLocation($event: MouseEvent) {
+throw new Error('Method not implemented.');
+}
 
   constructor(
     private orderService: OrderService,
@@ -54,35 +57,35 @@ export class StoresComponent implements OnInit {
   };
 
 
-  //Google Maps
-  // google maps zoom level
-  zoom: number = 8;
+  ////Google Maps!
+  // Zoom level inicial
+  zoom: number = 12;
 
-  // initial center position for the map
-  lat: number = 51.673858;
-  lng: number = 7.815982;
+  // Definição latitude e longitude (pensar em API pra carregar a loja que queremos ver)
+  lat: number = -23.556796071136453;
+  lng: number = -46.66129260425739;
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
 
-  markers = [
+  markers = [ 
     {
-      lat: 51.673858,
-      lng: 7.815982,
-      label: "A",
+      lat: -23.562313843399128,
+      lng: -46.654531015829264,
+      label: "Loja A",
       draggable: true
     },
     {
-      lat: 51.373858,
-      lng: 7.215982,
-      label: "B",
+      lat: -23.557199852693863,
+      lng: -46.655110036806654,
+      label: "Loja B",
       draggable: false
     },
     {
-      lat: 51.723858,
-      lng: 7.895982,
-      label: "C",
+      lat: -23.566734070580132, 
+      lng: -46.65891781621633,
+      label: "Loja C",
       draggable: true
     }
   ]

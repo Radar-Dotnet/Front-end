@@ -68,7 +68,7 @@ registerLocaleData(ptBr);
     MatDialogModule,
     NgChartsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDBlsGROaSYQvNQYjhM_ZXSLuXh9tfTcYM'})
+      apiKey: 'AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c'})
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

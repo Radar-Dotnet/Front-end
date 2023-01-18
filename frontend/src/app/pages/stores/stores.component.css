@@ -59,3 +59,7 @@ p {
     color: #4E46B4;
     overflow: hidden;
 }
+
+agm-map {
+    height: 400px;
+}

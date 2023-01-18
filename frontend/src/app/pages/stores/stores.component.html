@@ -62,7 +62,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -125,22 +124,17 @@
             </div>
         </div>
 
-        <!-- google Maps -->
-        <h2>Angular Google Maps (AGM) Demo</h2>
-
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
-
+        <!-- Criação Mapa para posição das Lojas (sobrescrever a parte de cima na aplicação) -->
+        <h2>Teste Mapa</h2>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">            
             <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
-                [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
-
+            [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
                 <agm-info-window>
-                    <strong>Label: {{m.label}}</strong><br />
-                    <strong>Latitude: {{m.lat}}</strong><br />
-                    <strong>Longitude: {{m.lng}}</strong>
+                    <strong>{{m.label}}</strong><br />
+                    <!-- <strong>Latitude: {{m.lat}}</strong><br />
+                    <strong>Longitude: {{m.lng}}</strong> -->
                 </agm-info-window>
-
             </agm-marker>
-
         </agm-map>
 
     </div>
