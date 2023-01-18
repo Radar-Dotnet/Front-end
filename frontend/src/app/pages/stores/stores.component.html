@@ -74,24 +74,16 @@
                     <p class="text-muted">Localização das lojas no mapa</p>
                     <hr>
                 </div>
-                <div class="row ">
-                    <div class="col-3">
-                        <p>Total de lojas:</p>
-                        <span>{{lastYearRevenue + thisYearRevenue | currency}}</span>
-                        <p>vendas ano passado: </p>
-                        <span>{{lastYearRevenue | currency}}</span>
-                        <p>Vendas esse ano : </p>
-                        <span>{{thisYearRevenue | currency}} </span>
-                        <span class="text-bold"> {{percentage | number: '1.0-2'}}%</span>
-                    </div>'
-                    <div class="col-5">
-                        <div class="row grafico">
-                            <canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions"
-                                [type]="barChartType">
-                            </canvas>
-                        </div>
-                    </div>
-                </div>
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
+                    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
+                        [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
+                        <agm-info-window>
+                            <strong>{{m.label}}</strong><br />
+                            <!-- <strong>Latitude: {{m.lat}}</strong><br />
+                                <strong>Longitude: {{m.lng}}</strong> -->
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
             </div>
         </div>
 
@@ -139,17 +131,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Criação Mapa para posição das Lojas (sobrescrever a parte de cima na aplicação) -->
-    <h2>Teste Mapa</h2>
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
-        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
-            [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
-            <agm-info-window>
-                <strong>{{m.label}}</strong><br />
-                <!-- <strong>Latitude: {{m.lat}}</strong><br />
-                    <strong>Longitude: {{m.lng}}</strong> -->
-            </agm-info-window>
-        </agm-marker>
-    </agm-map>
 </div>
