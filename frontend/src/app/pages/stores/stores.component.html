@@ -28,9 +28,9 @@
         <div class="col-4">
             <div class="row mt-5 p-0 cardd">
                 <div class="col-8 ms-3 mt-3">
-                    <h4>Produtos vendidos</h4>
-                    <h4 class="text-center mt-4">Total de produtos vendidos {{totalOrderProducts?
-                        totalOrderProducts.length : 0}}</h4>
+                    <h4>Ver se vai ficar</h4>
+                    <h5 class="text-center mt-4">Total de produtos vendidos {{totalOrderProducts?
+                        totalOrderProducts.length : 0}}</h5>
                 </div>
                 <div class="col">
                     <div class="quarter-circle-top-right"></div>
@@ -48,8 +48,8 @@
             <div class="row mt-5 p-0 cardd">
                 <div class="col-8 ms-3 mt-3">
                     <h4>Média mensal</h4>
-                    <p class="text-muted">Esse ano: {{thisYearRevenue/12 | currency}}</p>
-                    <p class="text-muted">Ano passado: {{lastYearRevenue/12 | currency}}</p>
+                    <p class="text-muted">Total: {{thisYearRevenue/12 | currency}}</p>
+                    <p class="text-muted">Por loja: {{lastYearRevenue/12 | currency}}</p>
                 </div>
                 <div class="col">
                     <div class="quarter-circle-top-right"></div>
@@ -70,15 +70,17 @@
         <div class="col-8">
             <div class="chart-container px-5 py-4">
                 <div class="row">
-                    <h3>Geolocalização</h3>
+                    <h3>Lojas</h3>
                     <p class="text-muted">Localização das lojas no mapa</p>
                     <hr>
                 </div>
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
-                    <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
-                        [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
+                    <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng"
+                        [label]="m.label" [markerDraggable]="m.draggable">
                         <agm-info-window>
                             <strong>{{m.label}}</strong><br />
+                            Endereço Completo<br />
+                            Av Paulista<br />
                             <!-- <strong>Latitude: {{m.lat}}</strong><br />
                                 <strong>Longitude: {{m.lng}}</strong> -->
                         </agm-info-window>
@@ -127,7 +129,8 @@
                 <div class="col-6">
                     <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.total_value | currency}}</strong></p>
                 </div>
-                <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
+                <button *ngIf="lastOrder" class="btn btn-primary" type="button"
+                    routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
             </div>
         </div>
     </div>

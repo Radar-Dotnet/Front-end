@@ -11,9 +11,9 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   styleUrls: ['./stores.component.css']
 })
 export class StoresComponent implements OnInit {
-onChoseLocation($event: MouseEvent) {
-throw new Error('Method not implemented.');
-}
+  onChoseLocation($event: MouseEvent) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     private orderService: OrderService,
@@ -69,7 +69,7 @@ throw new Error('Method not implemented.');
     console.log(`clicked the marker: ${label || index}`)
   }
 
-  markers = [ 
+  markers = [
     {
       lat: -23.562313843399128,
       lng: -46.654531015829264,
@@ -83,7 +83,7 @@ throw new Error('Method not implemented.');
       draggable: false
     },
     {
-      lat: -23.566734070580132, 
+      lat: -23.566734070580132,
       lng: -46.65891781621633,
       label: "Loja C",
       draggable: true
