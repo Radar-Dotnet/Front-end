@@ -89,7 +89,9 @@ throw new Error('Method not implemented.');
       draggable: true
     }
   ]
-
+  addMarker(lat : number) {
+    console.log(lat);
+}
 
   ngOnInit(): void {
   }
