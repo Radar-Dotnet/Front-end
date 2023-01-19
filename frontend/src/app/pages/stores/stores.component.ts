@@ -37,6 +37,8 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   // Definição latitude e longitude (pensar em API pra carregar a loja que queremos ver)
   lat: number = -23.556796071136453;
   lng: number = -46.66129260425739;
+  latForm: number = 0;
+  lngForm: number = 0;
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -64,14 +66,18 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   ]
 
   addMarker(latNoClique: number, lngNoClique: number) {
-    this.markers.push({
-      lat: latNoClique,
-      lng: lngNoClique,
-      label: "Teste",
-      draggable: false
-    })
-    console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
-    //this.lat = clique.coords.lat;
+    if(confirm("Confirma essa localização?") == true){
+      this.markers.push({
+        lat: latNoClique,
+        lng: lngNoClique,
+        label: "Teste",
+        draggable: false
+      })
+      this.latForm = latNoClique;
+      this.lngForm = lngNoClique;
+      console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
+      //this.lat = clique.coords.lat;
+    }
   }
 
 

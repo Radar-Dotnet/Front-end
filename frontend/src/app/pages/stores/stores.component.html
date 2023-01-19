@@ -15,7 +15,11 @@
                     <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
                         [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
                         <agm-info-window>
-                            <strong>{{m.label}}</strong><br />
+                            <strong>
+                                <b>Nome: {{m.label}}</b> <br>
+                                Latitude: {{m.lat}} <br>
+                                Longitude: {{m.lng}} <br>
+                            </strong><br />
                             <!-- <strong>Latitude: {{m.lat}}</strong><br />
                                 <strong>Longitude: {{m.lng}}</strong> -->
                         </agm-info-window>
@@ -26,18 +30,15 @@
 
         <!--Card lateral direito - Usar para filtrar as lojas e gerar informações pro mapa -->
         <div class="col-4 last-order px-5 py-4">
-            <h3>Encontre uma loja</h3>
+            <h3>Cadastre uma loja</h3>
             <hr>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Selecione o Estado
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Acre</a>
-                    <a class="dropdown-item" href="#">Rio de Janeiro</a>
-                    <a class="dropdown-item" href="#">São Paulo</a>
-                </div>
+            <div>
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control">
+            </div>
+            <div>
+                <label for="observacao" class="form-label">Observação</label>
+                <input type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label for="listagem-estado">Selecione um Estado</label>
@@ -48,25 +49,47 @@
                 </select>
             </div>
             <div>
-                <input type="text" class="form-control" [value]="markers[0].lat">
+                <label for="cep" class="form-label">CEP</label>
+                <input type="text" class="form-control">
             </div>
-            <h5>Cliente</h5>
-            <div class="col-2 costumerProfile border justify-content-center d-flex align-items-center ms-1"
-                *ngIf="lastOrderClient">
-                U
+            <div>
+                <label for="logradouro" class="form-label">Logradouro</label>
+                <input type="text" class="form-control">
             </div>
-            <div class="col-9 ms-1">
-                <div class="row fw-bold">{{lastOrderClient ? lastOrderClient.nome : ''}}</div>
-                <div class="row text-muted">{{lastOrderClient ?lastOrderClient.email : ''}}</div>
+            <div>
+                <label for="bairro" class="form-label">Bairro</label>
+                <input type="text" class="form-control">
+            </div>
+            <div>
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control">
+            </div>
+            <div>
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" class="form-control">
+            </div>
+            
+            <!--<div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selecione o Estado aqui
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Acre</a>
+                    <a class="dropdown-item" href="#">Rio de Janeiro</a>
+                    <a class="dropdown-item" href="#">São Paulo</a>
+                </div>
+            </div> -->
+            <div>
+                <label for="Latitude" class="form-label">Latitude</label>
+                <input type="text" class="form-control" [value]="latForm" disabled>
+            </div>
+            <div>
+                <label for="Longitude" class="form-label">Longitude</label>
+                <input type="text" class="form-control" [value]="lngForm" disabled>
             </div>
 
             <div class="row mt-2">
-                <div class="col-6">
-                    <h5>Total: </h5>
-                </div>
-                <div class="col-6">
-                    <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.total_value | currency}}</strong></p>
-                </div>
                 <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
             </div>
         </div>
