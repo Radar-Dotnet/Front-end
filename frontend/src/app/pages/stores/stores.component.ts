@@ -60,7 +60,6 @@ export class StoresComponent implements OnInit {
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
-
   // Definição latitude e longitude (pensar em API pra carregar a loja que queremos ver)
   lat: number = -23.556796071136453;
   lng: number = -46.66129260425739;
@@ -68,7 +67,7 @@ export class StoresComponent implements OnInit {
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
-
+  //Pins no mapa
   markers = [
     {
       lat: -23.562313843399128,
