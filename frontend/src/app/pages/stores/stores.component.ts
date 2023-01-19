@@ -21,6 +21,9 @@ export class StoresComponent implements OnInit {
     private clientService: ClientService,
   ) { }
 
+  public stores: Store[] | undefined = [];
+  public store: Store = {} as Store;
+
   //Criado para poder replicar Pagina Cashflow como base de layout:
   public orders: Order[] | undefined = [];
   public lastOrder: Order | undefined = {} as Order;
@@ -89,9 +92,6 @@ export class StoresComponent implements OnInit {
       draggable: true
     }
   ]
-
-  public stores: Store[] | undefined = [];
-  public store:Store= {} as Store;
 
   ngOnInit(): void {
   }
