@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js'; //Criado para poder replicar Pagina Cashflow como base de layout
 import { Client } from 'src/app/interfaces/client.interface'; //Criado para poder replicar Pagina Cashflow como base de layout
 import { Order, OrderProduct } from 'src/app/interfaces/order.interface'; //Criado para poder replicar Pagina Cashflow como base de layout
+import { Store } from 'src/app/interfaces/stores';
 import { ClientService } from 'src/app/services/client/client.service'; //Criado para poder replicar Pagina Cashflow como base de layout
 import { OrderService } from 'src/app/services/order/order.service'; //Criado para poder replicar Pagina Cashflow como base de layout
 
@@ -89,6 +90,8 @@ export class StoresComponent implements OnInit {
     }
   ]
 
+  public stores: Store[] | undefined = [];
+  public store:Store= {} as Store;
 
   ngOnInit(): void {
   }

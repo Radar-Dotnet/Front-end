@@ -1,7 +1,9 @@
 <div class="container MT-5">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c"
         type="text/javascript"></script>
+
     <!-- 3 cards superiores - Definir quais serão os usos nessa página -->
+    <!-- Se conseguirmos: usar esses cards e atualiza-los junto das infos da localidade selecionado -->
     <div class="row gx-5 mx-auto">
         <div class="col-4">
             <div class="row mt-5 p-0 cardd">
@@ -65,7 +67,7 @@
         </div>
     </div>
 
-    <!--Espaço para criar geolocalização das lojas-->
+    <!-- Card do mapa (card lado esquerdo) -->
     <div class="row mt-5">
         <div class="col-8">
             <div class="chart-container px-5 py-4">
@@ -89,7 +91,7 @@
             </div>
         </div>
 
-        <!--Card lateral direito - Usar para filtrar as lojas e gerar informações pro mapa -->
+        <!-- Filtro por localização (card lateral direito) -- Usar gerar informações pro mapa -->
         <div class="col-4 last-order px-5 py-4">
             <h3>Encontre uma loja</h3>
             <hr>
@@ -141,4 +143,53 @@
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Tabela com informações completas das lojas -->
+
+    <div class="tableContainer">
+        <div class="subContainer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Observação</td>
+                        <td>Endereço</td>
+                        <td>Cidade</td>
+                        <td>Estado</td>
+                        <td>Ações</td>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let store of stores">
+                    <tr>
+                        <td>
+                            <div>
+                                <div>
+                                    <p class="id-object">{{store.nome}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span>{{store.observacao}}</span>
+                        </td>
+                        <td>
+                            <span>{{store.estado}}</span>
+                        </td>
+                        <td>
+                            <span>{{store.cidade}}</span>
+                        </td>
+                        <!-- <td>
+                            <div class="icon-actions">
+                                <div (click)="openUpdateForm(store)">
+                                    <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
+                                </div>
+                                <div (click)="delete(store.id)">
+                                    <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
+                                </div>
+                            </div>
+
+                        </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
