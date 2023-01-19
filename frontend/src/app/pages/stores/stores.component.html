@@ -93,42 +93,49 @@
         <div class="col-4 last-order px-5 py-4">
             <h3>Encontre uma loja</h3>
             <hr>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Selecione o Estado
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Acre</a>
-                    <a class="dropdown-item" href="#">Rio de Janeiro</a>
-                    <a class="dropdown-item" href="#">São Paulo</a>
-                </div>
+            <br />
+            <div class="box-body">
+                <form>
+                    <div class="form-group row align-items-center">
+                        <label for="" class="col-sm-4 form-control-label" style="font-size: 20px">Estado:</label>
+                        <div class="col-sm-8">
+                            <select class="form-control selectpicker" id="select-estado" data-live-search="true">
+                                <option data-tokens="acre">Acre</option>
+                                <option data-tokens="rio-de-janeiro">Rio de Janeiro</option>
+                                <option data-tokens="sao-paulo">São Paulo</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <br /><br />
+                <form>
+                    <div class="form-group row align-items-center">
+                        <label for="" class="col-sm-4 form-control-label" style="font-size: 20px">Cidade:</label>
+                        <div class="col-sm-8">
+                            <select class="form-control selectpicker" id="select-cidade" data-live-search="true">
+                                <option data-tokens="itu">Itu</option>
+                                <option data-tokens="osasco">Osasco</option>
+                                <option data-tokens="sao-paulo">São Paulo</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <br /><br />
+                <form>
+                    <div class="form-group row align-items-center">
+                        <label for="" class="col-sm-4 form-control-label" style="font-size: 20px">Bairro:</label>
+                        <div class="col-sm-8">
+                            <select class="form-control selectpicker" id="select-bairro" data-live-search="true">
+                                <option data-tokens="aclimação">Aclimação</option>
+                                <option data-tokens="Perdizes">Perdizes</option>
+                                <option data-tokens="Santana">Santana</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="listagem-estado">Selecione um Estado</label>
-                <select class="form-control" id="listagem-estado">
-                    <option>Acre</option>
-                    <option>Rio de Janeiro</option>
-                    <option>São Paulo</option>
-                </select>
-            </div>
-            <h5>Cliente</h5>
-            <div class="col-2 costumerProfile border justify-content-center d-flex align-items-center ms-1"
-                *ngIf="lastOrderClient">
-                U
-            </div>
-            <div class="col-9 ms-1">
-                <div class="row fw-bold">{{lastOrderClient ? lastOrderClient.nome : ''}}</div>
-                <div class="row text-muted">{{lastOrderClient ?lastOrderClient.email : ''}}</div>
-            </div>
-
+            <br />
             <div class="row mt-2">
-                <div class="col-6">
-                    <h5>Total: </h5>
-                </div>
-                <div class="col-6">
-                    <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.total_value | currency}}</strong></p>
-                </div>
                 <button *ngIf="lastOrder" class="btn btn-primary" type="button"
                     routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
             </div>
