@@ -28,7 +28,7 @@
               <td>valor</td>
             </tr>
           </thead>
-          <tbody *ngFor="let order of orderslist">
+          <tbody *ngFor="let order of orders">
             <tr (click)="redirect(order.id)">
               <td>
                 <div>
@@ -37,12 +37,12 @@
                   </div>
                 </div>
               </td>
-              <td>{{order.date | date}}</td>
+              <td>{{order.data| date}}</td>
               <td>
-                <span>{{order.client_id}}</span>
+                <span>{{order.clienteId}}</span>
               </td>
               <td>
-                <span>{{order.total_value | currency}}</span>
+                <span>{{order.valorTotal| currency}}</span>
               </td>
             </tr>
           </tbody>

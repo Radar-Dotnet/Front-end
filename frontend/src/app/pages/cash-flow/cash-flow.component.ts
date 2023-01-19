@@ -19,12 +19,12 @@ export class CashFlowComponent implements OnInit{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   constructor(
-    private orderService: OrderService, 
+    private orderService: OrderService,
     private clientService: ClientService,
     private http: HttpClient,
 
     ){}
-  
+
   public orders: Order[] | undefined= [];
 
   public lastOrder: Order | undefined= {} as Order;
@@ -40,11 +40,11 @@ export class CashFlowComponent implements OnInit{
   public thisYearRevenue: number = 0;
   public lastYearRevenue: number = 0;
   public percentage: number = 0;
-    
-  
+
+
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    
+
     scales: {
       x: {},
       y: {
@@ -67,11 +67,11 @@ export class CashFlowComponent implements OnInit{
   };
 
   public async getOrders(){
-    this.orders = await this.orderService.getOrder(); 
-    
+    this.orders = await this.orderService.getOrder();
+
     this.orders?.map(order=>{
-      let parseDate = new Date(order.date);
-      parseDate.getFullYear() == 2022 ? this.thisYear.push({month: parseDate.getMonth(), value: order.total_value}) : this.lastYear.push({month: parseDate.getMonth(), value: order.total_value});
+      let parseDate = new Date(order.data);
+      parseDate.getFullYear() == 2022 ? this.thisYear.push({month: parseDate.getMonth(), value: order.valorTotal}) : this.lastYear.push({month: parseDate.getMonth(), value: order.valorTotal});
     });
     this.lastYear.map(month=>{
       if(month.month>=0){
@@ -97,7 +97,7 @@ public async getLastClient(){
   if(this.orders){
     let aux = this.orders.reverse();
     this.lastOrder = aux[0];
-    this.lastOrderClient = await this.clientService.getClientbyId(Number(this.lastOrder.client_id));
+    this.lastOrderClient = await this.clientService.getClientbyId(Number(this.lastOrder.clienteId));
   }
 }
  public getData(){
@@ -113,7 +113,7 @@ public async getLastClient(){
     this.chart?.update();
   }
 
-  
+
 
 
 

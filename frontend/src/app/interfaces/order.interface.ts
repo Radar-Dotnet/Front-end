@@ -1,8 +1,9 @@
 export interface Order {
     id :Number,
     client_id :number,
-    total_value :number,
-    date : Date
+    clienteId?: number,
+    valorTotal :number,
+    data : Date
 }
 export interface OrderProduct {
     id: number,

@@ -109,7 +109,7 @@
                   <h5>Total: </h5>
                 </div>
                 <div class="col-6">
-                  <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.total_value | currency}}</strong></p>
+                  <p class="text-end " *ngIf="lastOrder"><strong>{{lastOrder.valorTotal | currency}}</strong></p>
                 </div>
                   <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Ver Pedido</button>
               </div>
