@@ -10,10 +10,13 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   templateUrl: './stores.component.html',
   styleUrls: ['./stores.component.css']
 })
-export class StoresComponent implements OnInit {
-onChoseLocation($event: MouseEvent) {
-throw new Error('Method not implemented.');
-}
+  export class StoresComponent implements OnInit {
+    onChoseLocation($event: MouseEvent) {
+      throw new Error('Method not implemented.');
+  }
+
+  ngOnInit(): void {
+  }
 
   constructor(
     private orderService: OrderService,
@@ -21,41 +24,11 @@ throw new Error('Method not implemented.');
   ) { }
 
   //Criado para poder replicar Pagina Cashflow como base de layout:
-  public orders: Order[] | undefined = [];
-  public lastOrder: Order | undefined = {} as Order;
+  public lastOrder: Order | undefined = {} as Order;  
   public lastOrderClient: Client | undefined = {} as Client;
   public lastOrdererdProcuct: OrderProduct[] | undefined = [];
   public totalOrderProducts: OrderProduct[] | undefined = [];
-  public thisYear: [{ month: number, value: number }] = [{}] as [{ month: number, value: number }];
-  public lastYear: [{ month: number, value: number }] = [{}] as [{ month: number, value: number }];
-  public thisYearData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  public lastYearData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  public thisYearRevenue: number = 0;
-  public lastYearRevenue: number = 0;
-  public percentage: number = 0;
-  public barChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    scales: {
-      x: {},
-      y: {
-        min: 10
-      }
-    },
-    plugins: {
-      legend: {
-        display: true,
-      }
-    }
-  };
-  public barChartType: ChartType = 'bar';
-  public barChartData: ChartData<'bar'> = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-    datasets: [
-      { data: this.lastYearData, label: 'Ano Anterior', borderRadius: 2, borderColor: '#680BEA', backgroundColor: '#680BEA' },
-      { data: this.thisYearData, label: 'Esse Ano', borderColor: '#a776eb', backgroundColor: '#a776eb' }
-    ]
-  };
-
+  public location : Location;
 
   ////Google Maps!
   // Zoom level inicial
@@ -89,11 +62,29 @@ throw new Error('Method not implemented.');
       draggable: true
     }
   ]
-  addMarker(lat : number) {
-    console.log(lat);
-}
 
-  ngOnInit(): void {
+  addMarker(latNoClique: number, lngNoClique: number) {
+    this.markers.push({
+      lat: latNoClique,
+      lng: lngNoClique,
+      label: "Teste",
+      draggable: false
+    })
+    console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
+    //this.lat = clique.coords.lat;
   }
 
+
+}
+interface Marker {
+  lat: number;
+  lng: number;
+}
+
+interface Location {
+  latitude: number;
+  longitude: number;
+  mapType: string;
+  zoom: number;
+  markers: Array<Marker>;
 }
