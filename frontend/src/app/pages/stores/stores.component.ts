@@ -4,7 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Cep } from 'src/app/interfaces/cep.interface';
 import { Store } from 'src/app/interfaces/store.interface';
-import { firstValueFrom } from 'rxjs';
+import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
+import { EstadoService } from './../../services/estados/estados.service';
+import { take } from 'rxjs';
+import { Estado } from 'src/app/interfaces/estado.inteface';
 
 @Component({
   selector: 'app-stores',
@@ -17,18 +20,23 @@ import { firstValueFrom } from 'rxjs';
   }
 
   ngOnInit(): void {
+    this.consultaEstado = new EstadoService(this.http);
+    this.importarEstados();
   }
 
   constructor(
     private router: Router,
     private http: HttpClient,
     private routerParams: ActivatedRoute,
-  ) { }
-
-  //Criado para poder replicar Pagina Cashflow como base de layout:
-  public store : Store = {} as Store;
-  public location : Location;
-  public cep : Cep[] | undefined;
+    public consultaCep: ConsultaCepService,
+    ) { }
+    
+    //Criado para poder replicar Pagina Cashflow como base de layout:
+    public store : Store = {} as Store;
+    public location : Location;
+    public cep : Cep[] | undefined;
+    public estados: Estado[] | undefined;
+    public consultaEstado: EstadoService = {} as EstadoService;
 
   ////Google Maps!
   // Zoom level inicial
@@ -79,23 +87,28 @@ import { firstValueFrom } from 'rxjs';
       //this.lat = clique.coords.lat;
     }
   }
-  public async buscarCep(){
+  /*public async buscarCep(){
     console.log(this.store.cep);
     this.cep = await firstValueFrom(this.http.get<Cep[]>(`${environment.cepApi}${this.store.cep}/json`));
     console.log(this.cep);
+  }*/
+
+  buscarCep(){
+    let consulta = this.consultaCep.consultaCEP(this.store.cep)
+    .pipe(take(1))
+    .subscribe((cepLocalizado:any) => {
+      console.log(cepLocalizado)
+      this.store.bairro = cepLocalizado.bairro
+      this.store.logradouro = cepLocalizado.logradouro
+      this.store.cidade = cepLocalizado.localidade
+      this.store.estado = cepLocalizado.uf
+      this.store.complemento = cepLocalizado.complemento
+    })
+    console.log(consulta)
   }
 
-
-}
-interface Marker {
-  lat: number;
-  lng: number;
-}
-
-interface Location {
-  latitude: number;
-  longitude: number;
-  mapType: string;
-  zoom: number;
-  markers: Array<Marker>;
+  async importarEstados(){
+    this.estados = await this.consultaEstado.listaEstados();
+    console.log(this.estados);
+  }
 }
