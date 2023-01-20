@@ -1,7 +1,7 @@
 export interface Order {
     id :Number,
-    client_id :number,
-    clienteId?: number,
+    clienteId :number,
+    nomeCliente?: string,
     valorTotal :number,
     data : Date
 }

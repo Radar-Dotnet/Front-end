@@ -139,8 +139,8 @@ export class OrdersComponent implements OnInit{
     // let newProductOrdered: OrderProduct[] = [];
     let newOrder: Order = {
       id: 0,
-      client_id: this.orderObserver.orderClient.id,
       clienteId: this.orderObserver.orderClient.id,
+      // nomeCliente: this.orderObserver.orderClient.nome,
       data: new Date(),
       valorTotal: this.orderObserver.sumValue()
     }
@@ -156,16 +156,13 @@ export class OrdersComponent implements OnInit{
 
     console.log(newOrder)
    let a = await this.orderService.createOrder(newOrder)
-
-
+   this.router.navigateByUrl('orders')
 
   // precisa passar só o id_cliente, valor total e data
   //  const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
 
-  //  this.getOrders();
+   // this.getOrders();
   //   this.creating();
-
   }
-
 
 }

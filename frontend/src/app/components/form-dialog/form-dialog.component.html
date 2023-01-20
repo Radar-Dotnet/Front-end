@@ -35,7 +35,7 @@
     </div>
     <div class="col-md-3 input-box">
       <label for="cep" class="form-label">CEP</label>
-      <input type="text" class="form-control " id="cep" name="cep" [(ngModel)]="client.cep" placeholder="00000-000" required>
+      <input [autofocus]="false" (focusout)="consultandoCep()" type="text" class="form-control " id="cep" name="cep" [(ngModel)]="client.cep " placeholder="00000-000" required>
     </div>
     <div class="col-md-3 input-box">
       <label for="logradouro" class="form-label">Logradouro</label>
@@ -55,6 +55,7 @@
     </div>
     <div class="col-12 ">
       <button class="btn" type="submit" (click)="create()">Cadastrar</button>
+      <button class="btn" type="submit" (click)="consultandoCep()">Consulta</button>
     </div>
   </form>
 </div>
