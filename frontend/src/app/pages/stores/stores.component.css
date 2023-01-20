@@ -63,3 +63,55 @@ p {
 agm-map {
     height: 400px;
 }
+
+.tableContainer {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+  
+  .subContainer {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 1px;
+  }
+  
+  .table {
+    width: 100%;
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    color: #000;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 600;
+    background-color: rgba(78, 70, 180, 0.12);
+  }
+  
+  td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  tr {
+    border-bottom-width: 1px;
+  }
+  
+  .id-object {
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .tabbleFooter {
+    color: #000;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.75rem;
+    background-color: rgba(78, 70, 180, 0.12);
+    line-height: 1.5;
+  }
