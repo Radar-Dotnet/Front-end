@@ -1,9 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js'; //Criado para poder replicar Pagina Cashflow como base de layout
-import { Client } from 'src/app/interfaces/client.interface'; //Criado para poder replicar Pagina Cashflow como base de layout
-import { Order, OrderProduct } from 'src/app/interfaces/order.interface'; //Criado para poder replicar Pagina Cashflow como base de layout
-import { ClientService } from 'src/app/services/client/client.service'; //Criado para poder replicar Pagina Cashflow como base de layout
-import { OrderService } from 'src/app/services/order/order.service'; //Criado para poder replicar Pagina Cashflow como base de layout
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { Cep } from 'src/app/interfaces/cep.interface';
+import { Store } from 'src/app/interfaces/store.interface';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-stores',
@@ -19,16 +20,15 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
   }
 
   constructor(
-    private orderService: OrderService,
-    private clientService: ClientService,
+    private router: Router,
+    private http: HttpClient,
+    private routerParams: ActivatedRoute,
   ) { }
 
   //Criado para poder replicar Pagina Cashflow como base de layout:
-  public lastOrder: Order | undefined = {} as Order;  
-  public lastOrderClient: Client | undefined = {} as Client;
-  public lastOrdererdProcuct: OrderProduct[] | undefined = [];
-  public totalOrderProducts: OrderProduct[] | undefined = [];
+  public store : Store = {} as Store;
   public location : Location;
+  public cep : Cep[] | undefined;
 
   ////Google Maps!
   // Zoom level inicial
@@ -78,6 +78,11 @@ import { OrderService } from 'src/app/services/order/order.service'; //Criado pa
       console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
       //this.lat = clique.coords.lat;
     }
+  }
+  public async buscarCep(){
+    console.log(this.store.cep);
+    this.cep = await firstValueFrom(this.http.get<Cep[]>(`${environment.cepApi}${this.store.cep}/json`));
+    console.log(this.cep);
   }
 
 

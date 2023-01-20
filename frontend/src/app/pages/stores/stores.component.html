@@ -40,6 +40,13 @@
                 <label for="observacao" class="form-label">Observação</label>
                 <input type="text" class="form-control">
             </div>
+            <div>
+                <label for="cep" class="form-label">CEP</label>
+                <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja" [(ngModel)]="store.cep">
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary" type="button" (click)="buscarCep()">Buscar CEP</button>
+            </div>
             <div class="form-group">
                 <label for="listagem-estado">Selecione um Estado</label>
                 <select class="form-control" id="listagem-estado">
@@ -49,24 +56,20 @@
                 </select>
             </div>
             <div>
-                <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade-loja" name="cidade-loja" [(ngModel)]="store.cidade">
             </div>
             <div>
                 <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control"id="logradouro-loja" name="logradouro-loja" [(ngModel)]="store.logradouro">
             </div>
             <div>
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control">
-            </div>
-            <div>
-                <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="bairro-loja" name="bairro-loja" [(ngModel)]="store.bairro">
             </div>
             <div>
                 <label for="complemento" class="form-label">Complemento</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="complemento-loja" name="complemento-loja" [(ngModel)]="store.complemento">
             </div>
             
             <!--<div class="dropdown">
@@ -90,7 +93,7 @@
             </div>
 
             <div class="row mt-2">
-                <button *ngIf="lastOrder" class="btn btn-primary" type="button" routerLink="/orders/{{lastOrder}}">Buscar Lojas</button>
+                <button class="btn btn-primary" type="button">Cadastrar Loja</button>
             </div>
         </div>
     </div>
