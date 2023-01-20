@@ -6,15 +6,10 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
-  constructor(private loginService: LoginService){
-
-  }
-
-  public logout(){
-    this.loginService.logout();
-  }
-
-  
+  constructor(
+    public loginService: LoginService
+    ){} 
+  ngOnInit(): void {}
 }
