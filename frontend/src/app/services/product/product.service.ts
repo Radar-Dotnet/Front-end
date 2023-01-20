@@ -31,9 +31,16 @@ export class ProductService {
   }
 
   public async updateProduct(product: Product): Promise<Product | undefined>{
-    let ProductUpdate: Product | undefined = await firstValueFrom(this.http.put<Product>(`${environment.api}produto/${product.id}`, product ));
+    let ProductUpdate: Product | undefined = await firstValueFrom(this.http.put<Product>('https://localhost:7058/api/produto/'+product.id, product ));
     return ProductUpdate;
   }
 
+  public async atualizaProduto(product: Product): Promise<Product | undefined> {
+    console.log(product)
+    debugger
+    const up = await firstValueFrom(this.http.put<Product>('https://localhost:7058/api/produto/'+ product.id, product))
+    console.log('atualiza chamado')
+    return up;
+  }
 
 }

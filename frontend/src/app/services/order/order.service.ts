@@ -1,3 +1,4 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -36,12 +37,12 @@ export class OrderService {
   }
 
   public async getOrder(): Promise<Order[] | undefined>{
-    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}/orders`));
+    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}pedido`));
     return orders;
   }
 
   public async getOrderById(id: number): Promise<{order: Order, orderProducts: OrderProduct[]} | undefined>{
-    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}/orders/${id}`));
+    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}pedido/${id}`));
     const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
     return {order, orderProducts:orderProduct.filter(product=> product.order_id==order?.id)};
   }

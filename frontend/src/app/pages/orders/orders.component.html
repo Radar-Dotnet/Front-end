@@ -28,8 +28,9 @@
               <td>valor</td>
             </tr>
           </thead>
-          <tbody *ngFor="let order of orderslist">
-            <tr (click)="redirect(order.id)">
+          <tbody *ngFor="let order of orders">
+            <!-- <tr (click)="redirect(order.id)"> -->
+              <tr>
               <td>
                 <div>
                   <div>
@@ -37,19 +38,19 @@
                   </div>
                 </div>
               </td>
-              <td>{{order.date | date}}</td>
+              <td>{{order.data| date}}</td>
               <td>
-                <span>{{order.client_id}}</span>
+                <span>{{order.nomeCliente}}</span>
               </td>
               <td>
-                <span>{{order.total_value | currency}}</span>
+                <span>{{order.valorTotal| currency}}</span>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="tabbleFooter">
+      <!-- <div class="tabbleFooter">
         <div class="pagination">
           <span>mostrando 1 - 10 de 45</span>
           <nav>
@@ -66,7 +67,7 @@
             </ul>
           </nav>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -164,5 +165,4 @@
       </div>
 
     </div>
-
   </div>

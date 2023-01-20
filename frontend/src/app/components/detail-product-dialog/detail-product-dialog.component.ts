@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product/product.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,22 +16,38 @@ export class DetailProductDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DetailProductDialogComponent>,
+    private teste: ProductService
   ) {}
 
-  private productService: ProductService = {} as ProductService;
+  // private productService: ProductService = {} as ProductService;
   public products: Product[] | undefined = [];
   public product: Product = {} as Product;
 
+  // selectProduct(producte: Product){
+  //   this.product = producte;
+  //   console.log(producte)
+  //   console.log(this.product)
+  // }
 
-  selectProduct(producte: Product){
-    this.product = producte;
-  }
+// save(){
+//     // if(this.product.id && this.product.id != 0){
+//     //     const update = await this.productService.updateProduct(this.product);
+//     //     // this.router.navigateByUrl("products");
+//     //     console.log(update);
+//     // }
 
-  async save(){
-    if(this.product.id && this.product.id != 0){
-        const update = await this.productService.updateProduct(this.product);
-        console.log(update);
-    }
+//     // const update = await this.productService.updateProduct(this.dialogRef.componentInstance.product)
+//     let a = this.dialogRef.componentInstance.product
+//     const update = this.productService.updateProduct(a)
+//     console.log(a)
+//   }
+
+   async save(){
+     const a = await this.teste.atualizaProduto(this.product)
+    // if(this.product.id && this.product.id != 0){
+    //     const update = await this.productService.updateProduct(this.product);
+        // this.router.navigateByUrl("clients"s);
+    // }
   }
 
   closeDialog(): void {

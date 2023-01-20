@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Client } from 'src/app/interfaces/client.interface';
@@ -20,6 +21,7 @@ export class FormDialogComponent {
     private http:HttpClient,
     private clientObserver: ClientObserverService,
     public dialogRef: MatDialogRef<FormDialogComponent>,
+    public consultaCep: ConsultaCepService
     ){}
 
   ngOnInit(): void {
@@ -34,6 +36,19 @@ export class FormDialogComponent {
   private async getClients(){
     // this.clients = await this.clientService.getClient();
    this.clients = await this.clientService.getClient()
+  }
+
+   consultandoCep(){
+    let consulta = this.consultaCep.consultaCEP(this.client.cep)
+    .pipe(take(1))
+    .subscribe((r:any) => {
+      console.log(r)
+      this.client.bairro = r.bairro
+      this.client.logradouro = r.logradouro
+      this.client.cidade = r.localidade
+      this.client.estado = r.uf
+    })
+    // console.log(consulta)
   }
 
   create(){

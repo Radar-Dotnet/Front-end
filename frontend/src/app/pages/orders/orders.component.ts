@@ -25,15 +25,17 @@ export class OrdersComponent implements OnInit{
     public orderObserver: OrderObserverService,
     private http: HttpClient,
     private routerParams: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private orderService : OrderService
     ){
 
     }
 
-  private orderService: OrderService = {} as OrderService;
+  // private orderService: OrderService = {} as OrderService;
   private productService: ProductService = {} as ProductService;
   private clientService: ClientService = {} as ClientService;
-  public orders: Order[] | undefined= []
+  public orders: Order[] | undefined = []
+  // public orders: any;
   public orderslist: Order[] | undefined= []
 
   public isCreating: boolean = false;
@@ -53,7 +55,9 @@ export class OrdersComponent implements OnInit{
 
   public async getOrders(){
      this.orders = await this.orderService.getOrder();
-     this.orderslist = this.orders?.reverse();
+     console.log(this.orders)
+    //  this.orders?.map(a => a)
+    //  this.orderslist = this.orders?.reverse();
   }
 
 
@@ -79,8 +83,8 @@ export class OrdersComponent implements OnInit{
     let orderUpdate = await this.orderService.getOrderById(id);
     let client;
     if (orderUpdate){
-      this.date = orderUpdate?.order.date;
-      client = await this.clientService.getClientbyId(orderUpdate?.order.client_id);
+      this.date = orderUpdate?.order.data;
+      // client = await this.clientService.getClientbyId(orderUpdate?.order.client_id);
     }
 
     if(client){
@@ -132,27 +136,33 @@ export class OrdersComponent implements OnInit{
     this.router.navigateByUrl(`orders/${id}`);
   }
   async save(){
-    let newProductOrdered: OrderProduct[] = [];
+    // let newProductOrdered: OrderProduct[] = [];
     let newOrder: Order = {
       id: 0,
-      client_id: this.orderObserver.orderClient.id,
-      date: new Date(),
-      total_value: this.orderObserver.sumValue()
+      clienteId: this.orderObserver.orderClient.id,
+      // nomeCliente: this.orderObserver.orderClient.nome,
+      data: new Date(),
+      valorTotal: this.orderObserver.sumValue()
     }
-    this.orderObserver.productsOrdered.map(productOrdered =>{
-      newProductOrdered.push({
-        id: 0,
-        product_id: productOrdered.product.id,
-        order_id: 0,
-        quantity: productOrdered.qty,
-        value: productOrdered.product.valor
-      });
-    });
+    // this.orderObserver.productsOrdered.map(productOrdered =>{
+    //   newProductOrdered.push({
+    //     id: 0,
+    //     product_id: productOrdered.product.id,
+    //     order_id: 0,
+    //     quantity: productOrdered.qty,
+    //     value: productOrdered.product.valor
+    //   });
+    // });
 
-   const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
-   this.getOrders();
-    this.creating();
+    console.log(newOrder)
+   let a = await this.orderService.createOrder(newOrder)
+   this.router.navigateByUrl('orders')
+
+  // precisa passar só o id_cliente, valor total e data
+  //  const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
+
+   // this.getOrders();
+  //   this.creating();
   }
-
 
 }

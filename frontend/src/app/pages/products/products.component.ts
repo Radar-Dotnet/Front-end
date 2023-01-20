@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit{
       valor: this.product.valor
     });
     this.productObserver.updateQty();
-    this.getProducts();
+    // this.getProducts();
   }
 
   async delete(product: Number){
@@ -64,7 +64,8 @@ export class ProductsComponent implements OnInit{
 
   openUpdateForm(product : Product){
     const dialogRef = this.dialogRef.open(DetailProductDialogComponent);
-    dialogRef.componentInstance.product= product;
+    dialogRef.componentInstance.product = product;
+    console.log(product);
  }
 
   faPenToSquare = faPenToSquare;
