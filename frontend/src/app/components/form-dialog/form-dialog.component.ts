@@ -34,12 +34,11 @@ export class FormDialogComponent {
   public client:Client= {} as Client;
 
   private async getClients(){
-    // this.clients = await this.clientService.getClient();
    this.clients = await this.clientService.getClient()
   }
 
    consultandoCep(){
-    let consulta = this.consultaCep.consultaCEP(this.client.cep)
+    this.consultaCep.consultaCEP(this.client.cep)
     .pipe(take(1))
     .subscribe((r:any) => {
       console.log(r)
@@ -48,7 +47,6 @@ export class FormDialogComponent {
       this.client.cidade = r.localidade
       this.client.estado = r.uf
     })
-    // console.log(consulta)
   }
 
   create(){

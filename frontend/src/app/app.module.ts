@@ -35,6 +35,8 @@ import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { AgmCoreModule, AgmMap } from '@agm/core';
 import { environment } from 'src/environments/environment';
 
+import { CampaignComponent } from './pages/campaign/campaign.component';
+import { CampaignFormDialogComponent } from './components/campaign-form-dialog/campaign-form-dialog.component';
 
 registerLocaleData(ptBr);
 
@@ -64,7 +66,8 @@ const googleMapsParams = {
     ProductFormDialogComponent,
     DetailProductDialogComponent,
     StoresComponent,
-    
+    CampaignComponent,
+    CampaignFormDialogComponent,
   ],
   imports: [
     BrowserModule,

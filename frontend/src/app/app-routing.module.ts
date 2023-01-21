@@ -1,3 +1,4 @@
+import { CampaignComponent } from './pages/campaign/campaign.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     ]
   },
   { path: 'cash-flow', component: CashFlowComponent, canActivate: [AuthGuard] },
+  { path: 'campaign', component: CampaignComponent, canActivate: [AuthGuard] },
   { path: 'stores', component: StoresComponent, canActivate: [AuthGuard] },
 ];
 
