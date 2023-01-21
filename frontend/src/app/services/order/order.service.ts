@@ -46,17 +46,17 @@ export class OrderService {
 
   public async getOrderById(id: number): Promise<{order: Order, orderProducts: OrderProduct[]} | undefined>{
     const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}pedido/${id}`));
-    const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}orders-products`));
     return {order, orderProducts:orderProduct.filter(product=> product.order_id==order?.id)};
   }
 
   public async getOrderProduct():Promise<OrderProduct[] | undefined>{
-    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}orders-products`));
     return orderProduct;
   }
 
   public async getOrderProductByOrderId(orderId: number ):Promise<OrderProduct[] | undefined>{
-    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}orders-products`));
     return orderProduct;
   }
 
