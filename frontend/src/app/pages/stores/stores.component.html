@@ -88,12 +88,13 @@
         </div>
     </div>
 
-    <!-- Tabela com informações completas das lojas -->
 
+    <!-- Tabela com informações completas das lojas -->
+    <br /><br />
     <div class="tableContainer">
         <div class="subContainer">
             <table class="table">
-                <thead>
+                <thead style="font-weight: bold; font-size: 20px;">
                     <tr>
                         <td>Nome</td>
                         <td>Observação</td>
@@ -107,13 +108,14 @@
                     <tr>
                         <td>
                             <div>
-                                <div>
-                                    <p class="id-object">{{store.nome}}</p>
-                                </div>
+                                <p class="id-object">{{store.nome}}</p>
                             </div>
                         </td>
                         <td>
                             <span>{{store.observacao}}</span>
+                        </td>
+                        <td>
+                            <span>{{store.logradouro}}</span>
                         </td>
                         <td>
                             <span>{{store.estado}}</span>
@@ -121,6 +123,7 @@
                         <td>
                             <span>{{store.cidade}}</span>
                         </td>
+                       
                         <!-- <td>
                             <div class="icon-actions">
                                 <div (click)="openUpdateForm(store)">
@@ -130,10 +133,11 @@
                                     <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
                                 </div>
                             </div>
-
                         </td> -->
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="tabbleFooter"></div>
+</div>
