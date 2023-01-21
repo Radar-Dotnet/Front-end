@@ -35,6 +35,7 @@ import { StoreService } from 'src/app/services/store.service';
     
     //Criado para poder replicar Pagina Cashflow como base de layout:
     public store : Store = {} as Store;
+    public stores: Store[] | undefined = [];
     public location : Location;
     public cep : Cep[] | undefined;
     public estados: Estado[] | undefined;
@@ -43,7 +44,6 @@ import { StoreService } from 'src/app/services/store.service';
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
-
   // Definição latitude e longitude (pensar em API pra carregar a loja que queremos ver)
   lat: number = -23.556796071136453;
   lng: number = -46.66129260425739;
@@ -53,8 +53,8 @@ import { StoreService } from 'src/app/services/store.service';
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
-
-  markers = [ 
+  //Pins no mapa
+  markers = [
     {
       lat: -23.562313843399128,
       lng: -46.654531015829264,
@@ -68,7 +68,7 @@ import { StoreService } from 'src/app/services/store.service';
       draggable: false
     },
     {
-      lat: -23.566734070580132, 
+      lat: -23.566734070580132,
       lng: -46.65891781621633,
       label: "Loja C",
       draggable: true

@@ -21,11 +21,16 @@ export class LoginService {
     this.logged = localStorage.getItem("logged") ? true : false;
     this.adm = localStorage.getItem("adm") ? true : false;
   }
+  public confirmation: boolean= false
 
   public logout() {
-    localStorage.clear();
-    this.logged = false;
-    this.adm = false;
-    this.router.navigateByUrl("/");
+    this.confirmation = confirm("Deseja sair?")
+    if(this.confirmation === true){
+    localStorage.clear()
+    this.logged = false
+    this.adm = false
+    
+    this.router.navigateByUrl("/login")
+  }
   }
 }

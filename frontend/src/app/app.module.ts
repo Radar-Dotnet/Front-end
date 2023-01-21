@@ -32,10 +32,17 @@ import { ProductFormDialogComponent } from './components/product-form-dialog/pro
 import { DetailProductDialogComponent } from './components/detail-product-dialog/detail-product-dialog.component';
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, AgmMap } from '@agm/core';
+import { environment } from 'src/environments/environment';
+
 
 registerLocaleData(ptBr);
 
+const googleMapsParams = {
+  libraries: ['places'],
+  language: 'pt-br',
+  // region: 'DE'
+};
 
 @NgModule({
   declarations: [
@@ -57,6 +64,7 @@ registerLocaleData(ptBr);
     ProductFormDialogComponent,
     DetailProductDialogComponent,
     StoresComponent,
+    
   ],
   imports: [
     BrowserModule,

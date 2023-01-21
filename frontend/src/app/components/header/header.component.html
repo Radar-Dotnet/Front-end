@@ -1,4 +1,4 @@
-<div class="container-fluid header">
+<div class="container-fluid header" *ngIf="loginService.logged">
     <div class="row align-items-end">
         <div class="col">
             <img src="/assets/logo.svg" alt="logo codigo do futuro">
@@ -13,8 +13,9 @@
                 <a class="col menu" routerLink="stores">Lojas</a>
             </div>
         </div>
-        <div class="col">
-            <button class="btn btn-danger" (click)="logout()">Sair</button>
+        <div class="col" *ngIf="loginService.logged">
+            <button class="btn btn-danger" (click)="loginService.logout()">Sair</button>
         </div>
+        
     </div>
 </div>
