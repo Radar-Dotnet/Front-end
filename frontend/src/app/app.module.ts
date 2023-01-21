@@ -31,6 +31,8 @@ import { ProductFormDialogComponent } from './components/product-form-dialog/pro
 import { DetailProductDialogComponent } from './components/detail-product-dialog/detail-product-dialog.component';
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
+import { CampaignComponent } from './pages/campaign/campaign.component';
+import { CampaignFormDialogComponent } from './components/campaign-form-dialog/campaign-form-dialog.component';
 
 registerLocaleData(ptBr);
 
@@ -54,6 +56,8 @@ registerLocaleData(ptBr);
     ClientDialogComponent,
     ProductFormDialogComponent,
     DetailProductDialogComponent,
+    CampaignComponent,
+    CampaignFormDialogComponent,
   ],
   imports: [
     BrowserModule,

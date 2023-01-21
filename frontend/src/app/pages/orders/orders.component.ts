@@ -55,7 +55,7 @@ export class OrdersComponent implements OnInit{
 
   public async getOrders(){
      this.orders = await this.orderService.getOrder();
-     console.log(this.orders)
+    //  console.log(this.orders)
     //  this.orders?.map(a => a)
     //  this.orderslist = this.orders?.reverse();
   }
@@ -154,7 +154,7 @@ export class OrdersComponent implements OnInit{
     //   });
     // });
 
-    console.log(newOrder)
+    // console.log(newOrder)
    let a = await this.orderService.createOrder(newOrder)
    this.router.navigateByUrl('orders')
 
