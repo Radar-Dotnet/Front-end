@@ -8,6 +8,7 @@ import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
 import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-stores',
@@ -20,6 +21,7 @@ import { Estado } from 'src/app/interfaces/estado.inteface';
   }
 
   ngOnInit(): void {
+    this.storeService = new StoreService(this.http)
     this.consultaEstado = new EstadoService(this.http);
     this.importarEstados();
   }
@@ -37,7 +39,7 @@ import { Estado } from 'src/app/interfaces/estado.inteface';
     public cep : Cep[] | undefined;
     public estados: Estado[] | undefined;
     public consultaEstado: EstadoService = {} as EstadoService;
-
+    private storeService : StoreService = {} as StoreService;
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
@@ -110,5 +112,23 @@ import { Estado } from 'src/app/interfaces/estado.inteface';
   async importarEstados(){
     this.estados = await this.consultaEstado.listaEstados();
     console.log(this.estados);
+  }
+
+  create(){
+    this.storeService.createStore({
+      id: this.store.id,
+      nome: this.store.nome,
+      observacao: this.store.observacao,
+      cep: this.store.cep,
+      logradouro: this.store.logradouro,
+      numero: this.store.numero,
+      bairro: this.store.bairro,
+      cidade: this.store.cidade,
+      estado: this.store.estado,
+      complemento: this.store.complemento,
+      latitude: this.store.latitude,
+      longitude: this.store.longitude
+    })
+    console.log(this.store);
   }
 }

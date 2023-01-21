@@ -34,11 +34,11 @@
             <hr>
             <div>
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="store.nome">
             </div>
             <div>
                 <label for="observacao" class="form-label">Observação</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]="store.observacao">
             </div>
             <div>
                 <label for="cep" class="form-label">CEP</label>
@@ -73,29 +73,17 @@
                     <option *ngFor="let estado of estados" id="{{estado.id}}"> {{estado.sigla}} </option>
                 </select>
             </div>
-            
-            <!--<div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Selecione o Estado aqui
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Acre</a>
-                    <a class="dropdown-item" href="#">Rio de Janeiro</a>
-                    <a class="dropdown-item" href="#">São Paulo</a>
-                </div>
-            </div> -->
             <div>
                 <label for="Latitude" class="form-label">Latitude</label>
-                <input type="text" class="form-control" [value]="latForm" disabled>
+                <input type="text" class="form-control" [value]="latForm" [(ngModel)]="store.latitude">
             </div>
             <div>
                 <label for="Longitude" class="form-label">Longitude</label>
-                <input type="text" class="form-control" [value]="lngForm" disabled>
+                <input type="text" class="form-control" [value]="lngForm" [(ngModel)]="store.longitude">
             </div>
 
             <div class="row mt-2">
-                <button class="btn btn-primary" type="button">Cadastrar Loja</button>
+                <button class="btn btn-primary" type="button" (click)="create()">Cadastrar Loja</button>
             </div>
         </div>
     </div>
