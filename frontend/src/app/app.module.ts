@@ -36,6 +36,9 @@ import { DetailProductDialogComponent } from './components/detail-product-dialog
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { AgmCoreModule, AgmMap } from '@agm/core';
 import { environment } from 'src/environments/environment';
+import { DragndropComponent } from './components/dragndrop/dragndrop.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 registerLocaleData(ptBr);
 
@@ -67,6 +70,7 @@ const googleMapsParams = {
     StoresComponent,
     CampaignComponent,
     CampaignFormDialogComponent,
+    DragndropComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ const googleMapsParams = {
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatNativeDateModule,
     NgChartsModule,
+    DragDropModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c',
       libraries: ["places", "geometry"]})

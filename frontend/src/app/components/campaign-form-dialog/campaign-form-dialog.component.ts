@@ -3,6 +3,7 @@ import { Campaign } from './../../interfaces/campaign.interface';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-campaign-form-dialog',
@@ -16,14 +17,8 @@ export class CampaignFormDialogComponent {
     private campaignService : CampaignService
   ){}
   public campaign:Campaign= {} as Campaign;
-  // private campaignService:CampaignService = {} as CampaignService;
 
   faXmark = faXmark;
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
 
   closeDialog(): void {
     this.dialogRef.close();
@@ -41,4 +36,6 @@ export class CampaignFormDialogComponent {
     // this.clientObserver.updateQty();
     location.reload();
   }
+
 }
+
