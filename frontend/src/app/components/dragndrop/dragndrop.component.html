@@ -1,5 +1,5 @@
 <div cdkDropListGroup class="div-drag">
-  <div class="bb">
+  <!--<div class="bb">
     <div cdkDropList class="aa">
       <div *ngFor="let item of basket" cdkDrag>
         {{item}}
@@ -11,30 +11,41 @@
         {{item}}
       </div>
     </div>
-  </div>
-  <!-- <div class="example-container" *ngFor="let prateleira of prateleiras">
+  </div>-->
+  <div class="example-container">
     <div
     cdkDropListOrientation="horizontal"
-      cdkDropList
+      cdkDropList id = "basket"
       [cdkDropListData]="basket"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
     </div>
-  </div> -->
+  </div>
 
-  <!-- <div class="example-container" *ngFor="let prateleira of prateleiras">
+  <div class="example-container">
     <div
     cdkDropListOrientation="horizontal"
       cdkDropList
+      id = "basket1"
       [cdkDropListData]="basket1"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of basket1" cdkDrag>{{item}}</div>
     </div>
-  </div> -->
+  </div>
 
-
+  <div class="example-container">
+    <div
+    cdkDropListOrientation="horizontal"
+      cdkDropList
+      id = "basket1"
+      [cdkDropListData]="basket2"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket2" cdkDrag>{{item}}</div>
+    </div>
+  </div>
 
   <div class="example-container-produtos">
     <h2>Produtos Existentes</h2>

@@ -15,6 +15,7 @@ export class DragndropComponent {
 
   basket:any = ['Oranges', 'Bananas', 'Cucumbers',"apples","grapes","dragon-fruits","Mangos","Lemons"];
   basket1:any = ['aaa', 'bbb', 'ccc','ddd','eee','fff','ggg'];
+  basket2:any = ['hhh', 'iii', 'jjj','kkk','lll','mmm','nnn'];
 
 
   // populaPrateleira(){
@@ -32,11 +33,11 @@ export class DragndropComponent {
     .then( r => r?.map(x => this.items.push(x.nome)));
   }
 
-  prateleiras:any =[1];
+  prateleiras:any =[];
 
   adicionaPrateleira(){
     let teste = new Array()
-    this.prateleiras.push(teste)
+    this.prateleiras.push("")
     console.log(this.prateleiras)
   }
 
