@@ -175,6 +175,7 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     this.store = await this.storeService.getStorebyId(id);
     this.latForm = Number(this.store.latitude);
     this.lngForm = Number(this.store.longitude);
+    window.scrollTo(0,0);
     this.tituloDoBotao = "Atualizar Loja";
   }
     

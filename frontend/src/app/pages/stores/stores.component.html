@@ -8,7 +8,6 @@
             <div class="chart-container px-5 py-4">
                 <div class="row">
                     <h3>Lojas</h3>
-                    <p class="text-muted">Localização das lojas no mapa</p>
                     <hr>
                 </div>
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
@@ -44,9 +43,9 @@
                 <label for="cep" class="form-label">CEP</label>
                 <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja" [(ngModel)]="store.cep">
             </div>
-            <div class="mt-2">
+            <!--<div class="mt-2">
                 <button class="btn btn-primary" type="button" (click)="buscarCep()">Buscar CEP</button>
-            </div>
+            </div> -->
             <div>
                 <label for="logradouro" class="form-label">Logradouro</label>
                 <input type="text" class="form-control"id="logradouro-loja" name="logradouro-loja" [(ngModel)]="store.logradouro">
@@ -115,17 +114,17 @@
                             <span>{{store.observacao}}</span>
                         </td>
                         <td>
-                            <span>{{store.logradouro}}</span>
-                        </td>
-                        <td>
-                            <span>{{store.estado}}</span>
+                            <span>{{store.logradouro}}, {{store.numero}}</span>
                         </td>
                         <td>
                             <span>{{store.cidade}}</span>
                         </td>
+                        <td>
+                            <span>{{store.estado}}</span>
+                        </td>
                        
-                        <div class="icon-actions">
-                            <div (click)="editStore(store.id)">
+                        <div class="icon-actions" style="display: flex;">
+                            <div (click)="editStore(store.id)"  style="margin-right: 10px;">
                               <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>
                             <div (click)="delete(store.id)">
