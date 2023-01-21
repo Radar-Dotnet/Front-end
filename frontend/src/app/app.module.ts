@@ -16,6 +16,8 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { CashFlowComponent } from './pages/cash-flow/cash-flow.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoresComponent } from './pages/stores/stores.component';
+import { CampaignComponent } from './pages/campaign/campaign.component';
+import { CampaignFormDialogComponent } from './components/campaign-form-dialog/campaign-form-dialog.component';
 
 import { CpfFormatPipe } from './pipes/cpf-format/cpf-format.pipe';
 import { PhoneFormatPipe } from './pipes/phone-format/phone-format.pipe';
@@ -34,9 +36,6 @@ import { DetailProductDialogComponent } from './components/detail-product-dialog
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { AgmCoreModule, AgmMap } from '@agm/core';
 import { environment } from 'src/environments/environment';
-
-import { CampaignComponent } from './pages/campaign/campaign.component';
-import { CampaignFormDialogComponent } from './components/campaign-form-dialog/campaign-form-dialog.component';
 
 registerLocaleData(ptBr);
 

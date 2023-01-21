@@ -9,6 +9,7 @@ import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
 import { StoreService } from 'src/app/services/store.service';
+import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-stores',
@@ -24,6 +25,7 @@ import { StoreService } from 'src/app/services/store.service';
     this.storeService = new StoreService(this.http)
     this.consultaEstado = new EstadoService(this.http);
     this.importarEstados();
+    this.getStores();
   }
 
   constructor(
@@ -41,6 +43,10 @@ import { StoreService } from 'src/app/services/store.service';
     public estados: Estado[] | undefined;
     public consultaEstado: EstadoService = {} as EstadoService;
     private storeService : StoreService = {} as StoreService;
+    public faPenToSquareForm = faPenToSquare;
+    public faCirclePlusForm = faCirclePlus;
+    public faTrashCanForm = faTrashCan;
+    public tituloDoBotao : string = "Cadastrar Loja";
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
@@ -111,24 +117,65 @@ import { StoreService } from 'src/app/services/store.service';
 
   async importarEstados(){
     this.estados = await this.consultaEstado.listaEstados();
-    console.log(this.estados);
   }
 
-  create(){
-    this.storeService.createStore({
-      id: this.store.id,
-      nome: this.store.nome,
-      observacao: this.store.observacao,
-      cep: this.store.cep,
-      logradouro: this.store.logradouro,
-      numero: this.store.numero,
-      bairro: this.store.bairro,
-      cidade: this.store.cidade,
-      estado: this.store.estado,
-      complemento: this.store.complemento,
-      latitude: this.store.latitude,
-      longitude: this.store.longitude
-    })
-    console.log(this.store);
+  async create(){
+    if(this.store && this.store.id > 0){
+      if(confirm("Deseja mesmo atualizar essa loja?")){
+        await this.storeService.updateStore({
+          id: this.store.id,
+          nome: this.store.nome,
+          observacao: this.store.observacao,
+          cep: this.store.cep,
+          logradouro: this.store.logradouro,
+          numero: this.store.numero,
+          bairro: this.store.bairro,
+          cidade: this.store.cidade,
+          estado: this.store.estado,
+          complemento: this.store.complemento,
+          latitude: this.latForm.toString(),
+          longitude: this.lngForm.toString()
+        });
+      }
+    }
+    else{
+      this.storeService.createStore({
+        id: this.store.id,
+        nome: this.store.nome,
+        observacao: this.store.observacao,
+        cep: this.store.cep,
+        logradouro: this.store.logradouro,
+        numero: this.store.numero,
+        bairro: this.store.bairro,
+        cidade: this.store.cidade,
+        estado: this.store.estado,
+        complemento: this.store.complemento,
+        latitude: this.latForm.toString(),
+        longitude: this.lngForm.toString()
+      })
+    }
+    console.log(this.latForm.toString());
+    console.log(this.lngForm.toString());
+    this.getStores();
   }
+
+  private async getStores(){
+    this.stores = await this.storeService.getStore()
+  }
+
+  async delete(store: Number){
+    if(confirm("Tem certeza que deseja apagar essa loja?")){
+      await this.storeService.deleteStore(store);
+      this.stores = await this.storeService.getStore();
+    }
+  }
+
+  public async editStore(id: number){
+    console.log(id);
+    this.store = await this.storeService.getStorebyId(id);
+    this.latForm = Number(this.store.latitude);
+    this.lngForm = Number(this.store.longitude);
+    this.tituloDoBotao = "Atualizar Loja";
+  }
+    
 }

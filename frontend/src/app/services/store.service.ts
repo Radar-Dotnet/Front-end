@@ -16,7 +16,7 @@ export class StoreService {
     return stores;
   }
 
-  public async getStorebyId(storeId: number): Promise<Store | undefined>{
+  public async getStorebyId(storeId: number): Promise<Store>{
     let store:Store | undefined = await firstValueFrom(this.http.get<Store>(`${environment.api}loja/${storeId}`));
     return store;
   }
@@ -26,15 +26,11 @@ export class StoreService {
     return newStore;
   }
 
-  postCliente(store:Store){
-    return this.http.post<Store>(`${environment.api}loja`,store)
-  }
-
-  public async deleteClient(storeId: Number){
+  public async deleteStore(storeId: Number){
     await firstValueFrom(this.http.delete(`${environment.api}loja/${storeId}`));
   }
 
-  public async updateClient(store: Store): Promise<Store | undefined>{
+  public async updateStore(store: Store): Promise<Store | undefined>{
     let storeUpdate: Store | undefined = await firstValueFrom(this.http.put<Store>(`${environment.api}loja/${store.id}`, store ));
     return storeUpdate;
   }

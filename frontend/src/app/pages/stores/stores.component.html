@@ -75,15 +75,15 @@
             </div>
             <div>
                 <label for="Latitude" class="form-label">Latitude</label>
-                <input type="text" class="form-control" [value]="latForm" [(ngModel)]="store.latitude">
+                <input type="text" class="form-control" [(ngModel)]="latForm">
             </div>
             <div>
                 <label for="Longitude" class="form-label">Longitude</label>
-                <input type="text" class="form-control" [value]="lngForm" [(ngModel)]="store.longitude">
+                <input type="text" class="form-control" [(ngModel)]="lngForm">
             </div>
             <br />
             <div class="row mt-2">
-                <button class="btn btn-primary" type="button" (click)="create()">Cadastrar Loja</button>
+                <button class="btn btn-primary" type="button" (click)="create()">{{tituloDoBotao}}</button>
             </div>
         </div>
     </div>
@@ -124,16 +124,14 @@
                             <span>{{store.cidade}}</span>
                         </td>
                        
-                        <!-- <td>
-                            <div class="icon-actions">
-                                <div (click)="openUpdateForm(store)">
-                                    <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
-                                </div>
-                                <div (click)="delete(store.id)">
-                                    <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
-                                </div>
+                        <div class="icon-actions">
+                            <div (click)="editStore(store.id)">
+                              <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>
-                        </td> -->
+                            <div (click)="delete(store.id)">
+                              <fa-icon class="icon" [icon]="faTrashCanForm" size="lg"></fa-icon>
+                            </div>
+                          </div>
                     </tr>
                 </tbody>
             </table>
