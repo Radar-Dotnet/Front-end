@@ -8,7 +8,7 @@ import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
 import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
-import { StoreService } from 'src/app/services/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

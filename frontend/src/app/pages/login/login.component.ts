@@ -11,15 +11,23 @@ export class LoginComponent implements OnInit {
   public email: String = "";
   public senha: String = "";
   public mensagem: String = "";
+  public user = { email: '', senha: ''};
 
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
+  public login(){
+      this.loginService.login(this.user).subscribe(data => {
+      let token = data.token;
+      localStorage.setItem("token", token);
+    });
+    this.router.navigateByUrl('');
+  }
+
   logar() {
-    console.log(this.email)
-    if (this.email === "radar@login.com" && this.senha === "12345") {
+    if (this.user.email === "radar@login.com" && this.user.senha === "12345") {
       localStorage.setItem("logged", "true");
       localStorage.setItem("adm", "true");
       this.loginService.notify();

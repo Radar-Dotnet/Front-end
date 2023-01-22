@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { AppConstants } from 'src/app/app-constants';
 import { Order, OrderProduct } from 'src/app/interfaces/order.interface';
 import { Product } from 'src/app/interfaces/product.interface';
 import { environment } from 'src/environments/environment';
@@ -16,7 +17,7 @@ export class OrderService {
   public async createOrder(order: Order ){
     // public async createOrder(order: Order, orderProduct: OrderProduct[] ){
 
-    const createO = await firstValueFrom(this.http.post(`${environment.api}pedido`, order))
+    const createO = await firstValueFrom(this.http.post(`${environment.api}pedido`, order, AppConstants.headerToken))
     // let newOrder:Order | undefined = await firstValueFrom(this.http.post<Order>(`${environment.api}pedido`, order));
     // orderProduct.map(async product=>{
     //   let newOrderProduct: OrderProduct | undefined = await firstValueFrom(this.http.post<OrderProduct>(`${environment.api}pedido`, {
@@ -40,12 +41,12 @@ export class OrderService {
   }
 
   public async getOrder(): Promise<Order[] | undefined>{
-    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}pedido`));
+    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}pedido`, AppConstants.headerToken));
     return orders;
   }
 
   public async getOrderById(id: number): Promise<{order: Order, orderProducts: OrderProduct[]} | undefined>{
-    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}pedido/${id}`));
+    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}pedido/${id}`, AppConstants.headerToken));
     const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}orders-products`));
     return {order, orderProducts:orderProduct.filter(product=> product.order_id==order?.id)};
   }
