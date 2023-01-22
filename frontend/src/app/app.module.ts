@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +33,6 @@ import { DetailProductDialogComponent } from './components/detail-product-dialog
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { AgmCoreModule, AgmMap } from '@agm/core';
-import { environment } from 'src/environments/environment';
 
 
 registerLocaleData(ptBr);
@@ -80,7 +79,8 @@ const googleMapsParams = {
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: NgChartsConfiguration, useValue: { generateColors: false }}
+    { provide: NgChartsConfiguration, useValue: { generateColors: false }},
+    
   ],
   bootstrap: [AppComponent]
 })
