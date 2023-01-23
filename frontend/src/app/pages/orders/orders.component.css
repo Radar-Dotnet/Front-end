@@ -223,3 +223,7 @@ nav ul {
   transition: all 0.5s;
   cursor: pointer;
 }
+
+.container_titulo {
+  margin-top: 2em;
+}
