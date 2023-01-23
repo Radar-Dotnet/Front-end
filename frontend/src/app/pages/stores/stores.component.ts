@@ -8,17 +8,19 @@ import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
 import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
-import { StoreService } from 'src/app/services/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',
   styleUrls: ['./stores.component.css']
 })
-  export class StoresComponent implements OnInit {
-    onChoseLocation($event: MouseEvent) {
-      throw new Error('Method not implemented.');
+export class StoresComponent implements OnInit {
+  onChoseLocation($event: MouseEvent) {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
@@ -33,20 +35,21 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     private http: HttpClient,
     private routerParams: ActivatedRoute,
     public consultaCep: ConsultaCepService,
-    ) { }
-    
-    //Criado para poder replicar Pagina Cashflow como base de layout:
-    public store : Store = {} as Store;
-    public stores: Store[] | undefined = [];
-    public location : Location;
-    public cep : Cep[] | undefined;
-    public estados: Estado[] | undefined;
-    public consultaEstado: EstadoService = {} as EstadoService;
-    private storeService : StoreService = {} as StoreService;
-    public faPenToSquareForm = faPenToSquare;
-    public faCirclePlusForm = faCirclePlus;
-    public faTrashCanForm = faTrashCan;
-    public tituloDoBotao : string = "Cadastrar Loja";
+    private dialogRef : MatDialog,
+  ) { }
+
+  //Criado para poder replicar Pagina Cashflow como base de layout:
+  public store: Store = {} as Store;
+  public stores: Store[] | undefined = [];
+  public location: Location;
+  public cep: Cep[] | undefined;
+  public estados: Estado[] | undefined;
+  public consultaEstado: EstadoService = {} as EstadoService;
+  private storeService: StoreService = {} as StoreService;
+  public faPenToSquareForm = faPenToSquare;
+  public faCirclePlusForm = faCirclePlus;
+  public faTrashCanForm = faTrashCan;
+  public tituloDoBotao: string = "Cadastrar Loja";
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
@@ -82,7 +85,7 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
   ]
 
   addMarker(latNoClique: number, lngNoClique: number) {
-    if(confirm("Confirma essa localização?") == true){
+    if (confirm("Confirma essa localização?") == true) {
       this.markers.push({
         lat: latNoClique,
         lng: lngNoClique,
@@ -101,27 +104,27 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     console.log(this.cep);
   }*/
 
-  buscarCep(){
+  buscarCep() {
     let consulta = this.consultaCep.consultaCEP(this.store.cep)
-    .pipe(take(1))
-    .subscribe((cepLocalizado:any) => {
-      console.log(cepLocalizado)
-      this.store.bairro = cepLocalizado.bairro
-      this.store.logradouro = cepLocalizado.logradouro
-      this.store.cidade = cepLocalizado.localidade
-      this.store.estado = cepLocalizado.uf
-      this.store.complemento = cepLocalizado.complemento
-    })
+      .pipe(take(1))
+      .subscribe((cepLocalizado: any) => {
+        console.log(cepLocalizado)
+        this.store.bairro = cepLocalizado.bairro
+        this.store.logradouro = cepLocalizado.logradouro
+        this.store.cidade = cepLocalizado.localidade
+        this.store.estado = cepLocalizado.uf
+        this.store.complemento = cepLocalizado.complemento
+      })
     console.log(consulta)
   }
 
-  async importarEstados(){
+  async importarEstados() {
     this.estados = await this.consultaEstado.listaEstados();
   }
 
-  async create(){
-    if(this.store && this.store.id > 0){
-      if(confirm("Deseja mesmo atualizar essa loja?")){
+  async create() {
+    if (this.store && this.store.id > 0) {
+      if (confirm("Deseja mesmo atualizar essa loja?")) {
         await this.storeService.updateStore({
           id: this.store.id,
           nome: this.store.nome,
@@ -138,7 +141,7 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
         });
       }
     }
-    else{
+    else {
       this.storeService.createStore({
         id: this.store.id,
         nome: this.store.nome,
@@ -159,24 +162,32 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     this.getStores();
   }
 
-  private async getStores(){
+  private async getStores() {
     this.stores = await this.storeService.getStore()
   }
 
-  async delete(store: Number){
-    if(confirm("Tem certeza que deseja apagar essa loja?")){
+  async delete(store: Number) {
+    if (confirm("Tem certeza que deseja apagar essa loja?")) {
       await this.storeService.deleteStore(store);
       this.stores = await this.storeService.getStore();
     }
   }
 
-  public async editStore(id: number){
+  public async editStore(id: number) {
     console.log(id);
     this.store = await this.storeService.getStorebyId(id);
     this.latForm = Number(this.store.latitude);
     this.lngForm = Number(this.store.longitude);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.tituloDoBotao = "Atualizar Loja";
   }
-    
+
+  openDialogForm(){
+    this.dialogRef.open(StoreFormDialogComponent,{
+    });
+  }
+  
+  faPenToSquare = faPenToSquare;
+  faCirclePlus = faCirclePlus;
+  faTrashCan = faTrashCan;
 }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { Store } from 'src/app/interfaces/store.interface';
 import { environment } from 'src/environments/environment';
-import { Store } from '../interfaces/store.interface';
+
 
 @Injectable({
   providedIn: 'root'

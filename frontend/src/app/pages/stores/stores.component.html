@@ -1,7 +1,18 @@
-<div class="container MT-5">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c"
-        type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c"
+    type="text/javascript"></script>
 
+
+<div class="container">
+    <div class="sub-header">
+        <h1 class="client">Lojas</h1>
+        <button class="btn btn-primary" (click)="openDialogForm()">
+            <fa-icon class="icon" [icon]="faCirclePlus" size="lg"></fa-icon>
+            Adicionar Loja
+        </button>
+    </div>
+    <br>
+    <br>
+    <br>
     <!-- Card do mapa (card lado esquerdo) -->
     <div class="row mt-5">
         <div class="col-8">
@@ -10,7 +21,8 @@
                     <h3>Lojas</h3>
                     <hr>
                 </div>
-                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false"
+                    (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
                     <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)"
                         [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable">
                         <agm-info-window>
@@ -29,9 +41,9 @@
 
         <!-- Filtro por localização (card lateral direito) -- Usar gerar informações pro mapa -->
         <div class="col-4 last-order px-5 py-4">
-            <h3>Cadastre uma loja</h3>
+            <h3>Filtre as lojas</h3>
             <hr>
-            <div>
+            <!-- <div>
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" [(ngModel)]="store.nome">
             </div>
@@ -43,9 +55,6 @@
                 <label for="cep" class="form-label">CEP</label>
                 <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja" [(ngModel)]="store.cep">
             </div>
-            <!--<div class="mt-2">
-                <button class="btn btn-primary" type="button" (click)="buscarCep()">Buscar CEP</button>
-            </div> -->
             <div>
                 <label for="logradouro" class="form-label">Logradouro</label>
                 <input type="text" class="form-control"id="logradouro-loja" name="logradouro-loja" [(ngModel)]="store.logradouro">
@@ -83,7 +92,7 @@
             <br />
             <div class="row mt-2">
                 <button class="btn btn-primary" type="button" (click)="create()">{{tituloDoBotao}}</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -124,13 +133,13 @@
                         </td>
 
                         <div class="icon-actions" style="display: flex;">
-                            <div (click)="editStore(store.id)"  style="margin-right: 10px;">
-                              <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
+                            <div (click)="editStore(store.id)" style="margin-right: 10px;">
+                                <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>
                             <div (click)="delete(store.id)">
-                              <fa-icon class="icon" [icon]="faTrashCanForm" size="lg"></fa-icon>
+                                <fa-icon class="icon" [icon]="faTrashCanForm" size="lg"></fa-icon>
                             </div>
-                          </div>
+                        </div>
                     </tr>
                 </tbody>
             </table>
