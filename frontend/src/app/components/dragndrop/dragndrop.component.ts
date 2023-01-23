@@ -8,16 +8,24 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./dragndrop.component.css']
 })
 export class DragndropComponent {
-
+  
   constructor( private produtoServico:ProductService){}
 
   items:any= [];
 
-  basket:any = ['Oranges', 'Bananas', 'Cucumbers',"apples","grapes","dragon-fruits","Mangos","Lemons"];
+  // basket:any = ['Oranges', 'Bananas', 'Cucumbers',"apples","grapes","dragon-fruits","Mangos","Lemons"];
   basket1:any = ['aaa', 'bbb', 'ccc','ddd','eee','fff','ggg'];
   basket2:any = ['hhh', 'iii', 'jjj','kkk','lll','mmm','nnn'];
+  basket3:any = ['ooo', 'ppp', 'qqq','rrr','sss','ttt','uuu'];
 
-
+  //Limitar Prateleira com numero de itens
+  maxItems: 8;
+  onDragOver(event: DragEvent) {
+    if (this.items.length >= this.maxItems) {
+      event.preventDefault();
+    }
+  }
+  
   // populaPrateleira(){
   //   for (let i = 0; i < this.prateleiras.length; i++) {
   //     this.prateleiras[i].push()
