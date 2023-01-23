@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { take } from 'rxjs';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login(){
-      this.loginService.login(this.user).subscribe(data => {
+      this.loginService.login(this.user).pipe(take(1)).subscribe(data => {
       let token = data.token;
       localStorage.setItem("token", token);
     });

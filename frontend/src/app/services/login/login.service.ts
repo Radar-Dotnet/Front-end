@@ -33,8 +33,8 @@ export class LoginService {
   }
 
   public notify() {
-    this.logged = localStorage.getItem("logged") ? true : false;
-    this.adm = localStorage.getItem("adm") ? true : false;
+    this.logged = localStorage.getItem("token") ? true : false;
+    //this.adm = localStorage.getItem("adm") ? true : false;
   }
   public confirmation: boolean= false
 
