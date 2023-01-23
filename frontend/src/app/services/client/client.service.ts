@@ -12,7 +12,7 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   public async getClient(): Promise<Client[] | undefined>{
-    let clients:Client[] | undefined = await firstValueFrom(this.http.get<Client[]>( environment.api +'cliente'));
+    let clients:Client[] | undefined = await firstValueFrom(this.http.get<Client[]>(`${environment.api}cliente`));
     return clients;
   }
 
@@ -21,12 +21,12 @@ export class ClientService {
   // }
 
   public async getClientbyId(clientId: number): Promise<Client | undefined>{
-    let client:Client | undefined = await firstValueFrom(this.http.get<Client>(`${environment.api}/clients/${clientId}`));
+    let client:Client | undefined = await firstValueFrom(this.http.get<Client>(`${environment.api}cliente${clientId}`));
     return client;
   }
 
   public async createClient(client: Client): Promise<Client | undefined>{
-    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>('https://localhost:7058/api/cliente/', client));
+    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>(`${environment.api}cliente`, client));
     return newClient;
   }
 
@@ -36,15 +36,15 @@ export class ClientService {
   // }
 
   postCliente(cliente:Client){
-    return this.http.post<Client>('https://localhost:7058/api/cliente/',cliente)
+    return this.http.post<Client>(`${environment.api}cliente`,cliente)
   }
 
   public async deleteClient(clientId: Number){
-    await firstValueFrom(this.http.delete('https://localhost:7058/api/cliente/' + clientId));
+    await firstValueFrom(this.http.delete(`${environment.api}cliente` + clientId));
   }
 
   public async updateClient(client: Client): Promise<Client | undefined>{
-    let clientUpdate: Client | undefined = await firstValueFrom(this.http.put<Client>('https://localhost:7058/api/cliente/'+client.id, client ));
+    let clientUpdate: Client | undefined = await firstValueFrom(this.http.put<Client>(`${environment.api}cliente`+client.id, client ));
     return clientUpdate;
   }
 

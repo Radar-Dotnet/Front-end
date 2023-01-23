@@ -10,10 +10,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user:User
-  
-  public email: string;
-  public senha: string;
+  user:User;
+  public email: string = "";
+  public senha: string = "";
   public mensagem: string = "";
 
   constructor(private router: Router, private loginService: LoginService) {   }
@@ -22,9 +21,15 @@ export class LoginComponent implements OnInit {
     this.user = new User();
     
   }
-   logar(){
-    this.loginService.authenticate(this.email, this.senha).subscribe(
-      () => this.router.navigate(['email', this.email])
-    )
+   public async logar(){
+    try{
+      debugger
+      this.user.email = this.email;
+      this.user.senha = this.senha;
+      const result = await this.loginService.authenticate(this.user);
+      console.log(`login efetuado: ${result}`);
+    }catch (error){
+      console.error(error)
     }
-}
+    } 
+  }

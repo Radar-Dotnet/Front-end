@@ -13,17 +13,17 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   public async createOrder(order: Order, orderProduct: OrderProduct[] ): Promise<Order | undefined>{
-    let newOrder:Order | undefined = await firstValueFrom(this.http.post<Order>(`${environment.api}/orders`, order));
+    let newOrder:Order | undefined = await firstValueFrom(this.http.post<Order>(`${environment.api}Pedido`, order));
     orderProduct.map(async product=>{
-      let newOrderProduct: OrderProduct | undefined = await firstValueFrom(this.http.post<OrderProduct>(`${environment.api}/orders-products`, {
+      let newOrderProduct: OrderProduct | undefined = await firstValueFrom(this.http.post<OrderProduct>(`${environment.api}PedidosProduto`, {
         id: 0,
         order_id: newOrder?.id,
         product_id: product.product_id,
         value: product.value,
         quantity: product.quantity
       }));
-      let productUpdate:Product | undefined  =  await firstValueFrom(this.http.get<Product>(`${environment.api}/products/${product.product_id}`));
-      let stockUpdate:Product | undefined = await firstValueFrom(this.http.put<Product>(`${environment.api}/products/${product.product_id}`,{
+      let productUpdate:Product | undefined  =  await firstValueFrom(this.http.get<Product>(`${environment.api}Produto${product.product_id}`));
+      let stockUpdate:Product | undefined = await firstValueFrom(this.http.put<Product>(`${environment.api}Produto${product.product_id}`,{
         id: productUpdate.id,
         nome: productUpdate.nome,
         descricao: productUpdate.descricao,
@@ -36,23 +36,23 @@ export class OrderService {
   }
 
   public async getOrder(): Promise<Order[] | undefined>{
-    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}/orders`));
+    const orders:Order[] | undefined = await firstValueFrom(this.http.get<Order[]>(`${environment.api}Pedido`));
     return orders;
   }
 
   public async getOrderById(id: number): Promise<{order: Order, orderProducts: OrderProduct[]} | undefined>{
-    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}/orders/${id}`));
-    const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    const order:Order | undefined = await firstValueFrom(this.http.get<Order>(`${environment.api}Pedido${id}`));
+    const orderProduct: OrderProduct[] | undefined = await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}PedidosProduto`));
     return {order, orderProducts:orderProduct.filter(product=> product.order_id==order?.id)};
   }
 
   public async getOrderProduct():Promise<OrderProduct[] | undefined>{
-    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}PedidosProduto`));
     return orderProduct;
   }
 
   public async getOrderProductByOrderId(orderId: number ):Promise<OrderProduct[] | undefined>{
-    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}/orders-products`));
+    let orderProduct: OrderProduct[] | undefined =  await firstValueFrom(this.http.get<OrderProduct[]>(`${environment.api}PedidosProduto`));
     return orderProduct;
   }
 

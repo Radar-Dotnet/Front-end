@@ -1,19 +1,16 @@
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { firstValueFrom, window  } from 'rxjs';
+import { User } from 'src/app/interfaces/user.interface';
 import { environment } from 'src/environments/environment';
-import { TokenService } from '../token/token';
+import jwt_decode from "jwt-decode";
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  getToken() {  }
-  
   public logged: boolean = false;
   public adm: boolean = false;
-  public token : string;  
-  public header : any;  
   public httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -21,7 +18,7 @@ export class LoginService {
     })}
   
 
-  constructor(private router: Router, private http: HttpClient, private tokenService: TokenService ) {
+  constructor(private router: Router, private http: HttpClient ) {
     this.notify();
       
   }
@@ -48,17 +45,41 @@ export class LoginService {
     }
   }
 
-  authenticate(email: string, senha: string){
-    debugger
-    return this.http.post(environment.apiLogin,
-      {email, senha},
-      {observe: 'response'}).pipe(tap(async res =>{
-        const authtoken = res.headers.get('token');
-        this.tokenService.setToken(await new Promise<any>((_resolve, reject) => {
-            authtoken;
-          }));
-        console.log(`email ${email} autenticated wtih token ${authtoken}`)
-      }))
+ public async authenticate(User: User){
+  const result = await firstValueFrom(this.http.post<any>(`${environment.apiLogin}`, User));
+  if(result && result.token){
+    localStorage.setItem('token', result.token);
+    localStorage.setItem("logged", "true")
+    this.router.navigate([""])
+    return true;
   }
+  return false
+  }
+
+  getToken(){
+    const token = localStorage.getItem('token')
+    return token;
+  }
+
+  getTokenExpired(token: string): Date{
+    const decoded: any = jwt_decode(token, { header: true });
+    if (decoded.exp === undefined){
+      return new Date(0);;
+    }
+    const date = new Date(0);
+  date.setUTCSeconds(decoded.exp);
+  return date;
+}
+TokenExpired(token?: string):boolean{
+  if(!token){
+    return true;
+  }
+  const date = this.TokenExpired(token);
+  if (date === undefined){
+    return false;
+  }
+
+  return !(date.valueOf())
+}
 }
 
