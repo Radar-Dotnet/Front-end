@@ -16,7 +16,7 @@
     color: #4E46B4;
 }
 
-.activeRoute{
+.activeRoute, .menu-ativado {
     background: #4e46b4;
     color: #F8F9FA;
 }
