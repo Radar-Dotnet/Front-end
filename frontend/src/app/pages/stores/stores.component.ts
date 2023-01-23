@@ -9,7 +9,7 @@ import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
 import { StoreService } from 'src/app/services/store/store.service';
-import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -35,7 +35,7 @@ export class StoresComponent implements OnInit {
     private http: HttpClient,
     private routerParams: ActivatedRoute,
     public consultaCep: ConsultaCepService,
-    private dialogRef : MatDialog,
+    private dialogRef: MatDialog,
   ) { }
 
   //Criado para poder replicar Pagina Cashflow como base de layout:
@@ -58,6 +58,8 @@ export class StoresComponent implements OnInit {
   lng: number = -46.66129260425739;
   latForm: number = 0;
   lngForm: number = 0;
+  estado: string;
+  cidade: string;
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -67,37 +69,60 @@ export class StoresComponent implements OnInit {
     {
       lat: -23.562313843399128,
       lng: -46.654531015829264,
+      logradouro: 'Av. Teste, 123',
+      cidade: 'São Paulo',
+      estado: 'SP',
       label: "Loja A",
       draggable: true
     },
     {
       lat: -23.557199852693863,
       lng: -46.655110036806654,
+      logradouro: 'Av. Teste, 123',
+      cidade: 'São Paulo',
+      estado: 'SP',
       label: "Loja B",
       draggable: false
     },
     {
       lat: -23.566734070580132,
       lng: -46.65891781621633,
+      logradouro: 'Av. Teste, 123',
+      cidade: 'São Paulo',
+      estado: 'SP',
       label: "Loja C",
       draggable: true
     }
   ]
 
-  addMarker(latNoClique: number, lngNoClique: number) {
-    if (confirm("Confirma essa localização?") == true) {
-      this.markers.push({
-        lat: latNoClique,
-        lng: lngNoClique,
-        label: "Teste",
-        draggable: false
-      })
-      this.latForm = latNoClique;
-      this.lngForm = lngNoClique;
-      console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
-      //this.lat = clique.coords.lat;
-    }
+  //Filtragem no mapa
+
+  estadoFiltro: string;
+  cidadeFiltro: string;
+  onFilterChange() {
+    console.log(this.estadoFiltro);
+    console.log(this.cidadeFiltro);
+    //aqui você pode filtrar seus marcadores com base na variavel estadoFiltro
   }
+
+
+  //Adiciona a lat+lon colocando um Pin no mapa
+  // addMarker(latNoClique: number, lngNoClique: number) {
+  //   if (confirm("Confirma essa localização?") == true) {
+  //     this.markers.push({
+  //       lat: latNoClique,
+  //       lng: lngNoClique,
+  //       label: "Teste",
+  //       draggable: false
+  //     })
+  //     this.latForm = latNoClique;
+  //     this.lngForm = lngNoClique;
+  //     console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
+  //     //this.lat = clique.coords.lat;
+  //   }
+  // }
+
+
   /*public async buscarCep(){
     console.log(this.store.cep);
     this.cep = await firstValueFrom(this.http.get<Cep[]>(`${environment.cepApi}${this.store.cep}/json`));
@@ -182,12 +207,13 @@ export class StoresComponent implements OnInit {
     this.tituloDoBotao = "Atualizar Loja";
   }
 
-  openDialogForm(){
-    this.dialogRef.open(StoreFormDialogComponent,{
+  openDialogForm() {
+    this.dialogRef.open(StoreFormDialogComponent, {
     });
   }
-  
+
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
+  faSearch = faSearch;
 }
