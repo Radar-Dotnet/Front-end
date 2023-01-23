@@ -40,6 +40,7 @@ import { environment } from 'src/environments/environment';
 import { DragndropComponent } from './components/dragndrop/dragndrop.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatSelectModule} from '@angular/material/select';
 
 
 registerLocaleData(ptBr);
@@ -88,14 +89,16 @@ const googleMapsParams = {
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c',
-      libraries: ["places", "geometry"]})
+      libraries: ["places", "geometry"]
+    }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: NgChartsConfiguration, useValue: { generateColors: false }}
+    { provide: NgChartsConfiguration, useValue: { generateColors: false } }
   ],
   bootstrap: [AppComponent]
 })
