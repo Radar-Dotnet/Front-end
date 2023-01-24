@@ -15,6 +15,7 @@ export class DragndropComponent {
   basketGenerico:any= [];
   items:any = [];
   itemsTeste:any = [];
+  apagaItem:any =["Delete"];
 
 
 
@@ -54,10 +55,10 @@ export class DragndropComponent {
     }
   }
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event.previousContainer)
+    // console.log(event.previousContainer)
     if (event.previousContainer === event.container) {
       // console.log(event.previousContainer)
-      console.log(event.container)
+      // console.log(event.container)
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if(event.previousContainer.id == "cdk-drop-list-0"){
       copyArrayItem(
@@ -66,7 +67,11 @@ export class DragndropComponent {
         event.previousIndex,
         event.currentIndex,
       );
-    } else{
+    }else if(event.container.id == "cdk-drop-list-3"){
+      console.log(event)
+      event.previousContainer.data.splice(event.currentIndex,1)
+    }
+    else{
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

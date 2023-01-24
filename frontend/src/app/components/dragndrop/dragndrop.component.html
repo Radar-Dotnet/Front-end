@@ -48,4 +48,20 @@
     </div>
   </div>
 
+  <div>
+    <div
+    class="example-list"
+    cdkDropList
+    [cdkDropListData]="apagaItem"
+    (cdkDropListDropped)="drop($event)"
+  >
+      <div
+      class="example-box"
+      *ngFor="let item of apagaItem"
+      cdkDrag>
+        {{item}}
+      </div>
+    </div>
+  </div>
+
 </div>
