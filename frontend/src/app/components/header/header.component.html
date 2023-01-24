@@ -4,14 +4,14 @@
             <img src="/assets/logo.svg" alt="logo codigo do futuro">
         </div>
         <div class="col-9">
-            <div class="row row-cols-auto ">
-                <a class="col menu activeRoute" routerLink="/">Home</a>
-                <a class="col menu" routerLink="clients">Clientes</a>
-                <a class="col menu" routerLink="products">Produtos</a>
-                <a class="col menu" routerLink="orders">Pedidos</a>
-                <a class="col menu" routerLink="campaign">Campanhas</a>
-                <a class="col menu" routerLink="cash-flow">Fluxo de Caixa</a>
-                <a class="col menu" routerLink="stores">Lojas</a>
+            <div class="row row-cols-auto">
+                <a class="col menu" routerLink="" routerLinkActive="menu-ativado" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a class="col menu" routerLink="clients" routerLinkActive="menu-ativado">Clientes</a>
+                <a class="col menu" routerLink="products" routerLinkActive="menu-ativado">Produtos</a>
+                <a class="col menu" routerLink="orders" routerLinkActive="menu-ativado">Pedidos</a>
+                <a class="col menu" routerLink="campaign" routerLinkActive="menu-ativado">Campanhas</a>
+                <a class="col menu" routerLink="cash-flow" routerLinkActive="menu-ativado">Fluxo de Caixa</a>
+                <a class="col menu" routerLink="stores" routerLinkActive="menu-ativado">Lojas</a>
             </div>
         </div>
         <div class="col" *ngIf="loginService.logged">
