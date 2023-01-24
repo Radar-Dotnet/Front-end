@@ -6,7 +6,7 @@ import { Cep } from 'src/app/interfaces/cep.interface';
 import { Store } from 'src/app/interfaces/store.interface';
 import { ConsultaCepService } from './../../services/cep/consulta-cep.service';
 import { EstadoService } from './../../services/estados/estados.service';
-import { catchError, map, Observable, of, take } from 'rxjs';
+import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
 import { StoreService } from 'src/app/services/store/store.service';
 import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -31,21 +31,13 @@ export class StoresComponent implements OnInit {
     this.getStores();
   }
 
-  apiLoaded: Observable<boolean>;
-
   constructor(
     private router: Router,
     private http: HttpClient,
     private routerParams: ActivatedRoute,
     public consultaCep: ConsultaCepService,
     private dialogRef: MatDialog,
-  ) {
-    this.apiLoaded = http.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyC_swsQQ2u2w3S5tunR9SjpwbsYMlIWUS8', 'callback')
-      .pipe(
-        map(() => true),
-        catchError(() => of(false)),
-      );
-  }
+  ) { }
 
   //Criado para poder replicar Pagina Cashflow como base de layout:
   public store: Store = {} as Store;
@@ -59,20 +51,16 @@ export class StoresComponent implements OnInit {
   public faCirclePlusForm = faCirclePlus;
   public faTrashCanForm = faTrashCan;
   public tituloDoBotao: string = "Cadastrar Loja";
-
   ////Google Maps!
   // Zoom level inicial
   zoom: number = 12;
   // Definição latitude e longitude (pensar em API pra carregar a loja que queremos ver)
   lat: number = -23.556796071136453;
   lng: number = -46.66129260425739;
-  center: google.maps.LatLngLiteral = { lat: this.lat, lng: this.lng };
   latForm: number = 0;
   lngForm: number = 0;
   estado: string;
   cidade: string;
-  markerOptions: google.maps.MarkerOptions = { draggable: false };
-  markerPositions: google.maps.LatLngLiteral[] = [];
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -229,58 +217,4 @@ export class StoresComponent implements OnInit {
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
   faSearch = faSearch;
-
-  private async findStore(id: number) {
-    this.store = await this.storeService.createStore({
-      id: this.store.id,
-      nome: this.store.nome,
-      observacao: this.store.observacao,
-      cep: this.store.cep,
-      logradouro: this.store.logradouro,
-      numero: this.store.numero,
-      bairro: this.store.bairro,
-      cidade: this.store.cidade,
-      estado: this.store.estado,
-      complemento: this.store.complemento,
-      latitude: this.latForm.toString(),
-      longitude: this.lngForm.toString()
-    });
-    await this.pinStore(id);
-  }
-
-  async pinStore(id: number) {
-    if (this.store) {
-      var geocoder = new google.maps.Geocoder();
-      this.store = await this.storeService.createStore({
-        id: this.store.id,
-        nome: this.store.nome,
-        observacao: this.store.observacao,
-        cep: this.store.cep,
-        logradouro: this.store.logradouro,
-        numero: this.store.numero,
-        bairro: this.store.bairro,
-        cidade: this.store.cidade,
-        estado: this.store.estado,
-        complemento: this.store.complemento,
-        latitude: this.latForm.toString(),
-        longitude: this.lngForm.toString()
-      });
-      var address = `${this.store?.logradouro}, ${this.store?.numero} - ${this.store?.bairro}, ${this.store?.cidade} - ${this.store?.estado}, ${this.store?.cep}, BRAZIL`
-      geocoder.geocode({ 'address': address }, (results: any, status) => {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var latitude = results[0].geometry.location.lat();
-          var longitude = results[0].geometry.location.lng();
-          this.center = { lat: latitude, lng: longitude }
-          this.zoom = 18;
-          this.markerPositions = [{ lat: latitude, lng: longitude }]
-        } else {
-          alert("Request failed.")
-        }
-      })
-    }
-  }
-
-  getLocation(id: number) {
-    this.router.navigateByUrl(`/stores/${id}`)
-  }
 }
