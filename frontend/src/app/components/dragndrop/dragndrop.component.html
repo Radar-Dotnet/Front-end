@@ -14,7 +14,6 @@
   </div>
   <div class="example-container">
     <div
-    cdkDropListOrientation="horizontal"
       cdkDropList id = "basket"
       [cdkDropListData]="basket"
       class="example-list"
@@ -25,7 +24,6 @@
 
 <!-- <div class="example-container">
     <div
-    cdkDropListOrientation="horizontal"
       cdkDropList
       id = "basket1"
       [cdkDropListData]="basket1"
@@ -37,7 +35,6 @@
 
   <div class="example-container">
     <div
-    cdkDropListOrientation="horizontal"
       cdkDropList
       id = "basket1"
       [cdkDropListData]="basket2"
@@ -47,6 +44,24 @@
     </div>
   </div> -->
 
+
+  <div class="example-container" *ngIf="prateleiras == 0; else elseBlock">
+  </div>
+
+  <ng-template class="example-container" #elseBlock>
+    <div class="example-container" *ngFor="let prateleira of prateleiras">
+      <div
+        cdkDropList
+        id = "basket1"
+        [cdkDropListData]="basket2"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" cdkDrag>-</div>
+      </div>
+    </div> 
+  </ng-template>
+  
+ 
 <!-- <div class="example-container-produtos">
     <h2>Produtos Existentes</h2>
     <div

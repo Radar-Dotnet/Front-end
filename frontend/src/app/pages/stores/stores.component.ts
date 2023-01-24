@@ -13,6 +13,7 @@ import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/
 import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',

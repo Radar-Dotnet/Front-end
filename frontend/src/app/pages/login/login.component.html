@@ -12,12 +12,12 @@
         <form class="row g-3 ">
             <div class="col-md-12">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" placeholder="Email" name="email" [(ngModel)]="email" class="form-control" id="email"
+                <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email" class="form-control" id="email"
                     value="Mark" required>
             </div>
             <div class="col-md-12">
                 <label for="email" class="form-label">Senha</label>
-                <input class="form-control" id="password" type="password" placeholder="Password" name="password" [(ngModel)]="senha">
+                <input class="form-control" id="password" type="password" placeholder="Password" name="password" [(ngModel)]="user.senha">
             </div>
             <div *ngIf="mensagem" class="alert alert-danger" role="alert">
                 {{mensagem}}
@@ -25,7 +25,7 @@
         </form>
     
         <div class="row mx-auto">
-            <button class="btn mt-5 " (click)="logar()">Entrar</button>
+            <button class="btn mt-5 " (click)="login()">Entrar</button>
         </div>
 
     </div>

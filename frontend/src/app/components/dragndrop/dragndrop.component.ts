@@ -45,12 +45,12 @@ export class DragndropComponent {
 
   adicionaPrateleira(){
     let teste = new Array()
-    this.prateleiras.push("")
+    this.prateleiras.push("");
     console.log(this.prateleiras)
   }
 
   removePrateleira(){
-    if(this.prateleiras.length > 1){
+    if(this.prateleiras.length > 0){
       this.prateleiras.pop()
     }else{
       alert('Nao')
