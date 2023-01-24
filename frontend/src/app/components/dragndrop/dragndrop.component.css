@@ -104,6 +104,11 @@
   font-size: 14px;
 }
 
+.example-box-produto.cdk-drag-disabled {
+  background: rgb(252, 80, 80);
+  cursor: default;
+}
+
 .example-list-produto-deleta {
   border: solid 1px #ccc;
   min-height: 60px;

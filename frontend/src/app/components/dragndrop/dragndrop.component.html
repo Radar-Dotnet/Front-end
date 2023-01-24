@@ -60,14 +60,14 @@
       (cdkDropListDropped)="drop($event)"
     >
         <div
-        class="example-box-produto"
-        *ngFor="let item of apagaItem"
-        cdkDrag>
-          {{item}}
+          class="example-box-produto"
+          *ngFor="let item of apagaItem"
+          cdkDrag
+          [cdkDragDisabled]="item.desativado"
+        >
+          {{item.valor}}
         </div>
       </div>
     </div>
   </div>
 </div>
-<button class="btn btn-primary" style="margin-right: 5px" (click)="adicionaPrateleira()">Adicionar Prateleria</button>
-<button class="btn btn-primary" (click)="removePrateleira()">Remove Prateleria</button>
