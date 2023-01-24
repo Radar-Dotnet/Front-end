@@ -24,6 +24,10 @@
       <label for="email" class="form-label">Foto Url</label>
       <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="campaign.urlFotoPrateleira" required>
     </div>
+    
+    <!-- Adicionando prateleira -->
+    <app-dragndrop></app-dragndrop>
+
     <div class="col-12 ">
       <button class="btn" type="submit" (click)="create()">Cadastrar</button>
     </div>
