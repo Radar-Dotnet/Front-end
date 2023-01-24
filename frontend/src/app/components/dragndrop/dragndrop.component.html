@@ -51,9 +51,8 @@
     <input type="date" class="form-control " id="data" name="data" [(ngModel)]="campaign.data" required>
   </div>
 
-
+<h1>Prateleiras</h1>
 <div cdkDropListGroup  class="teste">
-
   <div class="prateleiras">
       <div>
         <div
@@ -166,16 +165,12 @@
 
     <div>
       <div
-      id="apaga-item"
-      class="example-list-produto-deleta"
-      cdkDropList
-      [cdkDropListData]="apagaItem"
-      (cdkDropListDropped)="drop($event)">
-        <div
-          class="example-box-produto btn btn-danger"
-          *ngFor="let item of apagaItem">
-          {{item.valor}}
-        </div>
+        id="apaga-item"
+        class="example-list-produto-deleta"
+        cdkDropList
+        [cdkDropListData]="apagaItem"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box-produto-deleta">Deletar aqui</div>
       </div>
     </div>
   </div>

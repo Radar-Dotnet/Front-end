@@ -1,3 +1,4 @@
+import { Route, Routes } from '@angular/router';
 import { Component ,OnInit} from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -8,8 +9,8 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(
-    public loginService: LoginService
-    ){} 
+  constructor(public loginService: LoginService){}
+
   ngOnInit(): void {}
+
 }

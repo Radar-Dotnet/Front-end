@@ -111,15 +111,6 @@
   cursor: default;
 }
 
-.example-list-produto-deleta {
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  margin-top: 1rem;
-  overflow: hidden;
-}
-
 .close-button button:hover {
   background-color: #6b63fff1;
 }
@@ -236,3 +227,19 @@ img{
 }
 
 
+.example-list-produto-deleta{
+  border: solid 1px #ccc;
+  height: 3.5rem;
+  width: 10rem;
+  background: rgb(220, 78, 78);
+  border-radius: 4px;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.example-box-produto-deleta{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
