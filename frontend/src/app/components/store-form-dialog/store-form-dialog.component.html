@@ -10,55 +10,56 @@
         </button>
       </div>
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="nome" class="form-label">Nome</label>
       <input type="text" class="form-control" [(ngModel)]="store.nome">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="observacao" class="form-label">Observação</label>
       <input type="text" class="form-control" [(ngModel)]="store.observacao">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="cep" class="form-label">CEP</label>
       <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja"
-        [(ngModel)]="store.cep">
+        placeholder="Digite seu CEP" [(ngModel)]="store.cep">
     </div>
     <!--<div class="mt-2">
                 <button class="btn btn-primary" type="button" (click)="buscarCep()">Buscar CEP</button>
             </div> -->
-    <div>
+    <div class="col-md-6">
       <label for="logradouro" class="form-label">Logradouro</label>
       <input type="text" class="form-control" id="logradouro-loja" name="logradouro-loja"
         [(ngModel)]="store.logradouro">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="numero" class="form-label">Número</label>
-      <input type="text" class="form-control" id="numero-loja" name="numero-loja" [(ngModel)]="store.numero">
+      <input type="text" class="form-control" id="numero-loja" name="numero-loja" placeholder="Número"
+        [(ngModel)]="store.numero">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="complemento" class="form-label">Complemento</label>
-      <input type="text" class="form-control" id="complemento-loja" name="complemento-loja"
+      <input type="text" class="form-control" id="complemento-loja" name="complemento-loja" placeholder="Ex: Apt. 52"
         [(ngModel)]="store.complemento">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="cidade" class="form-label">Cidade</label>
       <input type="text" class="form-control" id="cidade-loja" name="cidade-loja" [(ngModel)]="store.cidade">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="bairro" class="form-label">Bairro</label>
       <input type="text" class="form-control" id="bairro-loja" name="bairro-loja" [(ngModel)]="store.bairro">
     </div>
-    <div class="form-group">
+    <div class="col-md-4">
       <label for="listagem-estado">Estado</label>
       <select class="form-control" id="listagem-estado" name="listagem-estado" [(ngModel)]="store.estado">
         <option *ngFor="let estado of estados" id="{{estado.id}}"> {{estado.sigla}} </option>
       </select>
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="Latitude" class="form-label">Latitude</label>
       <input type="text" class="form-control" [(ngModel)]="latForm">
     </div>
-    <div>
+    <div class="col-md-6">
       <label for="Longitude" class="form-label">Longitude</label>
       <input type="text" class="form-control" [(ngModel)]="lngForm">
     </div>
