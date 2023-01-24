@@ -38,7 +38,6 @@ export class CampaignService {
 
   public async atualizaCampaign(campaign: Campaign): Promise<Campaign | undefined> {
     console.log(campaign)
-    debugger
     const up = await firstValueFrom(this.http.put<Campaign>(`${environment.api}campanha/${campaign.id}`, campaign, AppConstants.headerToken))
     console.log('atualiza chamado')
     return up;

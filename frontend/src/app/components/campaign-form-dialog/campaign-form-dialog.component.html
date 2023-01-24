@@ -1,6 +1,6 @@
 <div class="container">
   <form class="row g-3">
-    <div class="form-header">
+    <!-- <div class="form-header">
       <div class="title">
         <h1>Cadastro da campanha</h1>
       </div>
@@ -19,13 +19,14 @@
     <div class="col-md-4 input-box">
       <label for="data" class="form-label">Data</label>
       <input type="date" class="form-control " id="data" name="data" [(ngModel)]="campaign.data" required>
-    </div>
-    <div class="col-md-3 input-box">
+    </div> -->
+    <!-- <div class="col-md-3 input-box">
       <label for="email" class="form-label">Foto Url</label>
       <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="campaign.urlFotoPrateleira" required>
     </div>
     <div class="col-12 ">
       <button class="btn" type="submit" (click)="create()">Cadastrar</button>
-    </div>
+    </div> -->
+    <app-dragndrop class="dragndrop"></app-dragndrop>
   </form>
 </div>

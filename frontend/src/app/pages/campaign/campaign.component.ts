@@ -1,3 +1,4 @@
+import { CampaignFormUpdateComponent } from './../../components/campaign-form-update/campaign-form-update.component';
 import { Campaign } from './../../interfaces/campaign.interface';
 import { CampaignService } from './../../services/campaign/campaign-service.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,13 +27,11 @@ export class CampaignComponent {
 
   ngOnInit(): void {
     this.getCampamnhas()
-    console.log(this.campanhasLista)
   }
 
   async getCampamnhas(){
    let get = await this.campanhaService.getCampaign()
    .then((r:any) => this.campanhasLista = r);
-   console.log(this.campanhasLista)
    this.mostraCampanhaMetodo()
   }
 
@@ -48,6 +47,22 @@ export class CampaignComponent {
     this.dialogRef.open(CampaignFormDialogComponent,{
     });
   }
+
+  openUpdateForm(id : number){
+    const dialogRef = this.dialogRef.open(CampaignFormUpdateComponent,{data :{id}});
+    // dialogRef.componentInstance.product = product;
+    // console.log(product);
+ }
+
+  async deleteCampanha(id:number){
+    await this.campanhaService.deleteCampaign(id)
+    await this.getCampamnhas();
+  }
+  // async delete(product: Number){
+  //   await this.campanhaService.deleteCampaign(product)
+  //   await this.campanhaService.getCampaign();
+  // }
+
 
 }
 
