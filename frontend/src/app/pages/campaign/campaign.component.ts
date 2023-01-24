@@ -1,10 +1,13 @@
-import { CampaignFormUpdateComponent } from './../../components/campaign-form-update/campaign-form-update.component';
 import { Campaign } from './../../interfaces/campaign.interface';
 import { CampaignService } from './../../services/campaign/campaign-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignFormDialogComponent } from './../../components/campaign-form-dialog/campaign-form-dialog.component';
 import { Component } from '@angular/core';
 import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { cA } from 'chart.js/dist/chunks/helpers.core';
+import { UpdateFormComponent } from 'src/app/components/update-form/update-form.component';
+import { CampaignObserverService } from 'src/app/services/campaign/campaign-observer.service';
+import { CampaignFormUpdateComponent } from 'src/app/components/campaign-form-update/campaign-form-update.component';
 
 @Component({
   selector: 'app-campaign',
@@ -22,16 +25,37 @@ export class CampaignComponent {
 
   constructor(
     private dialogRef : MatDialog,
-    private campanhaService: CampaignService
+    private campanhaService: CampaignService,
+    public campaignObserver: CampaignObserverService
   ){}
 
   ngOnInit(): void {
     this.getCampamnhas()
+    console.log(this.campanhasLista)
   }
+
+  
+  private campaignService:CampaignService = {} as CampaignService;
+  public campaigns: Campaign[] | undefined = [];
+  public campaign:Campaign= {} as Campaign;
+  
+
+//   openUpdateForm(campaign : Campaign){
+//     const dialogRef = this.dialogRef.open(UpdateFormComponent);
+//     dialogRef.componentInstance.campaign = campaign;
+//  }
+
+ 
+ async delete(campaign: Number){
+  await this.campaignService.deleteCampaign(campaign)
+  this.campaigns = await this.campaignService.getCampaign();
+  this.campaignObserver.updateQty();
+}
 
   async getCampamnhas(){
    let get = await this.campanhaService.getCampaign()
    .then((r:any) => this.campanhasLista = r);
+   console.log(this.campanhasLista)
    this.mostraCampanhaMetodo()
   }
 
@@ -58,11 +82,6 @@ export class CampaignComponent {
     await this.campanhaService.deleteCampaign(id)
     await this.getCampamnhas();
   }
-  // async delete(product: Number){
-  //   await this.campanhaService.deleteCampaign(product)
-  //   await this.campanhaService.getCampaign();
-  // }
-
 
 }
 

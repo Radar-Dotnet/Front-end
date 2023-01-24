@@ -1,117 +1,133 @@
-.grafico {
-    width: 600px;
-    height: 300px;
-    border-radius: 20px;
-}
-
 .chart-container {
-    background-color: #F8F9FA;
-    border-radius: 8px;
+  background-color: #F8F9FA;
+  border-radius: 8px;
 }
 
 .last-order {
-    background-color: #F8F9FA;
-    border-radius: 8px;
+  background-color: #F8F9FA;
+  border-radius: 8px;
 }
 
 .cardd {
-    width: 400px;
-    height: 200px;
-    background-color: #F8F9FA;
-    border-radius: 8px;
-    border-left: 8px #a776eb solid;
+  width: 400px;
+  height: 200px;
+  background-color: #F8F9FA;
+  border-radius: 8px;
+  border-left: 8px #a776eb solid;
 }
 
 .btn-primary {
-    background-color: #4E46B4;
-    color: #F8F9FA;
+  background-color: #4E46B4;
+  color: #F8F9FA;
 }
 
 
 h4 {
-    color: #212529;
-    font-weight: 700;
+  color: #212529;
+  font-weight: 700;
 }
 
 p {
-    color: #343A40;
+  color: #343A40;
 }
 
 .quarter-circle-top-right {
-    margin-top: 0;
-    width: 105px;
-    height: 100px;
-    background: #4d46b446;
-    border-radius: 0 0 0 100px;
-    -moz-border-radius: 0 0 0 100px;
-    -webkit-border-radius: 0 0 0 100px;
-    position: absolute;
+  margin-top: 0;
+  width: 105px;
+  height: 100px;
+  background: #4d46b446;
+  border-radius: 0 0 0 100px;
+  -moz-border-radius: 0 0 0 100px;
+  -webkit-border-radius: 0 0 0 100px;
+  position: absolute;
 }
 
 
 
 .costumerProfile {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    background-color: #CFCEE9;
-    font-weight: 800;
-    color: #4E46B4;
-    overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #CFCEE9;
+  font-weight: 800;
+  color: #4E46B4;
+  overflow: hidden;
 }
 
 agm-map {
-    height: 400px;
+  height: 400px;
+}
+
+
+.container {
+  padding-top: 2rem;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.client {
+  font-weight: 700;
 }
 
 .tableContainer {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 0.5rem;
-  }
-  
-  .subContainer {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 1px;
-  }
-  
-  .table {
-    width: 100%;
-    white-space: nowrap;
-    border-collapse: collapse;
-  }
-  
-  thead {
-    color: #000;
-    letter-spacing: 0.025em;
-    text-transform: uppercase;
-    text-align: left;
-    font-weight: 600;
-    background-color: rgba(78, 70, 180, 0.12);
-  }
-  
-  td {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-  }
-  
-  tr {
-    border-bottom-width: 1px;
-  }
-  
-  .id-object {
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .tabbleFooter {
-    color: #000;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 0.75rem;
-    background-color: rgba(78, 70, 180, 0.12);
-    line-height: 1.5;
-  }
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.subContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 1px;
+}
+
+.table {
+  width: 100%;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+
+thead {
+  color: #000;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 600;
+  background-color: rgba(78, 70, 180, 0.12);
+}
+
+td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+tr {
+  border-bottom-width: 1px;
+}
+
+.id-object {
+  font-weight: 600;
+  margin: 0;
+}
+
+.tabbleFooter {
+  color: #000;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.75rem;
+  background-color: rgba(78, 70, 180, 0.12);
+  line-height: 1.5;
+}
+
+nav ul {
+  align-items: center;
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

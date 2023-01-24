@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CampaignService } from './campaign-service.service';
+import { StoreObserverService } from './store-observer.service';
 
-describe('CampaignServiceService', () => {
-  let service: CampaignService;
+describe('StoreObserverService', () => {
+  let service: StoreObserverService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CampaignService);
+    service = TestBed.inject(StoreObserverService);
   });
 
   it('should be created', () => {

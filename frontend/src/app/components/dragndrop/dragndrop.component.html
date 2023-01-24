@@ -1,35 +1,108 @@
-
-
-<form class="row g-3">
-  <!-- <div class="form-header">
-    <div class="title">
-      <h1>Cadastro da campanha</h1>
-    </div>
-    <div *ngIf="mostraCampanha" class="teste">
-      <div *ngFor="let item of campanhasLista" >
-        <button (click)="populaPrateleira(item.id)">
-          {{item.nome}}
-        </button>
-        <button (click)="deletaPrateleira(item.id)">deletar</button>
+<!-- <div cdkDropListGroup class="div-drag">
+  <div class="bb">
+    <div cdkDropList class="aa">
+      <div *ngFor="let item of basket" cdkDrag>
+        {{item}}
       </div>
     </div>
-  </div> -->
-  <!-- <div class="col-md-4 input-box" >
-    <label for="nome" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="campaign.nome" placeholder="Nome da campanha" required>
+
+    <div cdkDropList class="aa">
+      <div *ngFor="let item of basket1" cdkDrag>
+        {{item}}
+      </div>
+    </div>
   </div>
-  <div class="col-md-4 input-box">
-    <label for="descricao" class="form-label">Descrição</label>
-    <input type="text" class="form-control " id="descricao" name="descricao" [(ngModel)]="campaign.descricao" required>
+  <div class="example-container">
+    <div
+      cdkDropList id = "basket"
+      [cdkDropListData]="basket"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
+    </div>
+  </div> -->
+
+<!-- <div class="example-container">
+    <div
+      cdkDropList
+      id = "basket1"
+      [cdkDropListData]="basket1"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket1" cdkDrag>{{item}}</div>
+    </div>
   </div>
-  <div class="col-md-4 input-box">
-    <label for="data" class="form-label">Data</label>
-    <input type="date" class="form-control " id="data" name="data" [(ngModel)]="campaign.data" required>
+
+  <div class="example-container">
+    <div
+      cdkDropList
+      id = "basket1"
+      [cdkDropListData]="basket2"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket2" cdkDrag>{{item}}</div>
+    </div>
   </div> -->
-  <!-- <div class="col-md-3 input-box">
-    <label for="email" class="form-label">Foto Url</label>
-    <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="campaign.urlFotoPrateleira" required>
-  </div> -->
+
+<!-- 
+  <div class="example-container" *ngIf="prateleiras == 0; else elseBlock">
+  </div>
+
+  <ng-template class="example-container" #elseBlock>
+    <div class="example-container" *ngFor="let prateleira of prateleiras">
+      <div
+        cdkDropList
+        id = "basket1"
+        [cdkDropListData]="basket2"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" cdkDrag>-</div>
+      </div>
+    </div> 
+  </ng-template> -->
+
+
+<!-- <div class="example-container-produtos">
+    <h2>Produtos Existentes</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="items"
+      class="example-list-column"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" style="margin-right: 5px" (click)="adicionaPrateleira()">Adicionar Prateleria</button>
+<button class="btn btn-primary" (click)="removePrateleira()">Remove Prateleria</button> -->
+
+
+<!-- <div cdkDropListGroup>
+  <div class="example-container">
+    <h2>Prateleira1</h2>
+    <div cdkDropList [cdkDropListData]="basket1" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket1" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Prateleira2</h2>
+    <div cdkDropList [cdkDropListData]="basket2" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of basket2" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Prateleira3</h2>
+    <div cdkDropList [cdkDropListData]="basket3" class="example-list" (cdkDropListDropped)="drop($event)" >
+      <div class="example-box" *ngFor="let item of basket3" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div> -->
+
+<form class="row g-3">
   <div class="form-header">
     <div class="title">
       <h1>Cadastro da campanha</h1>
@@ -38,9 +111,10 @@
       <button><a href="#"><fa-icon class="icon" [icon]="faXmark" size="lg"></fa-icon></a></button>
     </div>
   </div>
-  <div class="col-md-4 input-box" >
+  <div class="col-md-4 input-box">
     <label for="nome" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="campaign.nome" placeholder="Nome da campanha" required>
+    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="campaign.nome"
+      placeholder="Nome da campanha" required>
   </div>
   <div class="col-md-4 input-box">
     <label for="descricao" class="form-label">Descrição</label>
@@ -52,135 +126,77 @@
   </div>
 
 
-<div cdkDropListGroup  class="teste">
+  <div cdkDropListGroup class="teste">
 
-  <div class="prateleiras">
+    <div class="prateleiras">
       <div>
-        <div
-          id="0"
-          class="example-list"
-          cdkDropList
-          cdkDropListOrientation="horizontal"
-          [cdkDropListData]="basket"
+        <div id="0" class="example-list" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="basket"
           (cdkDropListDropped)="drop($event)">
-            <div
-            class="example-box"
-            *ngFor="let item of basket"
-            cdkDrag>
-              {{item}}
-            </div>
-        </div>
-      </div>
-
-      <div>
-        <div
-        id="1"
-        class="example-list"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        [cdkDropListData]="basket1"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-        class="example-box"
-        *ngFor="let item of basket1"
-        cdkDrag>
-          {{item}}
-        </div>
-        </div>
-      </div>
-
-      <div>
-        <div
-        id="2"
-        class="example-list"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        [cdkDropListData]="basket2"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-        class="example-box"
-        *ngFor="let item of basket2"
-        cdkDrag>
-          {{item}}
-        </div>
-        </div>
-      </div>
-
-      <div>
-        <div
-        id="3"
-        class="example-list"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        [cdkDropListData]="basket3"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-        class="example-box"
-        *ngFor="let item of basket3"
-        cdkDrag>
-          {{item}}
-        </div>
-        </div>
-      </div>
-
-      <div>
-        <div
-        id="4"
-        class="example-list"
-        cdkDropList
-        cdkDropListOrientation="horizontal"
-        [cdkDropListData]="basket4"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div
-        class="example-box"
-        *ngFor="let item of basket4"
-        cdkDrag>
-          {{item}}
-        </div>
-        </div>
-      </div>
-
-
-  </div>
-  <div class="produtos-e-delete" >
-    <div>
-      <div
-        id="tabela-produto"
-        #tabelaProduto
-        class="example-list-produto"
-        cdkDropList
-        [cdkDropListData]="itensProdutos"
-        (cdkDropListDropped)="drop($event)">
-          <div
-          class="example-box-produto "
-          *ngFor="let item of itensProdutos"
-          cdkDrag>
+          <div class="example-box" *ngFor="let item of basket" cdkDrag>
             {{item}}
           </div>
+        </div>
       </div>
-    </div>
 
-    <div>
-      <div
-      id="apaga-item"
-      class="example-list-produto-deleta"
-      cdkDropList
-      [cdkDropListData]="apagaItem"
-      (cdkDropListDropped)="drop($event)">
-        <div
-          class="example-box-produto btn btn-danger"
-          *ngFor="let item of apagaItem">
-          {{item.valor}}
+      <div>
+        <div id="1" class="example-list" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="basket1"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of basket1" cdkDrag>
+            {{item}}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="2" class="example-list" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="basket2"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of basket2" cdkDrag>
+            {{item}}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="3" class="example-list" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="basket3"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of basket3" cdkDrag>
+            {{item}}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="4" class="example-list" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="basket4"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of basket4" cdkDrag>
+            {{item}}
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="produtos-e-delete">
+      <div>
+        <div id="tabela-produto" #tabelaProduto class="example-list-produto" cdkDropList
+          [cdkDropListData]="itensProdutos" (cdkDropListDropped)="drop($event)">
+          <div class="example-box-produto " *ngFor="let item of itensProdutos" cdkDrag>
+            {{item}}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div id="apaga-item" class="example-list-produto-deleta" cdkDropList [cdkDropListData]="apagaItem"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box-produto btn btn-danger" *ngFor="let item of apagaItem">
+            {{item.valor}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-12 ">
-  <button class="btn" type="submit" (click)="salvarCampanha()">Cadastrar</button>
-</div>
+  <div class="col-12 ">
+    <button class="btn" type="submit" (click)="salvarCampanha()">Cadastrar</button>
+  </div>
 </form>

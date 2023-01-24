@@ -18,38 +18,38 @@ import { take } from 'rxjs';
 export class FormDialogComponent {
 
   constructor(
-    private http:HttpClient,
+    private http: HttpClient,
     private clientObserver: ClientObserverService,
     public dialogRef: MatDialogRef<FormDialogComponent>,
     public consultaCep: ConsultaCepService
-    ){}
+  ) { }
 
   ngOnInit(): void {
     this.clientService = new ClientService(this.http)
     this.getClients();
   }
 
-  private clientService:ClientService = {} as ClientService;
+  private clientService: ClientService = {} as ClientService;
   public clients: Client[] | undefined = [];
-  public client:Client= {} as Client;
+  public client: Client = {} as Client;
 
-  private async getClients(){
-   this.clients = await this.clientService.getClient()
+  private async getClients() {
+    this.clients = await this.clientService.getClient()
   }
 
-   consultandoCep(){
+  consultandoCep() {
     this.consultaCep.consultaCEP(this.client.cep)
-    .pipe(take(1))
-    .subscribe((r:any) => {
-      console.log(r)
-      this.client.bairro = r.bairro
-      this.client.logradouro = r.logradouro
-      this.client.cidade = r.localidade
-      this.client.estado = r.uf
-    })
+      .pipe(take(1))
+      .subscribe((r: any) => {
+        console.log(r)
+        this.client.bairro = r.bairro
+        this.client.logradouro = r.logradouro
+        this.client.cidade = r.localidade
+        this.client.estado = r.uf
+      })
   }
 
-  create(){
+  create() {
     this.clientService.createClient({
       id: 0,
       nome: this.client.nome,
@@ -69,10 +69,10 @@ export class FormDialogComponent {
     location.reload();
   }
 
-  async save(){
-    if(this.client.id && this.client.id != 0){
-        const update = await this.clientService.updateClient(this.client);
-        console.log(update);
+  async save() {
+    if (this.client.id && this.client.id != 0) {
+      const update = await this.clientService.updateClient(this.client);
+      console.log(update);
     }
   }
 
@@ -81,4 +81,18 @@ export class FormDialogComponent {
   }
 
   faXmark = faXmark;
+
+  buscarCep() {
+    let consulta = this.consultaCep.consultaCEP(this.client.cep)
+      .pipe(take(1))
+      .subscribe((cepLocalizado: any) => {
+        console.log(cepLocalizado)
+        this.client.bairro = cepLocalizado.bairro
+        this.client.logradouro = cepLocalizado.logradouro
+        this.client.cidade = cepLocalizado.localidade
+        this.client.estado = cepLocalizado.uf
+        this.client.complemento = cepLocalizado.complemento
+      })
+    console.log(consulta)
+  }
 }

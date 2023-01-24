@@ -2,7 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 import { ClientDialogComponent } from './components/client-dialog/client-dialog.component';
 import { ProductFormDialogComponent } from './components/product-form-dialog/product-form-dialog.component';
 import { DetailProductDialogComponent } from './components/detail-product-dialog/detail-product-dialog.component';
+import { StoreFormDialogComponent } from './components/store-form-dialog/store-form-dialog.component';
 
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { AgmCoreModule, AgmMap } from '@agm/core';
@@ -39,7 +40,9 @@ import { environment } from 'src/environments/environment';
 import { DragndropComponent } from './components/dragndrop/dragndrop.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSelectModule } from '@angular/material/select'; 
 import { CampaignFormUpdateComponent } from './components/campaign-form-update/campaign-form-update.component';
+
 
 registerLocaleData(ptBr);
 
@@ -72,6 +75,7 @@ const googleMapsParams = {
     CampaignComponent,
     CampaignFormDialogComponent,
     DragndropComponent,
+    StoreFormDialogComponent,
     CampaignFormUpdateComponent,
   ],
   imports: [
@@ -85,14 +89,17 @@ const googleMapsParams = {
     MatNativeDateModule,
     NgChartsModule,
     DragDropModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c',
-      libraries: ["places", "geometry"]}),
+    libraries: ["places", "geometry"]}),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: NgChartsConfiguration, useValue: { generateColors: false }}
+    { provide: NgChartsConfiguration, useValue: { generateColors: false } }
   ],
   bootstrap: [AppComponent]
 })
