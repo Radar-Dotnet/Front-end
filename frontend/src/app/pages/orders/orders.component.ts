@@ -144,6 +144,8 @@ export class OrdersComponent implements OnInit{
       data: new Date(),
       valorTotal: this.orderObserver.sumValue()
     }
+    await this.orderService.createOrder(newOrder)
+    console.log(newOrder)
     // this.orderObserver.productsOrdered.map(productOrdered =>{
     //   newProductOrdered.push({
     //     id: 0,
@@ -155,8 +157,7 @@ export class OrdersComponent implements OnInit{
     // });
 
     // console.log(newOrder)
-   let a = await this.orderService.createOrder(newOrder)
-   this.router.navigateByUrl('orders')
+  //  this.router.navigateByUrl('orders')
 
   // precisa passar só o id_cliente, valor total e data
   //  const saveOrder = await this.orderService.createOrder(newOrder, newProductOrdered);
