@@ -37,10 +37,7 @@ export class ProductService {
   }
 
   public async atualizaProduto(product: Product): Promise<Product | undefined> {
-    console.log(product)
-    debugger
     const up = await firstValueFrom(this.http.put<Product>(`${environment.api}produto/${product.id}`, product, AppConstants.headerToken))
-    console.log('atualiza chamado')
     return up;
   }
 

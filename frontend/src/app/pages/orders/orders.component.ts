@@ -55,6 +55,7 @@ export class OrdersComponent implements OnInit{
 
   public async getOrders(){
      this.orders = await this.orderService.getOrder();
+
     //  console.log(this.orders)
     //  this.orders?.map(a => a)
     //  this.orderslist = this.orders?.reverse();
@@ -128,6 +129,7 @@ export class OrdersComponent implements OnInit{
   }
 
   public creating(){
+
     this.isCreating = !this.isCreating;
     this.isList = !this.isList;
     this.getOrders();
@@ -140,12 +142,13 @@ export class OrdersComponent implements OnInit{
     let newOrder: Order = {
       id: 0,
       clienteId: this.orderObserver.orderClient.id,
-      // nomeCliente: this.orderObserver.orderClient.nome,
       data: new Date(),
       valorTotal: this.orderObserver.sumValue()
+      // nomeCliente: this.orderObserver.orderClient.nome,
     }
     await this.orderService.createOrder(newOrder)
     console.log(newOrder)
+    location.reload()
     // this.orderObserver.productsOrdered.map(productOrdered =>{
     //   newProductOrdered.push({
     //     id: 0,

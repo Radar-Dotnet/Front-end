@@ -13,12 +13,12 @@ import { ClientService } from 'src/app/services/client/client.service';
 })
 export class UpdateFormComponent implements OnInit{
 
-  
-  
+
+
   constructor(
     private router:Router,
     private routerParams: ActivatedRoute,
-    private http: HttpClient, 
+    private http: HttpClient,
     public dialogRef: MatDialogRef<UpdateFormComponent>,
     ){}
 
@@ -45,8 +45,8 @@ export class UpdateFormComponent implements OnInit{
     if(this.client.id && this.client.id != 0){
         const update = await this.clientService.updateClient(this.client);
         this.router.navigateByUrl("clients");
-
     }
+    location.reload()
   }
   ngOnInit(): void {
     this.clientService = new ClientService(this.http)
