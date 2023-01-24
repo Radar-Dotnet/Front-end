@@ -19,9 +19,12 @@ export class DragndropComponent {
 
 
 
-  basket:any = ['Oranges', 'Bananas', 'Cucumbers',"apples","grapes","dragon-fruits","Mangos","Lemons"];
-  basket1:any = ['aaa', 'bbb', 'ccc','ddd','eee','fff','ggg'];
-  basket2:any = ['hhh', 'iii', 'jjj','kkk','lll','mmm','nnn'];
+  basket:any = [];
+  basket1:any = [];
+  basket2:any = [];
+  basket3:any = [];
+  basket4:any = [];
+  basket5:any = [];
 
   prateleiras:any = [];
   copiaBasket:any = [...this.basket];
@@ -61,7 +64,7 @@ export class DragndropComponent {
       // console.log(event.previousContainer)
       // console.log(event.container)
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else if(event.previousContainer.id == "cdk-drop-list-2"){
+    } else if(event.previousContainer.id == "cdk-drop-list-5"){
       copyArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -69,11 +72,11 @@ export class DragndropComponent {
         event.currentIndex,
       );
     }
-    else if(event.container.id == "cdk-drop-list-3"){
+    else if(event.container.id == "cdk-drop-list-6"){
       console.log(event)
       event.previousContainer.data.splice(event.previousIndex,1)
     }
-    else if (event.container.id != "cdk-drop-list-2"){
+    else if (event.container.id != "cdk-drop-list-5"){
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

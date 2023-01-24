@@ -34,6 +34,59 @@
         </div>
         </div>
       </div>
+
+      <div>
+        <div
+        class="example-list"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        [cdkDropListData]="basket3"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+        class="example-box"
+        *ngFor="let item of basket3"
+        cdkDrag>
+          {{item}}
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+        class="example-list"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        [cdkDropListData]="basket4"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+        class="example-box"
+        *ngFor="let item of basket4"
+        cdkDrag>
+          {{item}}
+        </div>
+        </div>
+      </div>
+
+      <div>
+        <div
+        class="example-list"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        [cdkDropListData]="basket5"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+        class="example-box"
+        *ngFor="let item of basket5"
+        cdkDrag>
+          {{item}}
+        </div>
+        </div>
+      </div>
+
+
   </div>
   <div class="produtos-e-delete">
     <div>
