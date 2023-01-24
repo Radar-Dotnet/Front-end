@@ -18,9 +18,9 @@
   margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: right;
+  justify-content: right; */
 }
 
 .example-list-column {
@@ -81,12 +81,26 @@
 }
 
 .aa{
-  display: flex;
-  gap: 1rem;
-  height: 2rem;
+  padding: 1rem;
+  height: 1.5rem;
+  border: solid 1px black;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+}
+
+.aa.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .bb{
   display: flex;
   flex-direction: column;
+}
+
+
+
+.teste{
+  display: flex;
+  gap: 1rem;
 }

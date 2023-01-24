@@ -85,7 +85,7 @@ const googleMapsParams = {
     DragDropModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c',
-      libraries: ["places", "geometry"]})
+      libraries: ["places", "geometry"]}),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
