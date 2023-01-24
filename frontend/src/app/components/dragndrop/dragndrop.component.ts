@@ -15,7 +15,7 @@ export class DragndropComponent {
   basketGenerico:any= [];
   items:any = [];
   itemsTeste:any = [];
-  apagaItem:any =["Delete"];
+  apagaItem:any =[{valor: "Delete aqui", desativado: true}];
 
 
 
@@ -42,8 +42,7 @@ export class DragndropComponent {
   }
 
   adicionaPrateleira(){
-    let novaPrateleira = new Array()
-    this.prateleiras.push(novaPrateleira);
+    this.prateleiras.push("-");
     console.log(this.prateleiras)
   }
 
