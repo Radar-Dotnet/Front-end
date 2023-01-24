@@ -12,33 +12,14 @@
   vertical-align: top;
 }
 
-.example-container-produtos {
-  width: 5rem;
-  max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: inline-block;
-  vertical-align: top;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: right; */
-}
-
-.example-list-column {
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  width: 5rem;
-}
 
 .example-list {
   border: solid 1px #ccc;
   min-height: 60px;
   background: white;
   border-radius: 4px;
+  display: flex;
+  width: 100%;
   /* overflow: hidden; */
 }
 
@@ -80,27 +61,52 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.aa{
-  padding: 1rem;
-  height: 1.5rem;
-  border: solid 1px black;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-}
-
-.aa.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.bb{
-  display: flex;
-  flex-direction: column;
-}
-
 
 
 .teste{
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prateleiras{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+}
+
+.example-list-produto {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  /* overflow: hidden; */
+}
+
+.example-box-produto {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.example-list-produto-deleta {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  margin-top: 1rem;
+  /* overflow: hidden; */
+}
+
+.produtos-e-delete{
 }

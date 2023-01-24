@@ -55,23 +55,25 @@ export class DragndropComponent {
     }
   }
   drop(event: CdkDragDrop<string[]>) {
-    // console.log(event.previousContainer)
+    console.log(event.container.id)
+    console.log(event.currentIndex)
     if (event.previousContainer === event.container) {
       // console.log(event.previousContainer)
       // console.log(event.container)
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else if(event.previousContainer.id == "cdk-drop-list-0"){
+    } else if(event.previousContainer.id == "cdk-drop-list-2"){
       copyArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
-    }else if(event.container.id == "cdk-drop-list-3"){
-      console.log(event)
-      event.previousContainer.data.splice(event.currentIndex,1)
     }
-    else{
+    else if(event.container.id == "cdk-drop-list-3"){
+      console.log(event)
+      event.previousContainer.data.splice(event.previousIndex,1)
+    }
+    else if (event.container.id != "cdk-drop-list-2"){
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
