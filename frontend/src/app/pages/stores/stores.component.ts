@@ -34,7 +34,7 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     private routerParams: ActivatedRoute,
     public consultaCep: ConsultaCepService,
     ) { }
-    
+
     //Criado para poder replicar Pagina Cashflow como base de layout:
     public store : Store = {} as Store;
     public stores: Store[] | undefined = [];
@@ -178,5 +178,5 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
     window.scrollTo(0,0);
     this.tituloDoBotao = "Atualizar Loja";
   }
-    
+
 }
