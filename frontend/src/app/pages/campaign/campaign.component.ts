@@ -7,6 +7,7 @@ import { faCirclePlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid
 import { cA } from 'chart.js/dist/chunks/helpers.core';
 import { UpdateFormComponent } from 'src/app/components/update-form/update-form.component';
 import { CampaignObserverService } from 'src/app/services/campaign/campaign-observer.service';
+import { CampaignFormUpdateComponent } from 'src/app/components/campaign-form-update/campaign-form-update.component';
 
 @Component({
   selector: 'app-campaign',
@@ -69,6 +70,17 @@ export class CampaignComponent {
   openDialogForm(){
     this.dialogRef.open(CampaignFormDialogComponent,{
     });
+  }
+
+  openUpdateForm(id : number){
+    const dialogRef = this.dialogRef.open(CampaignFormUpdateComponent,{data :{id}});
+    // dialogRef.componentInstance.product = product;
+    // console.log(product);
+ }
+
+  async deleteCampanha(id:number){
+    await this.campanhaService.deleteCampaign(id)
+    await this.getCampamnhas();
   }
 
 }

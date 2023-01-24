@@ -40,7 +40,8 @@ import { environment } from 'src/environments/environment';
 import { DragndropComponent } from './components/dragndrop/dragndrop.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select'; 
+import { CampaignFormUpdateComponent } from './components/campaign-form-update/campaign-form-update.component';
 
 
 registerLocaleData(ptBr);
@@ -75,6 +76,7 @@ const googleMapsParams = {
     CampaignFormDialogComponent,
     DragndropComponent,
     StoreFormDialogComponent,
+    CampaignFormUpdateComponent,
   ],
   imports: [
     BrowserModule,
