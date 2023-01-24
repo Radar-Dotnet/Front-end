@@ -6,13 +6,76 @@
       Adicionar Campanha
     </button>
   </div>
-<!-- <div *ngIf="mostraCampanha" class="teste">
-  <div *ngFor="let item of campanhasLista" >
-    <button>
-      <img src={{item.urlFotoPrateleira}} >
-      {{item.nome}}
-    </button>
-  </div>
-</div> -->
+  <br>
+  <br>
+  <br>
+  <div class="tableContainer">
+    <div class="subContainer">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Data</td>
+            <td>Status</td>
+            <td>URL</td>
+            <td>Ações</td>
+          </tr>
+        </thead>
+        <tbody *ngFor="let campaign of campaigns">
+          <tr>
+            <td>
+              <div>
+                <div>
+                  <p class="id-object">{{campaign.nome}}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <span>{{campaign.descricao}}</span>
+            </td>
+            <td>
+              <span>{{campaign.data}}</span>
+            </td>
+            <td>
+              <span>{{campaign.data}}</span>
+            </td>
+            <td>
+              <span>{{campaign.urlFotoPrateleira}}</span>
+            </td>
+            <td>
+              <div class="icon-actions">
+                <div (click)="(campaign)">
+                  <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
+                </div>
+                <div (click)="delete(campaign.id)">
+                  <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<app-dragndrop></app-dragndrop>
+    <div class="tabbleFooter">
+      <!-- <div class="pagination">
+        <span>mostrando 1 - 10 de 45</span>
+        <nav>
+          <ul>
+            <li class="arrows">
+            </li>
+            <li class="numberSelected">1</li>
+            <li class="number">2</li>
+            <li class="number">3</li>
+            <li class="number">4</li>
+            <li class="number">5</li>
+            <li class="arrows">
+            </li>
+          </ul>
+        </nav>
+      </div> -->
+    </div>
+    <br />
+    <app-dragndrop></app-dragndrop>
+  </div>

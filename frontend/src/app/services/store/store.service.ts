@@ -5,6 +5,9 @@ import { AppConstants } from 'src/app/app-constants';
 import { environment } from 'src/environments/environment';
 import { Store } from '../../interfaces/store.interface';
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,12 +31,10 @@ export class StoreService {
   }
 
   public async deleteStore(storeId: Number){
-    await firstValueFrom(this.http.delete(`${environment.api}loja/${storeId}`, AppConstants.headerToken));
+  await firstValueFrom(this.http.delete(`${environment.api}loja/${storeId}`, AppConstants.headerToken));
   }
-
   public async updateStore(store: Store): Promise<Store | undefined>{
     let storeUpdate: Store | undefined = await firstValueFrom(this.http.put<Store>(`${environment.api}loja/${store.id}`, store, AppConstants.headerToken));
     return storeUpdate;
   }
-
 }

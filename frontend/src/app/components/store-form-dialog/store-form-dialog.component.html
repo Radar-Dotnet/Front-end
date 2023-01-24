@@ -1,0 +1,71 @@
+<div class="container">
+  <form class="row g-3" novalidate>
+    <div class="form-header">
+      <div class="title">
+        <h1>Nova Loja</h1>
+      </div>
+      <div class="close-button" (click)="closeDialog()">
+        <button>
+          <fa-icon class="icon" [icon]="faXmark" size="lg"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="store.nome">
+    </div>
+    <div>
+      <label for="observacao" class="form-label">Observação</label>
+      <input type="text" class="form-control" [(ngModel)]="store.observacao">
+    </div>
+    <div>
+      <label for="cep" class="form-label">CEP</label>
+      <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja"
+        [(ngModel)]="store.cep">
+    </div>
+    <!--<div class="mt-2">
+                <button class="btn btn-primary" type="button" (click)="buscarCep()">Buscar CEP</button>
+            </div> -->
+    <div>
+      <label for="logradouro" class="form-label">Logradouro</label>
+      <input type="text" class="form-control" id="logradouro-loja" name="logradouro-loja"
+        [(ngModel)]="store.logradouro">
+    </div>
+    <div>
+      <label for="numero" class="form-label">Número</label>
+      <input type="text" class="form-control" id="numero-loja" name="numero-loja" [(ngModel)]="store.numero">
+    </div>
+    <div>
+      <label for="complemento" class="form-label">Complemento</label>
+      <input type="text" class="form-control" id="complemento-loja" name="complemento-loja"
+        [(ngModel)]="store.complemento">
+    </div>
+    <div>
+      <label for="cidade" class="form-label">Cidade</label>
+      <input type="text" class="form-control" id="cidade-loja" name="cidade-loja" [(ngModel)]="store.cidade">
+    </div>
+    <div>
+      <label for="bairro" class="form-label">Bairro</label>
+      <input type="text" class="form-control" id="bairro-loja" name="bairro-loja" [(ngModel)]="store.bairro">
+    </div>
+    <div class="form-group">
+      <label for="listagem-estado">Estado</label>
+      <select class="form-control" id="listagem-estado" name="listagem-estado" [(ngModel)]="store.estado">
+        <option *ngFor="let estado of estados" id="{{estado.id}}"> {{estado.sigla}} </option>
+      </select>
+    </div>
+    <div>
+      <label for="Latitude" class="form-label">Latitude</label>
+      <input type="text" class="form-control" [(ngModel)]="latForm">
+    </div>
+    <div>
+      <label for="Longitude" class="form-label">Longitude</label>
+      <input type="text" class="form-control" [(ngModel)]="lngForm">
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="button" (click)="create()">Adicionar Loja</button>
+      <!-- <button class="btn btn-primary" type="button" (click)="save()">Salvar Alteracao</button> -->
+    </div>
+  </form>
+</div>

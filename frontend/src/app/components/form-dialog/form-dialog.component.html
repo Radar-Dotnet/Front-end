@@ -10,11 +10,11 @@
     </div>
     <div class="col-md-4 input-box" >
       <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="client.nome" placeholder="Nome do cliente" required>
+      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="client.nome" placeholder="Nome Completo" required>
     </div>
     <div class="col-md-4 input-box">
       <label for="telefone" class="form-label">Telefone</label>
-      <input type="text" class="form-control " id="telefone" name="telefone" [(ngModel)]="client.telefone" placeholder="(11) 1111-111" required>
+      <input type="text" class="form-control " id="telefone" name="telefone" [(ngModel)]="client.telefone" placeholder="(11) 11111-111" required>
     </div>
     <div class="col-md-4 input-box">
       <label for="cpf" class="form-label">CPF</label>
@@ -22,21 +22,20 @@
     </div>
     <div class="col-md-3 input-box">
       <label for="email" class="form-label">E-mail</label>
-      <input type="email" class="form-control " id="cidade" name="cidade" [(ngModel)]="client.email" placeholder="alguem@hotmail.com" required>
-    </div>
-    <div class="col-md-3 input-box">
-      <label for="cidade" class="form-label">Cidade</label>
-      <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="client.cidade" placeholder="" required>
-    </div>
-
-    <div class="col-md-3 input-box">
-      <label for="estado" class="form-label">Estado</label>
-      <input type="text" class="form-control " id="estado" name="estado" [(ngModel)]="client.estado" placeholder="" required>
+      <input type="email" class="form-control " id="email" name="email" [(ngModel)]="client.email" placeholder="exemplo@email.com" required>
     </div>
     <div class="col-md-3 input-box">
       <label for="cep" class="form-label">CEP</label>
       <input [autofocus]="false" (focusout)="consultandoCep()" type="text" class="form-control " id="cep" name="cep" [(ngModel)]="client.cep " placeholder="00000-000" required>
     </div>
+    <div class="col-md-3 input-box">
+      <label for="cidade" class="form-label">Cidade</label>
+      <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="client.cidade" placeholder="" required>
+    </div>
+    <div class="col-md-3 input-box">
+      <label for="estado" class="form-label">Estado</label>
+      <input type="text" class="form-control " id="estado" name="estado" [(ngModel)]="client.estado" placeholder="" required>
+    </div>    
     <div class="col-md-3 input-box">
       <label for="logradouro" class="form-label">Logradouro</label>
       <input type="text" class="form-control " id="logradouro" name="logradouro" [(ngModel)]="client.logradouro" placeholder="" required>
@@ -51,7 +50,7 @@
     </div>
     <div class="col-md-3 input-box">
       <label for="complemento" class="form-label">Complemento</label>
-      <input type="text" class="form-control " id="complemento" name="complemento" [(ngModel)]="client.complemento" placeholder="" required>
+      <input type="text" class="form-control " id="complemento" name="complemento" [(ngModel)]="client.complemento" placeholder="Apto, Bloco.." required>
     </div>
     <div class="col-12 ">
       <button class="btn" type="submit" (click)="create()">Cadastrar</button>
