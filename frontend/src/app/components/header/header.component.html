@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col" *ngIf="loginService.logged">
-            <button class="btn btn-primary" (click)="criarUser()">+ Criar novo usuário</button>
+            <button class="btn btn-primary new-user" (click)="criarUser()">+ Criar novo usuário</button>
         </div>
         <div class="col" *ngIf="loginService.logged">
             <button class="btn btn-danger" (click)="logout()">Sair</button>
