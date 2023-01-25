@@ -81,7 +81,7 @@
                         <p>Vendas esse ano:</p>
                         <span>{{ lastYearRevenue | currency}} </span>
                         <br><br>
-                        <span class="text-bold">Variação: {{percentage}}%</span>
+                        <span class="text-bold">Variação: {{percentage.toFixed(2)}}%</span>
                     </div>
                     <div class="col-8">
                         <div class="row grafico">
