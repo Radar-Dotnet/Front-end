@@ -95,17 +95,16 @@ export class DragndropComponent {
     await this.getCampamnhas();
   }
 
-  salvarCampanha() {
-    this.campaignService.createCampaign({
+  async salvarCampanha() {
+    await this.campaignService.createCampaign({
       id: 0,
       nome: this.campaign.nome,
       descricao: this.campaign.descricao,
       data: this.campaign.data,
       urlFotoPrateleira: JSON.stringify(this.listaBasket)
-    });
+    }).then(_ => location.reload());;
     // this.getCampaign();
     // this.clientObserver.updateQty();
-    location.reload();
   }
 
   getCampanha() {

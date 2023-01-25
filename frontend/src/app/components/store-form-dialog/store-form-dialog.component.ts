@@ -98,6 +98,7 @@ export class StoreFormDialogComponent {
   }
 
   async create() {
+    console.log(this.store);
     if (this.store && this.store.id > 0) {
       if (confirm("Deseja mesmo atualizar essa loja?")) {
         await this.storeService.updateStore({
@@ -131,7 +132,7 @@ export class StoreFormDialogComponent {
         this.store.latitude,
         this.store.longitude
       )
-      this.storeService.createStore({
+      await this.storeService.createStore({
         id: this.store.id,
         nome: this.store.nome,
         observacao: this.store.observacao,
@@ -144,10 +145,9 @@ export class StoreFormDialogComponent {
         complemento: this.store.complemento,
         latitude: this.store.latitude.toString(),
         longitude:  this.store.longitude.toString()
-      })
+      }).then(_ => location.reload())
     }
     this.getStores();
-    location.reload();
   }
 
 }

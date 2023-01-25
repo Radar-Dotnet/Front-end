@@ -49,8 +49,8 @@ export class FormDialogComponent {
       })
   }
 
-  create() {
-    this.clientService.createClient({
+  async create() {
+    await this.clientService.createClient({
       id: 0,
       nome: this.client.nome,
       bairro: this.client.bairro,
@@ -63,10 +63,9 @@ export class FormDialogComponent {
       telefone: this.client.telefone,
       logradouro: this.client.logradouro,
       numero: this.client.numero
-    });
+    }).then(_ => location.reload());
     this.getClients();
     this.clientObserver.updateQty();
-    location.reload();
   }
 
   async save() {

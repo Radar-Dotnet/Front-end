@@ -33,17 +33,16 @@ export class ProductFormDialogComponent {
   }
 
 
-  create() {
-    this.productService.createProduct({
+  async create() {
+    await this.productService.createProduct({
       id: 0,
       nome: this.product.nome,
       descricao: this.product.descricao,
       qtdEstoque: this.product.qtdEstoque,
       valor: this.product.valor
-    });
+    }).then(_ => location.reload());
     this.productObserver.updateQty();
     this.getProducts();
-    location.reload();
   }
 
 
