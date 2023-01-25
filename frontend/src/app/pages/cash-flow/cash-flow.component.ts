@@ -5,6 +5,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { Client } from 'src/app/interfaces/client.interface';
 import { Order, OrderProduct } from 'src/app/interfaces/order.interface';
 import { ClientService } from 'src/app/services/client/client.service';
+import { OrderObserverService } from 'src/app/services/order/order-observer.service';
 import { OrderService } from 'src/app/services/order/order.service';
 
 
@@ -15,28 +16,28 @@ import { OrderService } from 'src/app/services/order/order.service';
   templateUrl: './cash-flow.component.html',
   styleUrls: ['./cash-flow.component.css']
 })
-export class CashFlowComponent implements OnInit{
+export class CashFlowComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   constructor(
     private orderService: OrderService,
     private clientService: ClientService,
+    public orderObserver: OrderObserverService,
     private http: HttpClient,
+  ) { }
 
-    ){}
+  public orders: Order[] | undefined = [];
 
-  public orders: Order[] | undefined= [];
-
-  public lastOrder: Order | undefined= {} as Order;
+  public lastOrder: Order | undefined = {} as Order;
   public lastOrderClient: Client | undefined = {} as Client;
   public lastOrdererdProcuct: OrderProduct[] | undefined = [];
 
   public totalOrderProducts: OrderProduct[] | undefined = [];
 
-  public thisYear:[{month: number, value: number}] = [{}] as [{month: number, value: number}];
-  public lastYear:[{month: number, value: number}] = [{}] as [{month: number, value: number}];
-  public thisYearData:number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
-  public lastYearData:number[] = [0,0,0,0,0,0,0,0,0,0,0,0];
+  public thisYear: [{ month: number, value: number }] = [{}] as [{ month: number, value: number }];
+  public lastYear: [{ month: number, value: number }] = [{}] as [{ month: number, value: number }];
+  public thisYearData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  public lastYearData: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   public thisYearRevenue: number = 0;
   public lastYearRevenue: number = 0;
   public percentage: number = 0;
@@ -59,50 +60,50 @@ export class CashFlowComponent implements OnInit{
   };
   public barChartType: ChartType = 'bar';
   public barChartData: ChartData<'bar'> = {
-    labels: [ 'Janeiro','Fevereiro', 'Março', 'Abril','Maio' , 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     datasets: [
-      { data: this.lastYearData, label: 'Ano Anterior' , borderRadius:2, borderColor:'#680BEA', backgroundColor:'#680BEA'},
-      { data: this.thisYearData, label: 'Esse Ano',borderColor:'#a776eb', backgroundColor:'#a776eb' }
+      { data: this.thisYearData, label: 'Ano Anterior', borderRadius: 2, borderColor: '#680BEA', backgroundColor: '#680BEA' },
+      { data: this.lastYearData, label: 'Esse Ano', borderColor: '#a776eb', backgroundColor: '#a776eb' }
     ]
   };
 
-  public async getOrders(){
+  public async getOrders() {
     this.orders = await this.orderService.getOrder();
 
-    this.orders?.map(order=>{
+    this.orders?.map(order => {
       let parseDate = new Date(order.data);
-      parseDate.getFullYear() == 2022 ? this.thisYear.push({month: parseDate.getMonth(), value: order.valorTotal}) : this.lastYear.push({month: parseDate.getMonth(), value: order.valorTotal});
+      parseDate.getFullYear() == 2022 ? this.thisYear.push({ month: parseDate.getMonth(), value: order.valorTotal }) : this.lastYear.push({ month: parseDate.getMonth(), value: order.valorTotal });
     });
-    this.lastYear.map(month=>{
-      if(month.month>=0){
+    this.lastYear.map(month => {
+      if (month.month >= 0) {
         this.lastYearData[month.month] += month.value;
       }
     });
-    this.thisYear.map(month=>{
-      if(month.month>=0){
+    this.thisYear.map(month => {
+      if (month.month >= 0) {
         this.thisYearData[month.month] += month.value
       }
     });
     this.thisYearRevenue = this.thisYearData.reduce((total, number) => total + number, 0);
-    this.lastYearRevenue = this.lastYearData.reduce((total, number)=> total + number, 0);
+    this.lastYearRevenue = this.lastYearData.reduce((total, number) => total + number, 0);
     this.chart?.update();
     this.getData();
     this.getLastClient()
- }
-
- public async getTotalOrderedProducts(){
-  this.totalOrderProducts = await this.orderService.getOrderProduct();
- }
-public async getLastClient(){
-  if(this.orders){
-    let aux = this.orders.reverse();
-    this.lastOrder = aux[0];
-    this.lastOrderClient = await this.clientService.getClientbyId(Number(this.lastOrder.clienteId));
   }
-}
- public getData(){
-  this.percentage =(this.thisYearRevenue - this.lastYearRevenue) / this.lastYearRevenue * 100
- }
+
+  public async getTotalOrderedProducts() {
+    this.totalOrderProducts = await this.orderService.getOrderProduct();
+  }
+  public async getLastClient() {
+    if (this.orders) {
+      let aux = this.orders.reverse();
+      this.lastOrder = aux[0];
+      this.lastOrderClient = await this.clientService.getClientbyId(Number(this.lastOrder.clienteId));
+    }
+  }
+  public getData() {
+    this.percentage = (this.lastYearRevenue - this.thisYearRevenue) / this.lastYearRevenue * 100
+  }
 
   ngOnInit(): void {
     this.orderService = new OrderService(this.http);
@@ -111,13 +112,11 @@ public async getLastClient(){
     this.getTotalOrderedProducts();
     this.getLastClient()
     this.chart?.update();
+
+    this.orderObserver.productsOrdered = [];
+    this.orderObserver.lastOrderClient = {} as Client;
+    this.orderObserver.profileMock = ""
   }
-
-
-
-
-
-
 
   public randomize(): void {
     // Only Change 3 values
@@ -128,7 +127,7 @@ public async getLastClient(){
       Math.round(Math.random() * 100),
       56,
       Math.round(Math.random() * 100),
-      40 ];
+      40];
 
     this.chart?.update();
   }

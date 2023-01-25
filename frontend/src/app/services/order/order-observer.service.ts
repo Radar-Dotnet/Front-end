@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Client } from 'src/app/interfaces/client.interface';
+import { OrderProduct } from 'src/app/interfaces/order.interface';
 import { Product } from 'src/app/interfaces/product.interface';
 import { OrderService } from './order.service';
 
@@ -17,7 +18,10 @@ export class OrderObserverService {
    public profileMock: string | undefined ;
 
    public productsOrdered: {product: Product, qty: number}[] = [];
+   
    public orderClient: Client = {} as Client;
+   public lastOrderClient: Client = {} as Client;
+   public lastOrdererdProcuct: OrderProduct[] | undefined = [];
 
    async updateQty(){
     let list = await new OrderService(this.http).getOrder();
