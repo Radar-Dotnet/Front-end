@@ -37,9 +37,11 @@ export class ClientsComponent implements OnInit{
   }
 
   async delete(client: Number){
-    await this.clientService.deleteClient(client)
-    this.clients = await this.clientService.getClient();
-    this.clientObserver.updateQty();
+    if (confirm("Tem certeza que deseja apagar esse cliente?")) {
+      await this.clientService.deleteClient(client)
+      this.clients = await this.clientService.getClient();
+      this.clientObserver.updateQty();
+    }
   }
 
   openDialogForm(){

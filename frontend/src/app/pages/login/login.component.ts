@@ -1,7 +1,7 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { take, tap } from 'rxjs';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -47,33 +47,36 @@ export class LoginComponent implements OnInit {
   // }
 
   logar1() {
-    this.loginService.login(this.user)
-    .pipe(take(1))
-    .subscribe(r=> {
-      let token = r.token;
-      localStorage.setItem("token", token);
-      this.verificaLogin = r;
-      if(this.verificaLogin != null){
-        localStorage.setItem("logged", "true");
-        localStorage.setItem("adm", "true");
-        this.loginService.notify();
-        this.router.navigateByUrl('')
-      }
-      else {
-        this.mensagem = "Usuário ou senha inválidos"
-        this.email = ""
-        this.senha = ""
-      }
-    })
+    if(this.user.email != "" && this.user.senha != ""){
+      this.loginService.login(this.user)
+      .pipe(take(1),tap(r => console.log(r)))
+      .subscribe(r=> {
+        let token = r.token;
+        localStorage.setItem("token", token);
+        console.log(r);
+        this.verificaLogin = token;
+        if(this.verificaLogin != ""){
+          localStorage.setItem("logged", "true");
+          localStorage.setItem("adm", "true");
+          this.loginService.notify();
+          this.router.navigateByUrl('')
+        }
+        else  {
+          this.mensagem = "Usuário ou senha inválidos"
+        }
+      })
+    }else{
+      this.mensagem = "Usuário e senha são obrigatórios"
+    }
 
-    if(this.verificaLogin != null){
+    /*if(this.verificaLogin != null){
       console.log('teste')
     }
     else {
       this.mensagem = "Usuário ou senha inválidos"
       this.email = ""
       this.senha = ""
-    }
+    }*/
 
     // if (true) {
     //   localStorage.setItem("logged", "true");

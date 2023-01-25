@@ -47,9 +47,11 @@ export class CampaignComponent {
 
  
  async delete(campaign: Number){
-  await this.campaignService.deleteCampaign(campaign)
-  this.campaigns = await this.campaignService.getCampaign();
-  this.campaignObserver.updateQty();
+  if (confirm("Tem certeza que deseja apagar essa campanha?")) {
+    await this.campaignService.deleteCampaign(campaign)
+    this.campaigns = await this.campaignService.getCampaign();
+    this.campaignObserver.updateQty();
+  }
 }
 
   async getCampamnhas(){

@@ -124,8 +124,10 @@ export class OrdersComponent implements OnInit{
   }
 
   delete(product: Product){
-    const result = this.orderObserver.productsOrdered.filter(e=>e.product.nome != product.nome);
-    this.orderObserver.delete(result);
+    if (confirm("Tem certeza que deseja apagar esse pedido?")) {
+      const result = this.orderObserver.productsOrdered.filter(e=>e.product.nome != product.nome);
+      this.orderObserver.delete(result);
+    }
   }
 
   public creating(){

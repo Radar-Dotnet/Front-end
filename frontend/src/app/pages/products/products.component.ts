@@ -48,9 +48,11 @@ export class ProductsComponent implements OnInit{
   }
 
   async delete(product: Number){
-    await this.productService.deleteProduct(product)
-    this.products = await this.productService.getProduct();
-    this.productObserver.updateQty();
+    if (confirm("Tem certeza que deseja apagar esse produto?")) {
+      await this.productService.deleteProduct(product)
+      this.products = await this.productService.getProduct();
+      this.productObserver.updateQty();
+    }
   }
 
   selectProduct(product: Product){
