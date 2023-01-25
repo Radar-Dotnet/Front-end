@@ -12,6 +12,7 @@ import { StoreService } from 'src/app/services/store/store.service';
 import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StoreUpdateFormDialogComponent } from 'src/app/components/store-update-form-dialog/store-update-form-dialog/store-update-form-dialog.component';
 
 
 @Component({
@@ -27,7 +28,6 @@ export class StoresComponent implements OnInit {
   ngOnInit(): void {
     this.storeService = new StoreService(this.http)
     this.consultaEstado = new EstadoService(this.http);
-    //this.importarEstados();
     this.getStores();
   }
 
@@ -123,13 +123,6 @@ export class StoresComponent implements OnInit {
   //   }
   // }
 
-
-  /*public async buscarCep(){
-    console.log(this.store.cep);
-    this.cep = await firstValueFrom(this.http.get<Cep[]>(`${environment.cepApi}${this.store.cep}/json`));
-    console.log(this.cep);
-  }*/
-
   buscarCep() {
     let consulta = this.consultaCep.consultaCEP(this.store.cep)
       .pipe(take(1))
@@ -143,10 +136,6 @@ export class StoresComponent implements OnInit {
       })
     console.log(consulta)
   }
-
-  /*async importarEstados() {
-    this.estados = await this.consultaEstado.listaEstados();
-  }*/
 
   async create() {
     if (this.store && this.store.id > 0) {
@@ -212,6 +201,11 @@ export class StoresComponent implements OnInit {
     this.dialogRef.open(StoreFormDialogComponent, {
     });
   }
+
+  openUpdateForm(store : Store){
+    const dialogRef = this.dialogRef.open(StoreUpdateFormDialogComponent);
+    dialogRef.componentInstance.store = store;
+ }
 
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;

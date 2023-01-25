@@ -44,29 +44,6 @@ export class StoreFormDialogComponent {
     this.stores = await this.storeService.getStore();
   }
 
-
-  // create() {
-  //   this.storeService.createStore({
-  //     id: 0,
-  //     nome: this.store.nome,
-  //     observacao: this.store.observacao,
-  //     cep: this.store.cep,
-  //     logradouro: this.store.logradouro,
-  //     numero: this.store.numero,
-  //     complemento: this.store.complemento,
-  //     cidade: this.store.cidade,
-  //     bairro: this.store.bairro,
-  //     estado: this.store.estado,
-  //     latitude: this.store.latitude,
-  //     longitude: this.store.longitude
-  //   });
-
-  //   this.storeObserver.updateQty();
-  //   this.getStores();
-  //   location.reload();
-  // }
-
-
   closeDialog(): void {
     this.dialogRef.close();
   }
@@ -132,6 +109,7 @@ export class StoreFormDialogComponent {
     console.log(this.latForm.toString());
     console.log(this.lngForm.toString());
     this.getStores();
+    location.reload();
   }
   
 }
