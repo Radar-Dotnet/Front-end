@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="row mx-auto justify-content-center">
+        <img src="/assets/logo.svg">
+        <h1 class="text-center">Sign Up</h1>
+        <p class="text-center text-small text-muted">
+            Crie uma nova conta
+        </p>
+    </div>
+    <div class="row mx-auto mt-2 form p-5">
+
+        <form class="row g-3 ">
+            <div class="col-md-12">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" placeholder="Nome" name="nome" [(ngModel)]="user.nome" class="form-control" id="nome"
+                    value="Mark" required>
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email" class="form-control" id="email"
+                    value="Mark" required>
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Senha</label>
+                <input class="form-control" id="password" type="password" placeholder="Password" name="password" [(ngModel)]="user.senha">
+            </div>
+            <div class="col-md-12">
+                <label for="nivel" class="form-label">Nível</label>
+                <select class="form-control" id="listagem-nivel" name="listagem-nivel" [(ngModel)]="user.nivel">
+                    <option id="admin"> Administrador </option>
+                    <option id="editor"> Editor </option>
+                </select>
+            </div>
+            <div *ngIf="mensagem" class="alert alert-danger" role="alert">
+                {{mensagem}}
+            </div>
+        </form>
+
+        <div class="row mx-auto">
+            <button class="btn mt-5 " (click)="create()">Entrar</button>
+        </div>
+
+    </div>
+
+</div>
+
+

@@ -43,6 +43,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSelectModule } from '@angular/material/select'; 
 import { CampaignFormUpdateComponent } from './components/campaign-form-update/campaign-form-update.component';
 import { StoreUpdateFormDialogComponent } from './components/store-update-form-dialog/store-update-form-dialog/store-update-form-dialog.component';
+import { UsersComponent } from './pages/users/users.component';
 import { CampaignVisualizerComponent } from './components/campaign-visualizer/campaign-visualizer.component';
 import { StoreVisualizerComponent } from './components/store-visualizer/store-visualizer.component';
 
@@ -80,9 +81,7 @@ const googleMapsParams = {
     DragndropComponent,
     StoreFormDialogComponent,
     CampaignFormUpdateComponent,
-    StoreUpdateFormDialogComponent,
-    CampaignVisualizerComponent,
-    StoreVisualizerComponent
+    StoreUpdateFormDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 export interface User{
     id: number,
     nome : string,
-    email: string
+    email: string,
+    senha: string,
     nivel : string,  
-    token : string 
 }
