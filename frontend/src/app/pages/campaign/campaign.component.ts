@@ -31,21 +31,20 @@ export class CampaignComponent {
 
   ngOnInit(): void {
     this.getCampamnhas()
-    console.log(this.campanhasLista)
   }
 
-  
+
   private campaignService:CampaignService = {} as CampaignService;
   public campaigns: Campaign[] | undefined = [];
   public campaign:Campaign= {} as Campaign;
-  
+
 
 //   openUpdateForm(campaign : Campaign){
 //     const dialogRef = this.dialogRef.open(UpdateFormComponent);
 //     dialogRef.componentInstance.campaign = campaign;
 //  }
 
- 
+
  async delete(campaign: Number){
   if (confirm("Tem certeza que deseja apagar essa campanha?")) {
     await this.campaignService.deleteCampaign(campaign)
@@ -57,7 +56,6 @@ export class CampaignComponent {
   async getCampamnhas(){
    let get = await this.campanhaService.getCampaign()
    .then((r:any) => this.campanhasLista = r);
-   console.log(this.campanhasLista)
    this.mostraCampanhaMetodo()
   }
 
