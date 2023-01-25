@@ -10,13 +10,14 @@
         </button>
       </div>
     </div>
+    
     <div class="col-md-6">
       <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="store.nome">
+      <input type="text" class="form-control" [(ngModel)]="store.nome" name="nome">
     </div>
     <div class="col-md-6">
       <label for="observacao" class="form-label">Observação</label>
-      <input type="text" class="form-control" [(ngModel)]="store.observacao">
+      <input type="text" class="form-control" [(ngModel)]="store.observacao" name="observacao">
     </div>
     <div class="col-md-6">
       <label for="cep" class="form-label">CEP</label>
@@ -57,11 +58,11 @@
     </div>
     <div class="col-md-6">
       <label for="Latitude" class="form-label">Latitude</label>
-      <input type="text" class="form-control" [(ngModel)]="latForm">
+      <input type="text" class="form-control" [(ngModel)]="latForm" name="latitude">
     </div>
     <div class="col-md-6">
       <label for="Longitude" class="form-label">Longitude</label>
-      <input type="text" class="form-control" [(ngModel)]="lngForm">
+      <input type="text" class="form-control" [(ngModel)]="lngForm" name="longitude">
     </div>
 
     <div class="col-12">
