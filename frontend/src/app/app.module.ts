@@ -81,7 +81,10 @@ const googleMapsParams = {
     DragndropComponent,
     StoreFormDialogComponent,
     CampaignFormUpdateComponent,
-    StoreUpdateFormDialogComponent
+    StoreUpdateFormDialogComponent,
+    CampaignVisualizerComponent,
+    StoreVisualizerComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
