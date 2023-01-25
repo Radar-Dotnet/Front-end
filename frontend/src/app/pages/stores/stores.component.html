@@ -37,21 +37,21 @@
             <mat-form-field appearance="fill">
                 <mat-label>Selecione a região</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.estado"
+                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.estado" name="map-regiao" ngDefaultControl
                         (input)="onFilterChange()">{{estado}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Selecione o estado</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.estado"
+                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.estado" name="map-estado" ngDefaultControl
                         (input)="onFilterChange()">{{estado}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Selecione a cidade</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.cidade"
+                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.cidade" name="map-cidade" ngDefaultControl 
                         (input)="onFilterChange()">{{cidade}}</mat-option>
                 </mat-select>
             </mat-form-field>

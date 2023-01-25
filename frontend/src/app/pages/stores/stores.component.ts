@@ -35,7 +35,6 @@ export class StoresComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private routerParams: ActivatedRoute,
-    public consultaCep: ConsultaCepService,
     private dialogRef: MatDialog,
   ) { }
 
@@ -122,20 +121,6 @@ export class StoresComponent implements OnInit {
   //     //this.lat = clique.coords.lat;
   //   }
   // }
-
-  buscarCep() {
-    let consulta = this.consultaCep.consultaCEP(this.store.cep)
-      .pipe(take(1))
-      .subscribe((cepLocalizado: any) => {
-        console.log(cepLocalizado)
-        this.store.bairro = cepLocalizado.bairro
-        this.store.logradouro = cepLocalizado.logradouro
-        this.store.cidade = cepLocalizado.localidade
-        this.store.estado = cepLocalizado.uf
-        this.store.complemento = cepLocalizado.complemento
-      })
-    console.log(consulta)
-  }
 
   async create() {
     if (this.store && this.store.id > 0) {
