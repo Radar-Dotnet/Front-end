@@ -22,8 +22,10 @@
           <tr>
             <td>Nome</td>
             <td>E-mail</td>
-            <td>Estado</td>
+            <td>CPF</td>
+            <td>Endereço</td>
             <td>Cidade</td>
+            <td>Estado</td>
             <td>Ações</td>
           </tr>
         </thead>
@@ -40,10 +42,16 @@
               <span>{{client.email}}</span>
             </td>
             <td>
-              <span>{{client.estado}}</span>
+              <span>{{client.cpf}}</span>
+            </td>
+            <td>
+              <span>{{client.logradouro}}, {{client.numero}}</span>
             </td>
             <td>
               <span>{{client.cidade}}</span>
+            </td>
+            <td>
+              <span>{{client.estado}}</span>
             </td>
             <td>
               <div class="icon-actions">

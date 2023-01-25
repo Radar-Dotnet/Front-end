@@ -28,7 +28,7 @@ export class ClientService {
   }
 
   public async createClient(client: Client): Promise<Client | undefined>{
-    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>(`${environment.api}cliente`, client, AppConstants.headerToken));
+    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>(`${environment.api}Cliente`, client, AppConstants.headerToken));
     return newClient;
   }
 

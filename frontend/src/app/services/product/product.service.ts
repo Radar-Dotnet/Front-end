@@ -13,31 +13,31 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   public async getProduct(): Promise<Product[] | undefined>{
-    let products:Product[] | undefined = await firstValueFrom(this.http.get<Product[]>(`${environment.api}produto`, AppConstants.headerToken));
+    let products:Product[] | undefined = await firstValueFrom(this.http.get<Product[]>(`${environment.api}Produto`, AppConstants.headerToken));
     return products;
   }
 
   public async getProductById(id: number): Promise<Product | undefined>{
-    let product:Product | undefined = await firstValueFrom(this.http.get<Product>(`${environment.api}produto/${id}`, AppConstants.headerToken));
+    let product:Product | undefined = await firstValueFrom(this.http.get<Product>(`${environment.api}Produto/${id}`, AppConstants.headerToken));
     return product;
   }
 
   public async createProduct(product: Product): Promise<Product | undefined>{
-    let newProduct:Product | undefined = await firstValueFrom(this.http.post<Product>(`${environment.api}produto`, product, AppConstants.headerToken));
+    let newProduct:Product | undefined = await firstValueFrom(this.http.post<Product>(`${environment.api}Produto`, product, AppConstants.headerToken));
     return newProduct;
   }
 
   public async deleteProduct(productId: Number){
-    await firstValueFrom(this.http.delete(`${environment.api}produto/${productId}`, AppConstants.headerToken));
+    await firstValueFrom(this.http.delete(`${environment.api}Produto/${productId}`, AppConstants.headerToken));
   }
 
   public async updateProduct(product: Product): Promise<Product | undefined>{
-    let ProductUpdate: Product | undefined = await firstValueFrom(this.http.put<Product>(`${environment.api}produto/${product.id}`, product , AppConstants.headerToken));
+    let ProductUpdate: Product | undefined = await firstValueFrom(this.http.put<Product>(`${environment.api}Produto/${product.id}`, product , AppConstants.headerToken));
     return ProductUpdate;
   }
 
   public async atualizaProduto(product: Product): Promise<Product | undefined> {
-    const up = await firstValueFrom(this.http.put<Product>(`${environment.api}produto/${product.id}`, product, AppConstants.headerToken))
+    const up = await firstValueFrom(this.http.put<Product>(`${environment.api}Produto/${product.id}`, product, AppConstants.headerToken))
     return up;
   }
 
