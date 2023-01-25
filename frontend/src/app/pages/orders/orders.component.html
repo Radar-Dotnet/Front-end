@@ -110,9 +110,9 @@
           </div>
           <div class="row">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn btn-info me-md-2" routerLink="/products/{{products.product.id}}">
+              <!-- <button type="button" class="btn btn-info me-md-2" routerLink="/products/{{products.product.id}}">
                 <fa-icon class="icon" [icon]="faInfo" size="lg"></fa-icon> ver
-              </button>
+              </button> -->
               <button type="button" class="btn btn-danger" (click)="delete(products.product)" *ngIf="isCreating">
                 <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon> remover
               </button>

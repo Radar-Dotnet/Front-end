@@ -87,12 +87,12 @@ export class CashFlowComponent implements OnInit{
     this.lastYearRevenue = this.lastYearData.reduce((total, number)=> total + number, 0);
     this.chart?.update();
     this.getData();
-    this.getLastClient()
+    // this.getLastClient()
  }
 
- public async getTotalOrderedProducts(){
-  this.totalOrderProducts = await this.orderService.getOrderProduct();
- }
+//  public async getTotalOrderedProducts(){
+//   this.totalOrderProducts = await this.orderService.getOrderProduct();
+//  }
 public async getLastClient(){
   if(this.orders){
     let aux = this.orders.reverse();
@@ -108,8 +108,8 @@ public async getLastClient(){
     this.orderService = new OrderService(this.http);
     this.clientService = new ClientService(this.http);
     this.getOrders();
-    this.getTotalOrderedProducts();
-    this.getLastClient()
+    // this.getTotalOrderedProducts();
+    // this.getLastClient()
     this.chart?.update();
   }
 
