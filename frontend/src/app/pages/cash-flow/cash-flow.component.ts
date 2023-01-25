@@ -109,8 +109,8 @@ export class CashFlowComponent implements OnInit {
     this.orderService = new OrderService(this.http);
     this.clientService = new ClientService(this.http);
     this.getOrders();
-    this.getTotalOrderedProducts();
-    this.getLastClient()
+    // this.getTotalOrderedProducts();
+    // this.getLastClient()
     this.chart?.update();
 
     this.orderObserver.productsOrdered = [];

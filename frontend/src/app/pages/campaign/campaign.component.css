@@ -199,3 +199,8 @@ img{
   width: 6rem;
   height: 6rem;
 }
+
+.icone{
+  margin-left: 2.8rem;
+  cursor: pointer;
+}

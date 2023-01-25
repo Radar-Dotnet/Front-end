@@ -1,3 +1,4 @@
+import { StoreVisualizerComponent } from './../../components/store-visualizer/store-visualizer.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,11 +10,10 @@ import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
 import { StoreService } from 'src/app/services/store/store.service';
-import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faEye, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StoreUpdateFormDialogComponent } from 'src/app/components/store-update-form-dialog/store-update-form-dialog/store-update-form-dialog.component';
-
 
 @Component({
   selector: 'app-stores',
@@ -60,6 +60,19 @@ export class StoresComponent implements OnInit {
   lngForm: number = 0;
   estado: string;
   cidade: string;
+
+// criandoMapa(){
+
+//   this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=24%20Sussex%20Drive%20Ottawa%20ON&key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c')
+//   .subscribe((r:any) => {
+//     let lat = r.results[0].geometry.location.lat
+//     let lon = r.results[0].geometry.location.lng
+//     this.store.latitude = lat
+//     this.store.longitude = lon
+//     console.log(r.results[0].geometry.location)
+//   })
+// }
+
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
@@ -192,8 +205,13 @@ export class StoresComponent implements OnInit {
     dialogRef.componentInstance.store = store;
  }
 
+ visualizer(id:number){
+  this.dialogRef.open(StoreVisualizerComponent,{data :{id}})
+}
+
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
   faSearch = faSearch;
+  faEye = faEye;;
 }

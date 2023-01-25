@@ -10,7 +10,7 @@
     <!-- Divisão superior -->
     <div class="row mt-5">
         <!-- Card do mapa (card lado esquerdo) -->
-        <div class="col-8">
+        <!-- <div class="col-8">
             <div class="chart-container px-5 py-4">
                 <div class="row">
                     <h3>Lojas</h3>
@@ -29,9 +29,9 @@
                     </agm-marker>
                 </agm-map>
             </div>
-        </div>
+        </div> -->
         <!-- Filtro por localização (card lateral direito) -- Usar gerar informações pro mapa -->
-        <div class="col-4 last-order px-5 py-4">
+        <!-- <div class="col-4 last-order px-5 py-4">
             <h3>Filtre as lojas</h3>
             <hr>
             <mat-form-field appearance="fill">
@@ -51,7 +51,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Selecione a cidade</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.cidade" name="map-cidade" ngDefaultControl 
+                    <mat-option *ngFor="let m of markers" [(ngModel)]="m.cidade" name="map-cidade" ngDefaultControl
                         (input)="onFilterChange()">{{cidade}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -59,7 +59,7 @@
                 <fa-icon class="icon" [icon]="faSearch" size="lg"></fa-icon>
                 Pesquisar lojas
             </button>
-        </div>
+        </div> -->
     </div>
 
     <!-- Tabela com informações completas das lojas -->
@@ -98,6 +98,9 @@
                         </td>
 
                         <div class="icon-actions" style="display: flex;">
+                          <div (click)="visualizer(store.id)"  style="margin-right: 10px;">
+                            <fa-icon class="icon" [icon]="faEye" size="lg"></fa-icon>
+                          </div>
                             <div (click)="openUpdateForm(store)" style="margin-right: 10px;">
                                 <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>
@@ -111,6 +114,6 @@
         </div>
     </div>
     <div class="tabbleFooter"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c"
-        type="text/javascript"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c"
+        type="text/javascript"></script> -->
 </div>

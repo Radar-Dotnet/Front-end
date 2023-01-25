@@ -18,6 +18,12 @@ import { EstadoService } from 'src/app/services/estados/estados.service';
 })
 export class StoreFormDialogComponent {
 
+    private storeService: StoreService = {} as StoreService;
+    public stores: Store[] | undefined = [];
+    public store: Store = {} as Store;
+    public estados: Estado[] | undefined;
+    public consultaEstado: EstadoService = {} as EstadoService;
+
   constructor(
     private http: HttpClient,
     private storeObserver: StoreObserverService,
@@ -26,18 +32,13 @@ export class StoreFormDialogComponent {
   ) { }
 
 
+
   ngOnInit(): void {
     this.storeService = new StoreService(this.http);
     this.consultaEstado = new EstadoService(this.http);
     this.getStores();
     this.importarEstados();
   }
-
-  private storeService: StoreService = {} as StoreService;
-  public stores: Store[] | undefined = [];
-  public store: Store = {} as Store;
-  public estados: Estado[] | undefined;
-  public consultaEstado: EstadoService = {} as EstadoService;
 
 
   private async getStores() {
@@ -50,26 +51,51 @@ export class StoreFormDialogComponent {
 
   faXmark = faXmark;
 
+  latNumber =0
+  lngNumber =0
+
+  // markers =[{ }]
+
+
+
   buscarCep(){
-    let consulta = this.consultaCep.consultaCEP(this.store.cep)
+    this.consultaCep.consultaCEP(this.store.cep)
     .pipe(take(1))
     .subscribe((cepLocalizado:any) => {
+
       console.log(cepLocalizado)
       this.store.bairro = cepLocalizado.bairro
       this.store.logradouro = cepLocalizado.logradouro
       this.store.cidade = cepLocalizado.localidade
       this.store.estado = cepLocalizado.uf
       this.store.complemento = cepLocalizado.complemento
+
+      let logradouroRegex = this.store.logradouro.replace(/ /g, "%20")
+      let bairroRegex = this.store.bairro.replace(/ /g, "%20")
+
+      this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.store.numero}%20${logradouroRegex}%20${bairroRegex}&key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c`)
+      .pipe(take(1))
+      .subscribe((r:any) => {
+        let lat = r.results[0].geometry.location.lat
+        let lon = r.results[0].geometry.location.lng
+        this.store.latitude = lat
+        this.store.longitude = lon
+        // this.markers =[{
+        //   lat: this.latNumber,
+        //   lng: this.lngNumber,
+        //   logradouro: this.store.logradouro,
+        //   cidade: this.store.cidade,
+        //   estado: this.store.estado,
+        //   label: this.store.nome}]
+        this.latNumber = Number(lat)
+        this.lngNumber = Number(lon)
+      })
     })
-    console.log(consulta)
   }
 
   async importarEstados() {
     this.estados = await this.consultaEstado.listaEstados();
   }
-
-  latForm: number = 0;
-  lngForm: number = 0;
 
   async create() {
     if (this.store && this.store.id > 0) {
@@ -85,12 +111,26 @@ export class StoreFormDialogComponent {
           cidade: this.store.cidade,
           estado: this.store.estado,
           complemento: this.store.complemento,
-          latitude: this.latForm.toString(),
-          longitude: this.lngForm.toString()
+          latitude: this.store.latitude.toString(),
+          longitude: this.store.longitude.toString()
         });
       }
     }
     else {
+      console.log(
+        this.store.id,
+        this.store.nome,
+        this.store.observacao,
+        this.store.cep,
+        this.store.logradouro,
+        this.store.numero,
+        this.store.bairro,
+        this.store.cidade,
+        this.store.estado,
+        this.store.complemento,
+        this.store.latitude,
+        this.store.longitude
+      )
       this.storeService.createStore({
         id: this.store.id,
         nome: this.store.nome,
@@ -102,14 +142,12 @@ export class StoreFormDialogComponent {
         cidade: this.store.cidade,
         estado: this.store.estado,
         complemento: this.store.complemento,
-        latitude: this.latForm.toString(),
-        longitude: this.lngForm.toString()
+        latitude: this.store.latitude.toString(),
+        longitude:  this.store.longitude.toString()
       })
     }
-    console.log(this.latForm.toString());
-    console.log(this.lngForm.toString());
     this.getStores();
     location.reload();
   }
-  
+
 }

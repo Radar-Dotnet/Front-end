@@ -1,0 +1,241 @@
+.container {
+  padding: 2rem;
+  background-color: rgba(223, 223, 223, 0.747);
+}
+
+.buttons {
+  margin-left: 2rem;
+}
+
+.form-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-header h1::after {
+  content: '';
+  display: block;
+  width: 5rem;
+  height: 0.3rem;
+  background-color: #6c63ff;
+  margin: 0 auto;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.tilte {
+  margin-right: 2rem;
+}
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button button {
+  border: none;
+  background-color: #6c63ff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.close-button button:hover {
+  background-color: #6b63fff1;
+}
+
+.close-button button a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+}
+
+.input-box input {
+  margin: 0.6rem 0;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #0000001c;
+  font-size: 0.8rem;
+}
+
+.input-box input:hover {
+  background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+  outline: 1px solid #6c63ff;
+}
+
+.input-box label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000c0;
+}
+
+.input-box input::placeholder {
+  color: #000000be;
+}
+
+.btn {
+  background-color: #6c63ff;
+  color: #fff;
+}
+
+.dragndrop{
+  margin-top: 2rem;
+}
+
+.div-drag{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* .example-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+} */
+
+
+.example-list {
+  border: solid 1px #ccc;
+  height: 3.5rem;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.example-box {
+  padding: 1rem;
+  border-right: solid 2px rgb(176, 176, 176);
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.example-box.cdk-drag-disabled {
+  background: rgb(252, 80, 80);
+  cursor: default;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* .example-box:last-child {
+  border: none;
+} */
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.teste{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.prateleiras{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 85vw;
+}
+
+.example-list-produto {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 15rem;
+  width: 10rem;
+  overflow-y: scroll;
+}
+
+.example-box-produto {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+/* .example-box-produto.cdk-drag-disabled {
+  background: rgb(252, 80, 80);
+  cursor: default;
+} */
+
+.example-list-produto-deleta {
+  border: solid 1px #ccc;
+  height: 3.5rem;
+  width: 10rem;
+  background: rgb(220, 78, 78);
+  border-radius: 4px;
+  margin-top: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button button:hover {
+  background-color: #6b63fff1;
+}
+
+.close-button button a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+}
+.btn {
+  background-color: #6c63ff;
+  color: #fff;
+}
+.teste{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+img{
+  width: 6rem;
+  height: 6rem;
+}
+
