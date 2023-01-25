@@ -19,6 +19,12 @@
 .activeRoute, .menu-ativado {
     background: #4e46b4;
     color: #F8F9FA;
+}
+
+.new-user{
+    background-color: #4e46b4;
+    color: #fff;
+ padding: 2px;
 } 
 
 span:first-child{
