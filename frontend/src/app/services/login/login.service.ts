@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   login(user : any) : Observable<any>{
-    this.logged = true;
+    // this.logged = true;
     return this.http.post(`${environment.api}login`, {
       email: user.email,
       senha: user.senha
@@ -44,7 +44,7 @@ export class LoginService {
     localStorage.clear()
     this.logged = false
     this.adm = false
-    
+    console.log('aaaa')
     this.router.navigateByUrl("/login")
   }
   }
