@@ -18,7 +18,7 @@
           <td>Campanha</td>
           <td>Descrição</td>
           <td>Data de Cadastro</td>
-          <td>URL//Prateleira</td>
+          <td>Visualizador</td>
           <td>Ações</td>
         </tr>
       </thead>
@@ -38,7 +38,11 @@
             <span>{{product.data | date}}</span>
           </td>
           <td>
-            <span>{{campaign.urlFotoPrateleira}}</span>
+            <div class="icone">
+              <div (click)="visualizer(product.id)">
+                <fa-icon class="icon" [icon]="faEye" size="lg"></fa-icon>
+              </div>
+            </div>
           </td>
           <td>
             <div class="icon-actions">

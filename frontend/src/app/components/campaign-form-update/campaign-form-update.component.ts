@@ -65,12 +65,7 @@ export class CampaignFormUpdateComponent {
       urlFotoPrateleira: JSON.stringify(new Array(this.basket, this.basket1, this.basket2, this.basket3, this.basket4))
     }
     )
-    console.log(this.listaBasket)
     location.reload()
-  }
-  teste() {
-    console.log(this.basket, this.basket1, this.basket2, this.basket3, this.basket4)
-    console.log(this.listaBasket)
   }
 
   async getProduto() {
@@ -94,7 +89,7 @@ export class CampaignFormUpdateComponent {
   }
 
   async getCampanha() {
-    await this.campaignService.getCampaign().then(r => console.log(r))
+    await this.campaignService.getCampaign().then(r => r)
   }
 
   async populaPrateleira(id: number) {
@@ -104,7 +99,6 @@ export class CampaignFormUpdateComponent {
         this.campaign.nome = r.nome
         this.campaign.descricao = r.descricao
         this.campaign.data = r.data
-        console.log(JSON.parse(r.urlFotoPrateleira))
         let urlParse = JSON.parse(r.urlFotoPrateleira)
         let novaLista: any = [];
         urlParse.map((x: any) => novaLista.push(x))
