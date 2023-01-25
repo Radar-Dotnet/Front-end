@@ -1,3 +1,4 @@
+import { StoreVisualizerComponent } from './../../components/store-visualizer/store-visualizer.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { EstadoService } from './../../services/estados/estados.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
 import { StoreService } from 'src/app/services/store/store.service';
-import { faCirclePlus, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus, faEye, faPenToSquare, faSearch, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { StoreFormDialogComponent } from 'src/app/components/store-form-dialog/store-form-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { StoreUpdateFormDialogComponent } from 'src/app/components/store-update-form-dialog/store-update-form-dialog/store-update-form-dialog.component';
@@ -204,8 +205,13 @@ export class StoresComponent implements OnInit {
     dialogRef.componentInstance.store = store;
  }
 
+ visualizer(id:number){
+  this.dialogRef.open(StoreVisualizerComponent,{data :{id}})
+}
+
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
   faSearch = faSearch;
+  faEye = faEye;;
 }

@@ -98,6 +98,9 @@
                         </td>
 
                         <div class="icon-actions" style="display: flex;">
+                          <div (click)="visualizer(store.id)"  style="margin-right: 10px;">
+                            <fa-icon class="icon" [icon]="faEye" size="lg"></fa-icon>
+                          </div>
                             <div (click)="openUpdateForm(store)" style="margin-right: 10px;">
                                 <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>

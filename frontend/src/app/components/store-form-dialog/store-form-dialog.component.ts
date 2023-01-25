@@ -54,7 +54,7 @@ export class StoreFormDialogComponent {
   latNumber =0
   lngNumber =0
 
-  markers =[{ }]
+  // markers =[{ }]
 
 
 
@@ -80,13 +80,13 @@ export class StoreFormDialogComponent {
         let lon = r.results[0].geometry.location.lng
         this.store.latitude = lat
         this.store.longitude = lon
-        this.markers =[{
-          lat: this.latNumber,
-          lng: this.lngNumber,
-          logradouro: this.store.logradouro,
-          cidade: this.store.cidade,
-          estado: this.store.estado,
-          label: this.store.nome}]
+        // this.markers =[{
+        //   lat: this.latNumber,
+        //   lng: this.lngNumber,
+        //   logradouro: this.store.logradouro,
+        //   cidade: this.store.cidade,
+        //   estado: this.store.estado,
+        //   label: this.store.nome}]
         this.latNumber = Number(lat)
         this.lngNumber = Number(lon)
       })

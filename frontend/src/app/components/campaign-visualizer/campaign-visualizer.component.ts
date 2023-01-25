@@ -20,7 +20,7 @@ export class CampaignVisualizerComponent {
     public dialogRef: MatDialogRef<CampaignVisualizerComponent>,
     private campaignService: CampaignService,
     private produtoServico: ProductService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   campaign: Campaign = {} as Campaign;

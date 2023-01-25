@@ -44,6 +44,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CampaignFormUpdateComponent } from './components/campaign-form-update/campaign-form-update.component';
 import { StoreUpdateFormDialogComponent } from './components/store-update-form-dialog/store-update-form-dialog/store-update-form-dialog.component';
 import { CampaignVisualizerComponent } from './components/campaign-visualizer/campaign-visualizer.component';
+import { StoreVisualizerComponent } from './components/store-visualizer/store-visualizer.component';
 
 
 registerLocaleData(ptBr);
@@ -80,7 +81,8 @@ const googleMapsParams = {
     StoreFormDialogComponent,
     CampaignFormUpdateComponent,
     StoreUpdateFormDialogComponent,
-    CampaignVisualizerComponent
+    CampaignVisualizerComponent,
+    StoreVisualizerComponent
   ],
   imports: [
     BrowserModule,

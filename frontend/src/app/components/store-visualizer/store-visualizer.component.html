@@ -1,0 +1,26 @@
+<div class="col-8 janela">
+  <div class="chart-container px-5 py-4">
+      <agm-map
+        [latitude]="storeLatNum "
+        [longitude]="storeLngNum"
+        [zoom]="18"
+        [disableDefaultUI]="false">
+
+          <agm-marker
+            [latitude]="storeLatNum"
+            [longitude]="storeLngNum"
+            [label]="storeName">
+
+                <agm-info-window>
+                    <strong>
+                        <b>Nome: {{storeName}}</b> <br>
+                        <!-- Endereço: {{store.logradouro}} <br>
+                        Cidade/UF: {{store.cidade}}/{{store.estado}}<br> -->
+                    </strong><br />
+                </agm-info-window>
+
+          </agm-marker>
+
+      </agm-map>
+  </div>
+</div>
