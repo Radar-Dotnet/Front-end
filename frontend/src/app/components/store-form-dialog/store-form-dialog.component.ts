@@ -8,6 +8,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { ConsultaCepService } from 'src/app/services/cep/consulta-cep.service';
 import { take } from 'rxjs';
 import { Estado } from 'src/app/interfaces/estado.inteface';
+import { EstadoService } from 'src/app/services/estados/estados.service';
 
 
 @Component({
@@ -27,13 +28,17 @@ export class StoreFormDialogComponent {
 
   ngOnInit(): void {
     this.storeService = new StoreService(this.http);
+    this.consultaEstado = new EstadoService(this.http);
     this.getStores();
+    this.importarEstados();
   }
 
   private storeService: StoreService = {} as StoreService;
   public stores: Store[] | undefined = [];
   public store: Store = {} as Store;
   public estados: Estado[] | undefined;
+  public consultaEstado: EstadoService = {} as EstadoService;
+
 
   private async getStores() {
     this.stores = await this.storeService.getStore();
@@ -80,6 +85,10 @@ export class StoreFormDialogComponent {
       this.store.complemento = cepLocalizado.complemento
     })
     console.log(consulta)
+  }
+
+  async importarEstados() {
+    this.estados = await this.consultaEstado.listaEstados();
   }
 
   latForm: number = 0;

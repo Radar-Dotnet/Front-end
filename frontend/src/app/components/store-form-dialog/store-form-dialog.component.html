@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="row g-3" novalidate>
+  <form class="row g-3">
     <div class="form-header">
       <div class="title">
         <h1>Nova Loja</h1>
@@ -12,11 +12,11 @@
     </div>
     <div class="col-md-6">
       <label for="nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="store.nome">
+      <input type="text" class="form-control" [(ngModel)]="store.nome" name="nome-loja">
     </div>
     <div class="col-md-6">
       <label for="observacao" class="form-label">Observação</label>
-      <input type="text" class="form-control" [(ngModel)]="store.observacao">
+      <input type="text" class="form-control" [(ngModel)]="store.observacao" name="observacao-loja">
     </div>
     <div class="col-md-6">
       <label for="cep" class="form-label">CEP</label>
@@ -57,11 +57,11 @@
     </div>
     <div class="col-md-6">
       <label for="Latitude" class="form-label">Latitude</label>
-      <input type="text" class="form-control" [(ngModel)]="latForm">
+      <input type="text" class="form-control" [(ngModel)]="latForm" name="latitude-loja">
     </div>
     <div class="col-md-6">
       <label for="Longitude" class="form-label">Longitude</label>
-      <input type="text" class="form-control" [(ngModel)]="lngForm">
+      <input type="text" class="form-control" [(ngModel)]="lngForm" name="longitude-loja">
     </div>
 
     <div class="col-12">

@@ -27,7 +27,7 @@ export class StoresComponent implements OnInit {
   ngOnInit(): void {
     this.storeService = new StoreService(this.http)
     this.consultaEstado = new EstadoService(this.http);
-    this.importarEstados();
+    //this.importarEstados();
     this.getStores();
   }
 
@@ -144,9 +144,9 @@ export class StoresComponent implements OnInit {
     console.log(consulta)
   }
 
-  async importarEstados() {
+  /*async importarEstados() {
     this.estados = await this.consultaEstado.listaEstados();
-  }
+  }*/
 
   async create() {
     if (this.store && this.store.id > 0) {
