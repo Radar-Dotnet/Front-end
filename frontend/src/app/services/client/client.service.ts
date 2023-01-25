@@ -12,7 +12,7 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
-  
+
   public async getClient(): Promise<Client[] | undefined>{
     let clients:Client[] | undefined = await firstValueFrom(this.http.get<Client[]>(`${environment.api}cliente`, AppConstants.headerToken));
     return clients;
@@ -28,7 +28,7 @@ export class ClientService {
   }
 
   public async createClient(client: Client): Promise<Client | undefined>{
-    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>(`${environment.api}`, client, AppConstants.headerToken));
+    let newClient:Client | undefined = await firstValueFrom(this.http.post<Client>(`${environment.api}cliente`, client, AppConstants.headerToken));
     return newClient;
   }
 

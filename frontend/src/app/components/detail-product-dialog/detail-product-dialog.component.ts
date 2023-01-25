@@ -48,6 +48,7 @@ export class DetailProductDialogComponent {
     //     const update = await this.productService.updateProduct(this.product);
         // this.router.navigateByUrl("clients"s);
     // }
+    location.reload()
   }
 
   closeDialog(): void {
