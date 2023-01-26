@@ -81,7 +81,7 @@ export class StoreUpdateFormDialogComponent {
   
   async save(){
     if(this.store.id && this.store.id != 0){
-        const update = await this.storeService.updateStore(this.store);
+        const update = await this.storeService.updateStore(this.store).then(_ => location.reload());
         this.router.navigateByUrl("stores");
 
     }

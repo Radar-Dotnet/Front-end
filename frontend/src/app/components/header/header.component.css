@@ -25,6 +25,9 @@
     background-color: #4e46b4;
     color: #fff;
     padding: 2px;
+    width: 6rem;
+    height: 3rem;
+    
 } 
 
 span:first-child{

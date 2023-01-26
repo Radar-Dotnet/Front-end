@@ -1,7 +1,7 @@
 import { Route, Router, Routes } from '@angular/router';
 import { Component ,OnInit} from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -21,6 +21,6 @@ export class HeaderComponent implements OnInit{
 
   }
   ngOnInit(): void {}
-  faCirclePlus = faCirclePlus;
-
+  faCirclePlus = faPlus;
+  faUser = faUser;
 }

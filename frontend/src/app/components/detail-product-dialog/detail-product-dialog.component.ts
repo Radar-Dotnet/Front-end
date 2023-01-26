@@ -43,12 +43,11 @@ export class DetailProductDialogComponent {
 //   }
 
    async save(){
-     const a = await this.teste.atualizaProduto(this.product)
+     const a = await this.teste.atualizaProduto(this.product).then(_ => location.reload())
     // if(this.product.id && this.product.id != 0){
     //     const update = await this.productService.updateProduct(this.product);
         // this.router.navigateByUrl("clients"s);
     // }
-    location.reload()
   }
 
   closeDialog(): void {
