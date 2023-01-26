@@ -34,17 +34,37 @@ export class ProductFormDialogComponent {
 
 
   async create() {
-    await this.productService.createProduct({
-      id: 0,
-      nome: this.product.nome,
-      descricao: this.product.descricao,
-      qtdEstoque: this.product.qtdEstoque,
-      valor: this.product.valor
-    }).then(_ => location.reload());
-    this.productObserver.updateQty();
-    this.getProducts();
+    let produto = this.verificaValorVazio();
+    if(produto){
+      await this.productService.createProduct(produto)
+      .then(_ => location.reload());
+      this.productObserver.updateQty();
+      this.getProducts();
+    }
   }
 
+  verificaValorVazio(){
+    debugger
+    if(this.product.nome === "" || this.product.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.product.qtdEstoque == undefined || this.product.qtdEstoque.toString() == ""){
+      alert("Por favor, digite uma quantidade válida");
+      return undefined
+    }
+    if(this.product.valor == undefined || this.product.valor.toString() == ""){
+      alert("Por favor, digite um valor válido");
+      return undefined
+    }
+    if(this.product.descricao === "" || this.product.descricao == undefined){
+      alert("Por favor, digite uma descrição válida");
+      return undefined
+    }
+    this.product.id = 0;
+    console.log(this.product);
+    return this.product
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

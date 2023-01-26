@@ -92,15 +92,13 @@ export class DragndropComponent {
   }
 
   async salvarCampanha() {
-    await this.campaignService.createCampaign({
-      id: 0,
-      nome: this.campaign.nome,
-      descricao: this.campaign.descricao,
-      data: this.campaign.data,
-      urlFotoPrateleira: JSON.stringify(this.listaBasket)
-    }).then(_ => location.reload());;
-    // this.getCampaign();
-    // this.clientObserver.updateQty();
+    let campanha = this.verificaValorVazio();
+    if(campanha){
+      await this.campaignService.createCampaign(campanha)
+      .then(_ => location.reload());
+      // this.getCampaign();
+      // this.clientObserver.updateQty();
+    }
   }
 
   getCampanha() {
@@ -136,6 +134,23 @@ export class DragndropComponent {
     }
   }
 
+  verificaValorVazio(){
+    if(this.campaign.nome === "" || this.campaign.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.campaign.descricao === "" || this.campaign.descricao == undefined){
+      alert("Por favor, digite uma descrição válida");
+      return undefined
+    }
+    if(this.campaign.data == undefined){
+      alert("Por favor, digite uma data válida");
+      return undefined
+    }
+    this.campaign.id = 0;
+    this.campaign.urlFotoPrateleira = JSON.stringify(this.listaBasket);
+    return this.campaign
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

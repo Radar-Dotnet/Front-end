@@ -112,7 +112,7 @@
     </div>
   </div>
   <div class="col-md-4 input-box" >
-    <label for="nome" class="form-label">Nome</label>
+    <label for="nome" class="form-label">Nome *</label>
     <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="campaign.nome" placeholder="Nome da campanha" required>
   </div>
   <div class="col-md-4 input-box">
@@ -120,11 +120,11 @@
     <input type="text" class="form-control " id="descricao" name="descricao" [(ngModel)]="campaign.descricao" required>
   </div>
   <div class="col-md-4 input-box">
-    <label for="data" class="form-label">Data</label>
+    <label for="data" class="form-label">Data *</label>
     <input type="date" class="form-control " id="data" name="data" [(ngModel)]="campaign.data" required>
   </div>
 
-<h1>Prateleiras</h1>
+<h1>Prateleiras *</h1>
 <div cdkDropListGroup  class="teste">
   <div class="prateleiras">
       <div>
@@ -250,6 +250,7 @@
 </div>
 <div class="col-12 ">
   <button class="btn" type="submit" (click)="salvarCampanha()">Cadastrar</button>
+  <label for="campos" style="margin-left: 1rem;" class="form-label"><b>Todos os campos com * são obrigatórios</b></label>
 </div>
 </form>
 

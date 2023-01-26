@@ -77,12 +77,60 @@ export class StoreUpdateFormDialogComponent {
   }
   
   async save(){
-    if(this.store.id && this.store.id != 0){
-        const update = await this.storeService.updateStore(this.store).then(_ => location.reload());
-        this.router.navigateByUrl("stores");
+    let loja = this.verificaValorVazio();
+    if(loja){
+      if(this.store.id && this.store.id != 0){
+          const update = await this.storeService.updateStore(loja).then(_ => location.reload());
+          alert("Loja atualizada")
+          this.router.navigateByUrl("stores");
 
+      }
     }
   }
+
+  verificaValorVazio(){
+    if(this.store.nome === "" || this.store.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.store.cep === "" || this.store.cep == undefined){
+      alert("Por favor, digite um CEP válido");
+      return undefined
+    }
+    if(this.store.cidade === "" || this.store.cidade == undefined){
+      alert("Por favor, digite uma cidade válida");
+      return undefined
+    }
+    if(this.store.estado === "" || this.store.estado == undefined){
+      alert("Por favor, digite um estado válido");
+      return undefined
+    }
+    if(this.store.logradouro === "" || this.store.logradouro == undefined){
+      alert("Por favor, digite um logradouro válido");
+      return undefined
+    }
+    if(this.store.numero == undefined || this.store.numero.toString() === "" ){
+      alert("Por favor, digite um número válido");
+      return undefined
+    }
+    if(this.store.bairro === "" || this.store.bairro == undefined){
+      alert("Por favor, digite um bairro válido");
+      return undefined
+    }
+    if(this.store.latitude === "" || this.store.latitude == undefined){
+      alert("Por favor, digite uma latitude válida");
+      return undefined
+    }
+    if(this.store.longitude === "" || this.store.longitude == undefined){
+      alert("Por favor, digite uma longitude válida");
+      return undefined
+    }
+    this.store.latitude = this.store.latitude.toString();
+    this.store.longitude = this.store.longitude.toString();
+    this.store.id = 0;
+    return this.store
+  }
+
   closeDialog(): void {
     this.dialogRef.close();
   }
