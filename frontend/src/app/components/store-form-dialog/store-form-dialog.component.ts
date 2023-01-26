@@ -63,7 +63,6 @@ export class StoreFormDialogComponent {
     .pipe(take(1))
     .subscribe((cepLocalizado:any) => {
 
-      console.log(cepLocalizado)
       this.store.bairro = cepLocalizado.bairro
       this.store.logradouro = cepLocalizado.logradouro
       this.store.cidade = cepLocalizado.localidade
@@ -117,21 +116,7 @@ export class StoreFormDialogComponent {
       }
     }
     else {
-      console.log(
-        this.store.id,
-        this.store.nome,
-        this.store.observacao,
-        this.store.cep,
-        this.store.logradouro,
-        this.store.numero,
-        this.store.bairro,
-        this.store.cidade,
-        this.store.estado,
-        this.store.complemento,
-        this.store.latitude,
-        this.store.longitude
-      )
-      this.storeService.createStore({
+      await this.storeService.createStore({
         id: this.store.id,
         nome: this.store.nome,
         observacao: this.store.observacao,
@@ -144,10 +129,9 @@ export class StoreFormDialogComponent {
         complemento: this.store.complemento,
         latitude: this.store.latitude.toString(),
         longitude:  this.store.longitude.toString()
-      })
+      }).then(_ => location.reload())
     }
     this.getStores();
-    location.reload();
   }
 
 }

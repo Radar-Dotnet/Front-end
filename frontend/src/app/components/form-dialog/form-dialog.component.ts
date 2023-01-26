@@ -41,7 +41,6 @@ export class FormDialogComponent {
     this.consultaCep.consultaCEP(this.client.cep)
       .pipe(take(1))
       .subscribe((r: any) => {
-        console.log(r)
         this.client.bairro = r.bairro
         this.client.logradouro = r.logradouro
         this.client.cidade = r.localidade
@@ -49,8 +48,8 @@ export class FormDialogComponent {
       })
   }
 
-  create() {
-    this.clientService.createClient({
+  async create() {
+    await this.clientService.createClient({
       id: 0,
       nome: this.client.nome,
       bairro: this.client.bairro,
@@ -63,16 +62,14 @@ export class FormDialogComponent {
       telefone: this.client.telefone,
       logradouro: this.client.logradouro,
       numero: this.client.numero
-    });
+    }).then(_ => location.reload());
     this.getClients();
     this.clientObserver.updateQty();
-    location.reload();
   }
 
   async save() {
     if (this.client.id && this.client.id != 0) {
       const update = await this.clientService.updateClient(this.client);
-      console.log(update);
     }
   }
 
@@ -86,13 +83,11 @@ export class FormDialogComponent {
     let consulta = this.consultaCep.consultaCEP(this.client.cep)
       .pipe(take(1))
       .subscribe((cepLocalizado: any) => {
-        console.log(cepLocalizado)
         this.client.bairro = cepLocalizado.bairro
         this.client.logradouro = cepLocalizado.logradouro
         this.client.cidade = cepLocalizado.localidade
         this.client.estado = cepLocalizado.uf
         this.client.complemento = cepLocalizado.complemento
       })
-    console.log(consulta)
   }
 }

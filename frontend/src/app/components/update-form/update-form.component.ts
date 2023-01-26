@@ -37,17 +37,16 @@ export class UpdateFormComponent implements OnInit{
       if(this.clientbyId){
         this.client = this.clientbyId;
       }
-      console.log(this.clientbyId);
   }
 
 
   async save(){
     if(this.client.id && this.client.id != 0){
-        const update = await this.clientService.updateClient(this.client);
+        const update = await this.clientService.updateClient(this.client).then(_ => location.reload());
         this.router.navigateByUrl("clients");
     }
-    location.reload()
   }
+  
   ngOnInit(): void {
     this.clientService = new ClientService(this.http)
     let id:number = this.routerParams.snapshot.params['id']

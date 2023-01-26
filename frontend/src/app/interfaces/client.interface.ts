@@ -6,7 +6,7 @@ export interface Client{
     cpf: string;
     cep: string;
     logradouro: string;
-    numero:number;
+    numero: number;
     bairro: string;
     cidade: string;
     estado: string;

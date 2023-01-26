@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="row mx-auto justify-content-center">
-        <img src="/assets/logo.svg" width="180" height="180">
+        <br>
         <p></p>
         <h1 class="text-center">Crie um novo usuário</h1>
         <!-- <p class="text-center text-small text-muted">
@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <label for="nivel" class="form-label">Nível</label>
                 <select class="form-control" id="listagem-nivel" name="listagem-nivel" [(ngModel)]="user.nivel">
-                    <option id="admin"> Administrador </option>
+                    <option id="admin" [value]="ademir"> Administrador</option>
                     <option id="editor"> Editor </option>
                 </select>
             </div>

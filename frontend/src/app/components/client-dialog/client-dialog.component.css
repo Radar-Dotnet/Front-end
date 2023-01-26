@@ -1,3 +1,7 @@
 .client-modal{
     width: 62rem;
+    height: 80vh;
+}
+.espacamento{
+    padding-bottom: 1rem;
 }

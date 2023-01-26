@@ -58,21 +58,18 @@ export class StoreUpdateFormDialogComponent {
       if(this.storebyId){
         this.store = this.storebyId;
       }
-      console.log(this.storebyId);
   }
 
   buscarCep() {
     let consulta = this.consultaCep.consultaCEP(this.store.cep)
       .pipe(take(1))
       .subscribe((cepLocalizado: any) => {
-        console.log(cepLocalizado)
         this.store.bairro = cepLocalizado.bairro
         this.store.logradouro = cepLocalizado.logradouro
         this.store.cidade = cepLocalizado.localidade
         this.store.estado = cepLocalizado.uf
         this.store.complemento = cepLocalizado.complemento
       })
-    console.log(consulta)
   }
 
   async importarEstados() {
@@ -81,7 +78,7 @@ export class StoreUpdateFormDialogComponent {
   
   async save(){
     if(this.store.id && this.store.id != 0){
-        const update = await this.storeService.updateStore(this.store);
+        const update = await this.storeService.updateStore(this.store).then(_ => location.reload());
         this.router.navigateByUrl("stores");
 
     }

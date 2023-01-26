@@ -88,7 +88,7 @@ export class CashFlowComponent implements OnInit {
     this.lastYearRevenue = this.lastYearData.reduce((total, number) => total + number, 0);
     this.chart?.update();
     this.getData();
-    this.getLastClient()
+    // this.getLastClient()
   }
 
   public async getTotalOrderedProducts() {
@@ -109,13 +109,13 @@ export class CashFlowComponent implements OnInit {
     this.orderService = new OrderService(this.http);
     this.clientService = new ClientService(this.http);
     this.getOrders();
-    this.getTotalOrderedProducts();
-    this.getLastClient()
-    this.chart?.update();
+    // this.getTotalOrderedProducts();
+    // this.getLastClient()
+    // this.chart?.update();
 
-    this.orderObserver.productsOrdered = [];
-    this.orderObserver.lastOrderClient = {} as Client;
-    this.orderObserver.profileMock = ""
+    // this.orderObserver.productsOrdered = [];
+    // this.orderObserver.lastOrderClient = {} as Client;
+    // this.orderObserver.profileMock = ""
   }
 
   public randomize(): void {

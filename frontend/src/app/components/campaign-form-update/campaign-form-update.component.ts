@@ -56,16 +56,15 @@ export class CampaignFormUpdateComponent {
   basket5: any = [];
   listaBasket: any = [this.basket, this.basket1, this.basket2, this.basket3, this.basket4];
 
-  AtualizaCampanha() {
-    this.campaignService.atualizaCampaign({
+  async AtualizaCampanha() {
+    await this.campaignService.atualizaCampaign({
       id: this.data.id,
       nome: this.campaign.nome,
       descricao: this.campaign.descricao,
       data: this.campaign.data,
       urlFotoPrateleira: JSON.stringify(new Array(this.basket, this.basket1, this.basket2, this.basket3, this.basket4))
     }
-    )
-    location.reload()
+    ).then(_ => location.reload())
   }
 
   async getProduto() {
@@ -77,7 +76,6 @@ export class CampaignFormUpdateComponent {
     await this.campaignService.getCampaign()
       .then((r: any) => this.campanhasLista = r);
     this.mostraCampanhaMetodo()
-    // console.log(this.campanhasLista)
   }
 
   mostraCampanhaMetodo() {
