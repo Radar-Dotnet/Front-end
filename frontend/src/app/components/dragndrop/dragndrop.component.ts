@@ -142,7 +142,7 @@ export class DragndropComponent {
       alert("Por favor, digite uma data válida");
       return undefined
     }
-    this.campaign.id = 0;
+    // this.campaign.id = 0;
     this.campaign.urlFotoPrateleira = JSON.stringify(this.listaBasket);
     return this.campaign
   }
