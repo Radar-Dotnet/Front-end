@@ -85,20 +85,6 @@ export class StoreFormDialogComponent {
     })
   }
 
-//   buscaCepComNumero(){
-
-//     let logradouroRegex = this.store.logradouro.replace(/ /g, "%20")
-//     let bairroRegex = this.store.bairro.replace(/ /g, "%20")
-//     this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.store.numero}%20${logradouroRegex}%20${bairroRegex}&key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c`)
-//       .pipe(take(1))
-//       .subscribe((r:any) => {
-//         let lat = r.results[0].geometry.location.lat
-//         let lon = r.results[0].geometry.location.lng
-//         this.store.latitude = lat
-//         this.store.longitude = lon
-//   })
-// }
-
   async importarEstados() {
     this.estados = await this.consultaEstado.listaEstados();
   }
