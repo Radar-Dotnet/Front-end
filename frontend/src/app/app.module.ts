@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import ptBr from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,6 +46,7 @@ import { StoreUpdateFormDialogComponent } from './components/store-update-form-d
 import { UsersComponent } from './pages/users/users.component';
 import { CampaignVisualizerComponent } from './components/campaign-visualizer/campaign-visualizer.component';
 import { StoreVisualizerComponent } from './components/store-visualizer/store-visualizer.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 
 registerLocaleData(ptBr);
@@ -107,7 +108,8 @@ const googleMapsParams = {
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    { provide: NgChartsConfiguration, useValue: { generateColors: false } }
+    { provide: NgChartsConfiguration, useValue: { generateColors: false } },
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })
