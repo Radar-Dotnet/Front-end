@@ -54,26 +54,24 @@
           </tr>
         </tbody>
       </table>
-    </div>
 
-    <div class="tabbleFooter">
-      <!-- <div class="pagination">
-        <span>mostrando 1 - 10 de 45</span>
-        <nav>
-          <ul>
-            <li class="arrows">
+      <div class="tabbleFooter">
+        <nav class="mt">
+          <ul class="pagination justify-content-center" style="align-items:baseline;">
+            <li class="page-item">
+              <a class="page-link" style="cursor: pointer;" (click)="previousPage()">Anterior</a>
             </li>
-            <li class="numberSelected">1</li>
-            <li class="number">2</li>
-            <li class="number">3</li>
-            <li class="number">4</li>
-            <li class="number">5</li>
-            <li class="arrows">
+            <li class="page-item" *ngFor="let page of pages">
+              <p class="page-link">{{page}}</p>
+            </li>
+            <li class="page-item">
+              <a class="page-link" style="cursor: pointer;" (click)="nextPage()">Proxima</a>
             </li>
           </ul>
         </nav>
-      </div> -->
-    </div>
+      </div>
+      
+    </div>  
   </div>
 </div>
 

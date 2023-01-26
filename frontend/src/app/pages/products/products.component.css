@@ -59,10 +59,14 @@ tr {
   color: #000;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-top: 1.2rem;
   background-color: rgba(78, 70, 180, 0.12);
   line-height: 1.5;
+  justify-content: center;
+  display: flex;
 }
+
 
 .pagination {
   padding-top: 0.75rem;
