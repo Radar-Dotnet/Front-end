@@ -27,8 +27,8 @@
     padding: 2px;
     width: 6rem;
     height: 3rem;
-    
-} 
+
+}
 
 span:first-child{
     font-weight: 700;
@@ -42,3 +42,10 @@ span{
     color: #10002B;
 }
 
+.header-css{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: .5rem;
+}
