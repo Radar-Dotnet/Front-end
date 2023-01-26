@@ -90,7 +90,7 @@ button{
 .chart-container{
   background-color: #F8F9FA;
   border-radius: 8px;
-  margin: 1.5rem 2.5rem 4rem 5rem;
+  margin: 1.5rem 0 0 1.5rem;
 }
 .last-order{
   background-color: #F8F9FA;
@@ -103,6 +103,7 @@ button{
   background-color: #F8F9FA;
   border-radius: 8px;
   border-left: 8px #a776eb solid;
+  margin-left: 1.4rem;
 }
 
 .btn-primary {
