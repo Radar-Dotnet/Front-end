@@ -58,35 +58,79 @@
                   </div>
     </div>
 </div>
-
-<div class="col-8">
-  <div class="chart-container px-5 py-4">
-      <div class="row">
-          <h3>Suas vendas</h3>
-          <p class="text-muted">Vendas comparadas ao ano anterior</p>
-          <hr>
-      </div>
-      <div class="row ">
-          <div class="col-3">
-              <p>Total de vendas:</p>
-              <span>{{lastYearRevenue + thisYearRevenue | currency}}</span>
-              <br><br>
-              <p>Vendas ano passado:</p>
-              <span>{{ thisYearRevenue | currency}}</span>
-              <br><br>
-              <p>Vendas esse ano:</p>
-              <span>{{ lastYearRevenue | currency}} </span>
-              <br><br>
-              <span class="text-bold">Variação: {{percentage.toFixed(2)}}%</span>
+<div class="chart-pedidos">
+  <div class="col-8">
+    <div class="chart-container px-3 py-2">
+        <div class="row">
+            <h3>Suas vendas</h3>
+            <p class="text-muted">Vendas comparadas ao ano anterior</p>
+            <hr>
+        </div>
+        <div class="row ">
+            <div class="col-3">
+                <p>Total de vendas:</p>
+                <span>{{lastYearRevenue + thisYearRevenue | currency}}</span>
+                <br><br>
+                <p>Vendas ano passado:</p>
+                <span>{{ thisYearRevenue | currency}}</span>
+                <br><br>
+                <p>Vendas esse ano:</p>
+                <span>{{ lastYearRevenue | currency}} </span>
+                <br><br>
+                <span class="text-bold">Variação: {{percentage.toFixed(2)}}%</span>
+            </div>
+            <div class="col-8">
+                <div class="row grafico">
+                    <canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions"
+                        [type]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="media-pedido">
+    <div class="col-4">
+      <div class="row mt-4 p-0 cardd">
+          <div class="col-8 ms-3 mt-3">
+              <h4>Total de pedidos</h4>
+              <h5>{{orders ? orders.length : 0}}</h5>
+              <span class="text-muted">{{thisYear? thisYear.length-1 : 0}} pedidos no ano passado</span><br>
+              <span class="text-muted">{{lastYear ? lastYear.length-1 : 0}} pedidos no ano atual</span>
           </div>
-          <div class="col-8">
-              <div class="row grafico">
-                  <canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions"
-                      [type]="barChartType">
-                  </canvas>
+          <div class="col">
+              <div class="quarter-circle-top-right"></div>
+              <div class="row ms-3 mt-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#4E4684"
+                      class="bi bi-clipboard2-fill" viewBox="0 0 16 16">
+                      <path
+                          d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z" />
+                      <path
+                          d="M3.5 1h.585A1.498 1.498 0 0 0 4 1.5V2a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 12 2v-.5c0-.175-.03-.344-.085-.5h.585A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1Z" />
+                  </svg>
               </div>
           </div>
       </div>
+    </div>
+      <div class="col-4">
+        <div class="row mt-3 p-0 cardd">
+            <div class="col-8 ms-3 mt-3">
+                <h4>Média mensal</h4>
+                <p class="text-muted">Ano passado: {{thisYearRevenue/12 | currency}}</p>
+                <p class="text-muted">Ano atual: {{lastYearRevenue/12 | currency}}</p>
+            </div>
+            <div class="col">
+                <div class="quarter-circle-top-right"></div>
+                <div class="row ms-3 mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#4E4684"
+                        class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 <!-- <div class="container">
