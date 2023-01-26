@@ -34,6 +34,7 @@ export class ClientsComponent implements OnInit {
 
   private async getClients() {
     this.clients = await this.clientService.getClient();
+    this.getPageNumber();
   }
 
   async delete(client: Number) {
@@ -60,7 +61,7 @@ export class ClientsComponent implements OnInit {
 
   public getPageNumber() {
     if (this.clients) {
-      let npages = Math.ceil(this.clients.length / 8);
+      let npages = Math.ceil(this.clients.length / 10);
       for (let i = 1; i <= npages; i++) {
         this.pages.push(i);
       }
@@ -72,6 +73,7 @@ export class ClientsComponent implements OnInit {
   pages: number[] = [];
   start: number = 0;
   end: number = 10;
+
 
   nextPage() {
     if (this.clients && this.end >= this.clients.length) return;

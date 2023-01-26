@@ -59,22 +59,23 @@ tr {
   color: #000;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-top: 1.2rem;
   background-color: rgba(78, 70, 180, 0.12);
   line-height: 1.5;
   justify-content: center;
   display: flex;
 }
 
-.pagination {
-  /* padding-top: 0.75rem; */
+/* .pagination {
+  padding-top: 0.75rem;
   color: #000;
   font-size: 0.75rem;
   justify-content: space-between;
   display: flex;
-  /* margin-top: 0.8rem; */
-}
-
+  margin-top: 0.8rem;
+} */
+/* 
 .pagination span {
   letter-spacing: 0.025em;
   text-transform: uppercase;
@@ -82,7 +83,9 @@ tr {
   align-items: center;
   display: flex;
   font-size: 0.75rem;
-}
+} */
+
+
 
 nav ul {
   align-items: center;

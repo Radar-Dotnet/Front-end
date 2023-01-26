@@ -25,14 +25,16 @@ export class ProductsComponent implements OnInit{
   ngOnInit(): void {
     this.productService = new ProductService(this.http);
     this.getProducts();
+    this.getPageNumber();
   }
 
   private productService: ProductService = {} as ProductService;
   public products: Product[] | undefined = [];
   public product: Product = {} as Product;
 
-  private async getProducts(){
+  public async getProducts(){
     this.products = await this.productService.getProduct();
+    this.getPageNumber();
   }
 
   create(){
@@ -72,4 +74,32 @@ export class ProductsComponent implements OnInit{
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
+
+  //Pagination
+
+  public getPageNumber() {
+    if (this.products) {
+      let npages = Math.ceil(this.products.length / 10);
+      for (let i = 1; i <= npages; i++) {
+        this.pages.push(i);
+      }
+    }
+  }
+
+  pages: number[] = [];
+  start: number = 0;
+  end: number = 10;
+
+
+  nextPage() {
+    if (this.products && this.end >= this.products.length) return;
+    this.start += 10;
+    this.end += 10;
+  }
+
+  previousPage() {
+    if (this.start <= 0) return;
+    this.start -= 10;
+    this.end -= 10;
+  }
 }
