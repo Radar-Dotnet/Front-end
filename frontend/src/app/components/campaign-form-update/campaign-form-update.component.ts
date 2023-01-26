@@ -1,4 +1,3 @@
-import { take } from 'rxjs';
 import { CampaignService } from './../../services/campaign/campaign-service.service';
 import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
@@ -8,7 +7,6 @@ import { Campaign } from 'src/app/interfaces/campaign.interface';
 import { CampaignFormDialogComponent } from '../campaign-form-dialog/campaign-form-dialog.component';
 import { ProductService } from 'src/app/services/product/product.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-campaign-form-update',

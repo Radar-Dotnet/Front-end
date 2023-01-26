@@ -3,7 +3,6 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CampaignService } from 'src/app/services/campaign/campaign-service.service';
 import { ProductService } from 'src/app/services/product/product.service';
-import { CampaignFormDialogComponent } from '../campaign-form-dialog/campaign-form-dialog.component';
 import { Campaign } from 'src/app/interfaces/campaign.interface';
 import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
 
