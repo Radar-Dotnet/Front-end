@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { catchError, firstValueFrom, throwError } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 import { Client } from 'src/app/interfaces/client.interface';
 import { environment } from 'src/environments/environment';
@@ -46,7 +46,13 @@ export class ClientService {
   }
 
   public async updateClient(client: Client): Promise<Client | undefined>{
-    let clientUpdate: Client | undefined = await firstValueFrom(this.http.put<Client>(`${environment.api}cliente/${client.id}`, client, AppConstants.headerToken));
+    let clientUpdate: Client | undefined = await firstValueFrom(this.http.put<Client>(`${environment.api}cliente/${client.id}`, client, AppConstants.headerToken)
+    .pipe(
+      catchError((err) => {
+        console.log("erro no serviço");
+        return throwError(alert("Não autorizado"));
+      })
+    ));
     return clientUpdate;
   }
 
