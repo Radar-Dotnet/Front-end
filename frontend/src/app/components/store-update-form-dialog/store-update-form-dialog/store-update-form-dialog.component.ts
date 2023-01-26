@@ -18,12 +18,12 @@ import { StoreService } from 'src/app/services/store/store.service';
 })
 export class StoreUpdateFormDialogComponent {
 
-  
-  
+
+
   constructor(
     private router:Router,
     private routerParams: ActivatedRoute,
-    private http: HttpClient, 
+    private http: HttpClient,
     public dialogRef: MatDialogRef<StoreUpdateFormDialogComponent>,
     public consultaCep: ConsultaCepService,
 
@@ -60,6 +60,10 @@ export class StoreUpdateFormDialogComponent {
       }
   }
 
+
+  latNumber =0
+  lngNumber =0
+
   buscarCep() {
     let consulta = this.consultaCep.consultaCEP(this.store.cep)
       .pipe(take(1))
@@ -69,13 +73,27 @@ export class StoreUpdateFormDialogComponent {
         this.store.cidade = cepLocalizado.localidade
         this.store.estado = cepLocalizado.uf
         this.store.complemento = cepLocalizado.complemento
+
+        let logradouroRegex = this.store.logradouro.replace(/ /g, "%20")
+        let bairroRegex = this.store.bairro.replace(/ /g, "%20")
+
+        this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.store.numero}%20${logradouroRegex}%20${bairroRegex}&key=AIzaSyCnIfK7BtTm8MBkfrDMfbRuXI1zWGJoA6c`)
+        .pipe(take(1))
+        .subscribe((r:any) => {
+          let lat = r.results[0].geometry.location.lat
+          let lon = r.results[0].geometry.location.lng
+          this.store.latitude = lat
+          this.store.longitude = lon
+          this.latNumber = Number(lat)
+          this.lngNumber = Number(lon)
+        })
       })
   }
 
   async importarEstados() {
     this.estados = await this.consultaEstado.listaEstados();
   }
-  
+
   async save(){
     let loja = this.verificaValorVazio();
     if(loja){
@@ -83,7 +101,6 @@ export class StoreUpdateFormDialogComponent {
           const update = await this.storeService.updateStore(loja).then(_ => location.reload());
           alert("Loja atualizada")
           this.router.navigateByUrl("stores");
-
       }
     }
   }
@@ -127,7 +144,7 @@ export class StoreUpdateFormDialogComponent {
     }
     this.store.latitude = this.store.latitude.toString();
     this.store.longitude = this.store.longitude.toString();
-    this.store.id = 0;
+    // this.store.id = 0;
     return this.store
   }
 
