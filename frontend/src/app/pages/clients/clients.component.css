@@ -62,15 +62,17 @@ tr {
   padding-bottom: 0.75rem;
   background-color: rgba(78, 70, 180, 0.12);
   line-height: 1.5;
+  justify-content: center;
+  display: flex;
 }
 
 .pagination {
-  padding-top: 0.75rem;
+  /* padding-top: 0.75rem; */
   color: #000;
   font-size: 0.75rem;
   justify-content: space-between;
   display: flex;
-  margin-top: 0.8rem;
+  /* margin-top: 0.8rem; */
 }
 
 .pagination span {

@@ -14,13 +14,13 @@ import { UpdateFormComponent } from 'src/app/components/update-form/update-form.
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent implements OnInit{
+export class ClientsComponent implements OnInit {
 
   constructor(
-    private http:HttpClient,
+    private http: HttpClient,
     public clientObserver: ClientObserverService,
-    private dialogRef : MatDialog,
-    ){}
+    private dialogRef: MatDialog,
+  ) { }
 
 
   ngOnInit(): void {
@@ -28,15 +28,15 @@ export class ClientsComponent implements OnInit{
     this.getClients();
   }
 
-  private clientService:ClientService = {} as ClientService;
+  private clientService: ClientService = {} as ClientService;
   public clients: Client[] | undefined = [];
-  public client:Client= {} as Client;
+  public client: Client = {} as Client;
 
-  private async getClients(){
+  private async getClients() {
     this.clients = await this.clientService.getClient();
   }
 
-  async delete(client: Number){
+  async delete(client: Number) {
     if (confirm("Tem certeza que deseja apagar esse cliente?")) {
       await this.clientService.deleteClient(client)
       this.clients = await this.clientService.getClient();
@@ -44,17 +44,46 @@ export class ClientsComponent implements OnInit{
     }
   }
 
-  openDialogForm(){
-    this.dialogRef.open(FormDialogComponent,{
+  openDialogForm() {
+    this.dialogRef.open(FormDialogComponent, {
     });
   }
 
-  openUpdateForm(client : Client){
-     const dialogRef = this.dialogRef.open(UpdateFormComponent);
-     dialogRef.componentInstance.client = client;
+  openUpdateForm(client: Client) {
+    const dialogRef = this.dialogRef.open(UpdateFormComponent);
+    dialogRef.componentInstance.client = client;
   }
 
   faPenToSquare = faPenToSquare;
   faCirclePlus = faCirclePlus;
   faTrashCan = faTrashCan;
+
+  public getPageNumber() {
+    if (this.clients) {
+      let npages = Math.ceil(this.clients.length / 8);
+      for (let i = 1; i <= npages; i++) {
+        this.pages.push(i);
+      }
+    }
+  }
+
+
+  //Pagination
+  pages: number[] = [];
+  start: number = 0;
+  end: number = 10;
+
+  nextPage() {
+    if (this.clients && this.end >= this.clients.length) return;
+    this.start += 10;
+    this.end += 10;
+  }
+
+  previousPage() {
+    if (this.start <= 0) return;
+    this.start -= 10;
+    this.end -= 10;
+  }
+
 }
+
