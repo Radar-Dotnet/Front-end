@@ -1,12 +1,54 @@
-# Desafio Final - Angular (Código do Futuro)
-## Grupo 1
-### Equipe
+<div>
+  <img src="https://www.farmarcas.com.br/wp-content/themes/farmarcas/img/logo-fixo.png">
+  <img src="https://user-images.githubusercontent.com/90655270/161388302-145d58d6-723a-4dc1-97e7-80133dfa4c3a.png" width="100px">
+</div>
 
-| Integrante | Foto | Redes sociais |
-| :------------: | :------------: | :------------: |
+<h1> PROJETO RADAR - API </h1>
+O objetivo do projeto foi ampliar o projeto anterior baseado em Angular, consumindo uma API feita em .NET, incluindo fluxo de campanhas e lojas, que anteriormente não existiam para fornecer uma funcionalidade aprimorada e mais completa para os associados Farmarcas<br>
+<br>- <a href="#Configurar">Configurar</a>
+<br>- <a href="#Features">Features</a>
+<br>- <a href="#Endpoints">Endpoints</a>
+<br>- <a href="#Navegacao">Navegação (imagens)</a>
+<br>- <a href="#Tecnologias">Tecnologias Utilizadas</a>
 
-<div align = "center">
-  <h1> Projeto Radar </h1>
+<hr>
+<h3> <a href="https://projetoradar.vercel.app/login">Acesse a página:</a> </h3>
+
+       login: convidado@radar.com
+       senha: Radar#123
+
+<hr>
+<h3> <a href="https://github.com/Radar-Dotnet/Back-end-api">Repositório da API consumida no projeto</a> </h3>
+<hr>
+
+<div id="Configurar">
+<h2> 🖥️ Como executar: </h2>
+<h4> Após o clone do projeto, navegue até a pasta frontend e execute: </h4>
+
+### Instalando dependências:
+
+      $ npm install
+
+### Levantando aplicação:
+
+      $ ng serve
+
+</div>
+
+<hr>
+
+<h2 id="Features"> 💾Features </h2>
+
+- [x] Página de Login com autenticação para acesso de rotas (🔓 - JWT);
+- [x] Página de Cadastro e Edição para todas as entidades utilizando modal (Bootstrap);
+- [x] Página de listagem fazendo requisição da API com paginação;
+- [x] Página de Cadastro para todas as entidades utilizando modal (Bootstrap);
+
+
+<hr>
+
+<div id="Navegacao" align = "center">
+  <h1> Navegação </h1>
 </div>
 <br>
 
@@ -21,27 +63,35 @@
   <tbody>
     <tr>
       <td align = 'center'>Página de login</td>
-      <td><img width="1604" alt=" Página de Login" src="./frontend/src/assets/screens/login.png"></td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214934684-d9758cca-5278-4cac-9813-73bc82ad7ea7.png"></td>
     </tr>
     <tr>
       <td align = 'center'>Página Home</td>
-      <td><img width="1604" alt=" Página Home" src="./frontend/src/assets/screens/home.png"></td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214935282-6af2b6f9-0bfb-4432-b37f-8069fbef31a4.png")</td>
     </tr>
     <tr>
-      <td align = 'center'>Página de cadastro de produtos</td>
-      <td><img width="1604" alt=" Página de cadastro de produtos" src="./frontend/src/assets/screens/produtos.png"></td>
+      <td align = 'center'>Página de Clientes</td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214935556-007073b4-2099-46d1-b100-134325051937.png"></td>
     </tr>
     <tr>
-      <td align = 'center'>Página cadastro de clientes</td>
-      <td><img width="1604" alt=" Página cadastro de clientes" src="./frontend/src/assets/screens/Clientes.png"></td>
+      <td align = 'center'>Página de Produtos</td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214937061-23f74b92-4199-4871-8173-d1777d225e01.png"></td>
     </tr>
     <tr>
-      <td align = 'center'>Página cadastro de pedidos dos clientes</td>
-      <td><img width="1604" alt=" Página cadastro de pedidos dos clientes" src="./frontend/src/assets/screens/pedidos.png"></td>
+      <td align = 'center'>Página de Pedidos</td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214936309-29921252-3626-46b8-b4d7-5c3c585ac5a1.png"></td>
     </tr>
     <tr>
       <td align = 'center'>Página de fluxo de caixa, mostrando a movimentação do mês</td>
-      <td><img width="1604" alt=" Página de fluxo de caixa, mostrando a movimentação do mês" src="./frontend/src/assets/screens/fluxo.png"></td>
+      <td><img width="1604" src="./frontend/src/assets/screens/fluxo.png"></td>
+    </tr>
+    <tr>
+      <td align = 'center'>Página de Campanhas</td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214937299-d4a8ddd0-b6fa-41af-b84f-2e056cfd6a33.png"></td>
+    </tr>
+    <tr>
+      <td align = 'center'>Página de Lojas</td>
+      <td><img width="1604" src="https://user-images.githubusercontent.com/95944401/214936849-0be4cd00-7df9-400d-9dbd-8670a9c01ca4.png"></td>
     </tr>
   </tbody>
 </table>
@@ -49,161 +99,76 @@
 <br>
 <br>
 
-<p></p>
+<div id="Endpoints">
+<h2>🔚Endpoints:</h2>
 
-<p align="center">
-  <a href="#theproject">O Projeto</a> •
-  <a href="#target">Objetivo</a> •
-  <a href="#technologies">Tecnologias utilizadas</a> •
-  <a href="#development">Desenvolvimento</a> •
-  <a href="#howtouse">Como utilizar</a> •
-  <a href="#greetings">Agradecimentos</a>
-</p>
-<br>
-
-<div id="theproject">
-<h2> 👨🏻‍💻 O Projeto </h2>
-<p> Nós recebemos o desafio para desenvolver um sistema chamado Radar, o qual possibilita ao lojista fazer o gerenciamento do fluxo de entrada e saída do seu negócio. </p>
+## <a href="https://dbradar.up.railway.app/swagger/index.html">Documentação das requisições (API). 📝</a>
+![image](https://user-images.githubusercontent.com/95944401/214368113-647578d8-fbc2-435b-ad78-f4c9180fb1a3.png)
 </div>
+<hr>
 
-<div id="target">
-<h2> 💡 Objetivo </h2>
-<p> Desenvolvimento de um sistema chamado Radar, o qual possibilita ao lojista fazer o gerenciamento do fluxo de entrada e saída do seu negócio.
+<h2>:computer: Desenvolvedores:</h2>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/99arielsr">
+        <img src="https://avatars.githubusercontent.com/u/95944401?v=4" width="100px;"/><br>
+        <sub>
+          <b>Ariel Rodrigues</b>
+        </sub>
+      </a>
+    </td>
+     <td align="center">
+      <a href="https://github.com/DanihBritt0">
+        <img src="https://avatars.githubusercontent.com/u/117491473?v=4)" width="100px;"/><br>
+        <sub>
+          <b>Daniele Britto</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/MotionLeo">
+        <img src="https://avatars.githubusercontent.com/u/73909249?v=4" width="100px;"/><br>
+        <sub>
+          <b>Leonardo Daniel</b>
+        </sub>
+      </a>
+    </td>
+     <td align="center">
+      <a href="https://github.com/moysesth">
+        <img src="https://avatars.githubusercontent.com/u/20120282?v=4" width="100px;"/><br>
+        <sub>
+          <b>Moyses Thomaz</b>
+        </sub>
+      </a>
+    </td>
+     <td align="center">
+      <a href="https://github.com/Sungjuno">
+        <img src="https://avatars.githubusercontent.com/u/61665463?v=4" width="100px;"/><br>
+        <sub>
+          <b>Sung Ju</b>
+        </sub>
+      </a>
+    </td>
+     <td align="center">
+      <a href="https://github.com/Williamalmeida27">
+        <img src="https://avatars.githubusercontent.com/u/101687916?v=4" width="100px;"/><br>
+        <sub>
+          <b>William Almeida</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-O sistema foi desenvolvido em Angular, com as seguintes funcionalidades:
-<br>
-<ul>
-  <li>Página de login</li>
-  <li>Página home</li>
-  <li>Página de cadastro de produtos</li>
-  <li>Página cadastro de clientes</li>
-  <li>Página cadastro de pedidos dos clientes</li>
-  <li>Página de fluxo de caixa, mostrando a movimentação do mês</li>
-</ul>
-
-Para gravação das informações, criou-se uma API em Node.js e Express, com a persistência em disco com arquivo.json. Esta API foi integrada à aplicação frontend (Angular).
-</p>
-</div>
- 
-<div id="technologies">
-<h2> 🛠 Tecnologias utilizadas </h2>
-As seguintes tecnologias foram utilizadas para construção do projeto:<br><br>
-
-|                       Descrição                       |           Ferramenta           |            Referência            |
-| :----------------------------------------------: | :-----------------------: | :-------------------------------: |
-|                       IDE                        |          VS CODE          |  https://code.visualstudio.com/                |
-|        Ferramenta de Design de Interface         | FIGMA (Protótipo - UX/UI) |      https://www.figma.com/                |
-|   Linguagem de programação (Backend, Frontend)   |        JAVASCRIPT         |  https://developer.mozilla.org/en-US/docs/Web/JavaScript/                |
-|        Linguagem de programação (Frontend)       |        TYPESCRIPT         |  https://www.typescriptlang.org/                |
-|           API e serviços backend (Backend)       |          NODE.JS          |        https://nodejs.org/                |
-|   Framework de aplicação web Node.js (Backend)   |        EXPRESS.JS         |        https://expressjs.com/                |
-|          Framework JavaScript (Frontend)         |          ANGULAR          |       https://angular.io/                |
-|            Framework de CSS (Frontend)           |         BOOTSTRAP         |       https://getbootstrap.com/                |
-|    Biblioteca de Componentes gráficos (UX/UI)     |        FONT AWESOME       |    https://fontawesome.com/                |
-|             Open source API (Testing)            |          POSTMAN          |      https://www.postman.com/                 |
-
-<div align = 'center'>
-  <h3>Backend | API</h3>
-  <img height =' 100px ' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"/>
-  <img height =' 100px ' left=' 20px ' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"/>
-  <br>
-  <h3>Testing</h3>
-  <img width =' 100px ' src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" />
-  <br>
-  <h3>IDE</h3>
-  <img height =' 100px ' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
-  <br>
-  <h3>UX/UI</h3>
-  <img height =' 100px ' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
-  <img height =' 100px ' left='80px' src="https://i0.wp.com/blog.fontawesome.com/wp-content/uploads/2020/08/Proposed.png?resize=720%2C480&ssl=1"/>
-  <br>
-  <h3>Frontend</h3>
-  <img width =' 100px ' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" />
-  <img width =' 100px ' left='80px' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-  <img width =' 100px ' left='80px' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
-  <img height =' 100px ' left='80px' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/>
-  <br>
-</div>
-<br>
-
-<div id="development">
-<h2> 📓 Desenvolvimento </h2>
-<p> ✔️ Metodologias Ágeis: <br>Para ter uma melhor produtividade no desenvolvimento do projeto foi utilizado a metologia ágil Kaban. Dessa forma, para melhor organização o projeto foi fragmentado em quatro quadros, sendo: 
-<br>
-<ul>
-  <li><bold>Backlog<bold>: as tarefas que precisam ser cumpridas no decorrer da Sprint</li>
-  <li><bold>A Fazer<bold>: as tarefas que ainda serão realizadas</li>
-  <li><bold>Em andamento<bold>: as tarefas que já estão sendo desenvolvidas</li>
-  <li><bold>Concluído<bold>: as tarefas que foram cumpridas</li>
-</ul>
-<p>
-  <a href="https://trello.com/b/xMzUPteQ/projeto-radar" alt="Metodologia Kanban - quadro Trello"> Clique aqui para visualizar os cards.
+<h2 id="Tecnologias">💻 Tecnologias utilizadas no projeto: <h2>
+  <table  align= "center">
+   <tr>
+   <a  href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,angular,git,github" />    
   </a>
-  <br>
-  <div align = 'center' justify-content = 'space-around' >
-    <img width="1604" alt=" Metodologia Kanban - quadro Trello" src="./frontend/src/assets/screens/ScreenTrello.png">
-  </div>
-</p>
-</div>
-
-<div id="howtouse">
-<h2>🧪 Como utilizar</h2>
-  <ol &nbsp;>
-    <li &nbsp;>Configure a IDE - Visual Studio Code</li>
-    <li &nbsp;>Clone o repositório
-      <ul>
-        <li>git clone https://github.com/alexandrecpedro/radar-project.git</li>
-      </ul>
-    </li>
-    <li &nbsp;>Entre no diretório do projeto:
-      <ul>
-        <li>cd radar-project</li>
-      </ul>
-    </li>
-    <li><b>Testing</b>
-      <ul>
-        <li &nbsp;><u>Backend</u>
-          <ol>
-            <li &nbsp;>Entre no diretório backend
-              <ul>
-                <li>cd backend</li>
-              </ul>
-            </li>
-            <li &nbsp;>Instale as dependências
-              <ul>
-                <li>npm install</li>
-              </ul>
-            </li>
-            <li &nbsp;>Run
-              <ul>
-                <li>npm run dev</li>
-              </ul>
-            </li>
-          </ol>
-        </li>
-        <li &nbsp;><u>Frontend</u>
-          <ol>
-            <li &nbsp;>Entre no diretório frontend
-              <ul>
-                <li>cd frontend</li>
-              </ul>
-            </li>
-            <li &nbsp;>Instale as dependências
-              <ul>
-                <li>npm install</li>
-              </ul>
-            </li>
-            <li &nbsp;>Run
-              <ul>
-                <li>ng serve</li>
-              </ul>
-            </li>
-          </ol>
-        </li>
-      </ul>
-    </li>
-  </ol>
-</div>
+ </tr>
+  </table>  
 
 <div id="greetings">
 <h2> 🤝 Agradecimentos </h2>
