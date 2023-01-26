@@ -81,11 +81,6 @@ export class DragndropComponent {
       })
   }
 
-  // deletaPrateleira(id:number){
-  //   this.campaignService.deleteCampaign(id)
-  //   this.getCampanha()
-  // }
-
   async deletaPrateleira(product: Number) {
     await this.campaignService.deleteCampaign(product)
     await this.getCampamnhas();
@@ -156,56 +151,5 @@ export class DragndropComponent {
     this.dialogRef.close();
   }
 }
-
-  // // CODIGO ANTIGO: \\
-  // items: any = [];
-  // basket:any = ['Oranges', 'Bananas', 'Cucumbers',"apples","grapes","dragon-fruits","Mangos","Lemons"];
-  // basket1: any = ['aaa', 'bbb', 'ccc', 'ddd', 'eee', 'fff', 'ggg'];
-  // basket2: any = ['hhh', 'iii', 'jjj', 'kkk', 'lll', 'mmm', 'nnn'];
-  // basket3: any = ['ooo', 'ppp', 'qqq', 'rrr', 'sss', 'ttt', 'uuu'];
-  //Limitar Prateleira com numero de itens
-  // maxItems: 8;
-  // onDragOver(event: DragEvent) {
-  //   if (this.items.length >= this.maxItems) {
-  //     event.preventDefault();
-  //   }
-  // }
-  // populaPrateleira(){
-  //   for (let i = 0; i < this.prateleiras.length; i++) {
-  //     this.prateleiras[i].push()
-  //   }
-  // }
-  // ngOnInit() {
-  //   this.getProduto();
-  // }
-  // async getProduto() {
-  //   let a = await this.produtoServico.getProduct()
-  //     .then(r => r?.map(x => this.items.push(x.nome)));
-  // }
-  // prateleiras: any = [];
-  // adicionaPrateleira() {
-  //   let teste = new Array()
-  //   this.prateleiras.push("");
-  // }
-  // removePrateleira() {
-  //   if (this.prateleiras.length > 0) {
-  //     this.prateleiras.pop()
-  //   } else {
-  //     alert('Nao')
-  //   }
-  // }
-  // drop(event: CdkDragDrop<string[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     transferArrayItem(
-  //       event.previousContainer.data,
-  //       event.container.data,
-  //       event.previousIndex,
-  //       event.currentIndex,
-  //     );
-  //   }
-  // }
-
 
 
