@@ -46,44 +46,52 @@ export class LoginComponent implements OnInit {
   //   }
   // }
 
-  logar1() {
+  // logar1() {
+  //   if(this.user.email != "" && this.user.senha != ""){
+  //     this.loginService.login(this.user)
+  //     .pipe(take(1))
+  //     .subscribe(r=> {
+  //       let token = r.token;
+  //       localStorage.setItem("token", token);
+  //       this.verificaLogin = token;
+  //       if(this.verificaLogin != ""){
+  //         localStorage.setItem("logged", "true");
+  //         localStorage.setItem("adm", "true");
+  //         this.loginService.notify();
+  //         this.router.navigateByUrl('')
+  //       }
+  //       else  {
+  //         this.mensagem = "Usuário ou senha inválidos"
+  //       };
+  //     })
+  //   }else{
+  //     this.mensagem = "Usuário e senha são obrigatórios"
+  //   }
+  // }
+
+  logar() {
     if(this.user.email != "" && this.user.senha != ""){
       this.loginService.login(this.user)
       .pipe(take(1))
-      .subscribe(r=> {
-        let token = r.token;
-        localStorage.setItem("token", token);
-        this.verificaLogin = token;
-        if(this.verificaLogin != ""){
-          localStorage.setItem("logged", "true");
-          localStorage.setItem("adm", "true");
-          this.loginService.notify();
-          this.router.navigateByUrl('')
-        }
-        else  {
-          this.mensagem = "Usuário ou senha inválidos"
-        }
+      .subscribe({
+        next: r=> {
+          let token = r.token;
+          localStorage.setItem("token", token);
+          this.verificaLogin = token;
+          if(this.verificaLogin != ""){
+            localStorage.setItem("logged", "true");
+            localStorage.setItem("adm", "true");
+            this.loginService.notify();
+            this.router.navigateByUrl('')
+          }
+          else  {
+            this.mensagem = "Usuário ou senha inválidos"
+          };
+        },
+        error: _ => this.mensagem = "Usuário ou senha inválidos"
       })
     }else{
       this.mensagem = "Usuário e senha são obrigatórios"
     }
-
-    /*if(this.verificaLogin != null){
-      console.log('teste')
-    }
-    else {
-      this.mensagem = "Usuário ou senha inválidos"
-      this.email = ""
-      this.senha = ""
-    }*/
-
-    // if (true) {
-    //   localStorage.setItem("logged", "true");
-    //   localStorage.setItem("adm", "true");
-    //   this.loginService.notify();
-    //   this.router.navigateByUrl('');
-
-    // }
-
   }
 }
