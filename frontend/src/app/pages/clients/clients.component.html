@@ -54,10 +54,10 @@
             </td>
             <td>
               <div class="icon-actions">
-                <div (click)="openUpdateForm(client)">
+                <div (click)="openUpdateForm(client)" title="Abrir tela de edição de cliente">
                   <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
                 </div>
-                <div (click)="delete(client.id)">
+                <div (click)="delete(client.id)" title="Excluir cliente">
                   <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
                 </div>
               </div>
@@ -71,13 +71,13 @@
         <nav class="mt-5">
           <ul class="pagination justify-content-center" style="align-items:center;" >
             <li class="page-item">
-              <a class="page-link" (click)="previousPage()">Anterior</a>
+              <a class="page-link" style="cursor: pointer;" (click)="previousPage()">Anterior</a>
             </li>
             <li class="page-item" *ngFor="let page of pages">
               <p class="page-link">{{page}}</p>
             </li>
             <li class="page-item">
-              <a class="page-link" (click)="nextPage()">Proxima</a>
+              <a class="page-link" style="cursor: pointer;" (click)="nextPage()">Proxima</a>
             </li>
           </ul>
         </nav>

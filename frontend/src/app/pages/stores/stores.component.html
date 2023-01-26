@@ -98,13 +98,13 @@
                         </td>
 
                         <div class="icon-actions" style="display: flex;">
-                          <div (click)="visualizer(store.id)"  style="margin-right: 10px;">
+                          <div (click)="visualizer(store.id)"  style="margin-right: 10px;" title="Visualizar loja no mapa">
                             <fa-icon class="icon" [icon]="faEye" size="lg"></fa-icon>
                           </div>
-                            <div (click)="openUpdateForm(store)" style="margin-right: 10px;">
+                            <div (click)="openUpdateForm(store)" style="margin-right: 10px;" title="Abrir tela de edição de loja">
                                 <fa-icon [icon]="faPenToSquareForm" size="lg"></fa-icon>
                             </div>
-                            <div (click)="delete(store.id)">
+                            <div (click)="delete(store.id)" title="Excluir loja">
                                 <fa-icon class="icon" [icon]="faTrashCanForm" size="lg"></fa-icon>
                             </div>
                         </div>

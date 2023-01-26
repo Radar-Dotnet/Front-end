@@ -100,7 +100,6 @@ export class UpdateFormComponent implements OnInit{
       alert("Por favor, digite um bairro válido");
       return undefined
     }
-    this.client.id = 0;
     return this.client
   }
 

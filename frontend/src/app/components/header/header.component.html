@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col" *ngIf="loginService.logged">
-            <button class="btn btn-primary" (click)="criarUser()">
+            <button class="btn btn-primary" (click)="criarUser()" title="Criar novo usuário">
                 <fa-icon class="icon" [icon]="faCirclePlus" size="lg"></fa-icon>
                 <fa-icon class="icon" [icon]="faUser" size="lg"></fa-icon>
             </button>

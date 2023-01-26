@@ -39,17 +39,17 @@
           </td>
           <td>
             <div class="icone">
-              <div (click)="visualizer(product.id)">
+              <div (click)="visualizer(product.id)" title="Visualizar prateleira da campanha">
                 <fa-icon class="icon" [icon]="faEye" size="lg"></fa-icon>
               </div>
             </div>
           </td>
           <td>
             <div class="icon-actions">
-              <div (click)="openUpdateForm(product.id)">
+              <div (click)="openUpdateForm(product.id)" title="Abrir tela de edição da campanha">
                 <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
               </div>
-              <div (click)="deleteCampanha(product.id)">
+              <div (click)="deleteCampanha(product.id)" title="Excluir campanha">
                 <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
               </div>
             </div>

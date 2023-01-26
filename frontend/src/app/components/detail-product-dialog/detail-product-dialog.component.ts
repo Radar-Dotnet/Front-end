@@ -49,7 +49,6 @@ export class DetailProductDialogComponent {
     }
   }
   verificaValorVazio(){
-    debugger
     if(this.product.nome === "" || this.product.nome == undefined){
       alert("Por favor, digite um nome válido");
       return undefined
@@ -66,8 +65,6 @@ export class DetailProductDialogComponent {
       alert("Por favor, digite uma descrição válida");
       return undefined
     }
-    this.product.id = 0;
-    console.log(this.product);
     return this.product
   }
   closeDialog(): void {

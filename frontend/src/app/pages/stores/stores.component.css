@@ -131,3 +131,8 @@ nav ul {
   margin: 0;
   padding: 0;
 }
+.icon-actions{
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}

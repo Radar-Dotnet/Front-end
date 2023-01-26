@@ -144,7 +144,6 @@ export class StoreUpdateFormDialogComponent {
     }
     this.store.latitude = this.store.latitude.toString();
     this.store.longitude = this.store.longitude.toString();
-    // this.store.id = 0;
     return this.store
   }
 

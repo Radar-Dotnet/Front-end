@@ -42,10 +42,10 @@
             </td>
             <td>
               <div class="icon-actions">
-                <div (click)="openUpdateForm(product)">
+                <div (click)="openUpdateForm(product)" title="Abrir tela de edição do produto">
                   <fa-icon [icon]="faPenToSquare" size="lg"></fa-icon>
                 </div>
-                <div (click)="delete(product.id)">
+                <div (click)="delete(product.id)" title="Excluir produto">
                   <fa-icon class="icon" [icon]="faTrashCan" size="lg"></fa-icon>
                 </div>
               </div>
