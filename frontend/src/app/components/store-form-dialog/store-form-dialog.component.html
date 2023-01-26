@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-4">
       <label for="numero" class="form-label">Número</label>
-      <input type="text" class="form-control" id="numero-loja" name="numero-loja" placeholder="Número"
+      <input type="text" (focusout)="buscarCep()" class="form-control" id="numero-loja" name="numero-loja" placeholder="Número"
         [(ngModel)]="store.numero">
     </div>
     <div class="col-md-4">
