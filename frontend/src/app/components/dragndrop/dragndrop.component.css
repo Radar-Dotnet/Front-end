@@ -239,7 +239,12 @@ img{
   justify-content: center;
 }
 .example-box-produto-deleta{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1;
 }
+/* .example-box-produto-deleta:hover{
+  opacity: 0;
+} */
+/* .example-box-produto-deleta .cdk-drag:not(.cdk-drag-preview) {
+  transform: none !important;
+} */
+

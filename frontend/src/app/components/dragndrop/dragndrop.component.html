@@ -44,7 +44,7 @@
     </div>
   </div> -->
 
-<!-- 
+<!--
   <div class="example-container" *ngIf="prateleiras == 0; else elseBlock">
   </div>
 
@@ -58,7 +58,7 @@
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" cdkDrag>-</div>
       </div>
-    </div> 
+    </div>
   </ng-template> -->
 
 
@@ -225,6 +225,7 @@
         #tabelaProduto
         class="example-list-produto"
         cdkDropList
+        cdkDropListSortingDisabled="true"
         [cdkDropListData]="itensProdutos"
         (cdkDropListDropped)="drop($event)">
           <div
@@ -241,9 +242,9 @@
         id="apaga-item"
         class="example-list-produto-deleta"
         cdkDropList
-        [cdkDropListData]="apagaItem"
+        cdkDropListSortingDisabled="true"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box-produto-deleta">Deletar aqui</div>
+        <div>Lixo</div>
       </div>
     </div>
   </div>
@@ -257,3 +258,6 @@
   <!-- <div class="col-12 ">
     <button class="btn" type="submit" (click)="salvarCampanha()">Cadastrar</button>
   </div> -->
+  <!-- cdkDropList
+  [cdkDropListData]="apagaItem"
+  (cdkDropListDropped)="drop($event)" -->
