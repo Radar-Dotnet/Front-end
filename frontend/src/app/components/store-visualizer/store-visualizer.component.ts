@@ -35,7 +35,6 @@ export class StoreVisualizerComponent {
      this.storeLngNum = Number(r.longitude)
      this.storeName = r.nome
 
-     console.log(r)
     })
   }
 }

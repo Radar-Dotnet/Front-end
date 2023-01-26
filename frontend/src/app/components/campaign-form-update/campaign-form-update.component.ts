@@ -76,7 +76,6 @@ export class CampaignFormUpdateComponent {
     await this.campaignService.getCampaign()
       .then((r: any) => this.campanhasLista = r);
     this.mostraCampanhaMetodo()
-    // console.log(this.campanhasLista)
   }
 
   mostraCampanhaMetodo() {

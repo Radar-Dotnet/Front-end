@@ -63,7 +63,6 @@ export class StoreFormDialogComponent {
     .pipe(take(1))
     .subscribe((cepLocalizado:any) => {
 
-      console.log(cepLocalizado)
       this.store.bairro = cepLocalizado.bairro
       this.store.logradouro = cepLocalizado.logradouro
       this.store.cidade = cepLocalizado.localidade
@@ -98,7 +97,6 @@ export class StoreFormDialogComponent {
   }
 
   async create() {
-    console.log(this.store);
     if (this.store && this.store.id > 0) {
       if (confirm("Deseja mesmo atualizar essa loja?")) {
         await this.storeService.updateStore({
@@ -118,20 +116,6 @@ export class StoreFormDialogComponent {
       }
     }
     else {
-      console.log(
-        this.store.id,
-        this.store.nome,
-        this.store.observacao,
-        this.store.cep,
-        this.store.logradouro,
-        this.store.numero,
-        this.store.bairro,
-        this.store.cidade,
-        this.store.estado,
-        this.store.complemento,
-        this.store.latitude,
-        this.store.longitude
-      )
       await this.storeService.createStore({
         id: this.store.id,
         nome: this.store.nome,

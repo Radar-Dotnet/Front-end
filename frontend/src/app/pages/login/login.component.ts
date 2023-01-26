@@ -49,11 +49,10 @@ export class LoginComponent implements OnInit {
   logar1() {
     if(this.user.email != "" && this.user.senha != ""){
       this.loginService.login(this.user)
-      .pipe(take(1),tap(r => console.log(r)))
+      .pipe(take(1))
       .subscribe(r=> {
         let token = r.token;
         localStorage.setItem("token", token);
-        console.log(r);
         this.verificaLogin = token;
         if(this.verificaLogin != ""){
           localStorage.setItem("logged", "true");

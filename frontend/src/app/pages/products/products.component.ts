@@ -67,7 +67,6 @@ export class ProductsComponent implements OnInit{
   openUpdateForm(product : Product){
     const dialogRef = this.dialogRef.open(DetailProductDialogComponent);
     dialogRef.componentInstance.product = product;
-    console.log(product);
  }
 
   faPenToSquare = faPenToSquare;

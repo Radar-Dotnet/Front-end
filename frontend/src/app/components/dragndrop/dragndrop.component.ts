@@ -53,7 +53,6 @@ export class DragndropComponent {
     let get = await this.campaignService.getCampaign()
       .then((r: any) => this.campanhasLista = r);
     this.mostraCampanhaMetodo()
-    // console.log(this.campanhasLista)
   }
 
   mostraCampanhaMetodo() {
@@ -70,13 +69,10 @@ export class DragndropComponent {
     this.campaignService.getCampaignById(id)
       .then((r: any) => {
 
-        console.log(JSON.parse(r.urlFotoPrateleira))
         let urlParse = JSON.parse(r.urlFotoPrateleira)
         let novaLista: any = [];
         urlParse.map((x: any) => novaLista.push(x))
-        console.log(novaLista[1])
         // novaLista.push(urlParse)
-        // console.log(novaLista)
         this.basket = novaLista[0]
         this.basket1 = novaLista[1]
         this.basket2 = novaLista[2]
@@ -108,7 +104,7 @@ export class DragndropComponent {
   }
 
   getCampanha() {
-    this.campaignService.getCampaign().then(r => console.log(r))
+    this.campaignService.getCampaign()
   }
 
   async getProduto() {
@@ -117,8 +113,6 @@ export class DragndropComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event.container.id)
-    console.log(event.currentIndex)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if (event.previousContainer.id == "tabela-produto") {
@@ -130,7 +124,6 @@ export class DragndropComponent {
       );
     }
     else if (event.container.id == "apaga-item") {
-      console.log(event)
       event.previousContainer.data.splice(event.previousIndex, 1)
     }
     else if (event.container.id != "tabela-produto") {
@@ -178,7 +171,6 @@ export class DragndropComponent {
   // adicionaPrateleira() {
   //   let teste = new Array()
   //   this.prateleiras.push("");
-  //   console.log(this.prateleiras)
   // }
   // removePrateleira() {
   //   if (this.prateleiras.length > 0) {
@@ -189,8 +181,6 @@ export class DragndropComponent {
   // }
   // drop(event: CdkDragDrop<string[]>) {
   //   if (event.previousContainer === event.container) {
-  //     console.log(event.previousContainer)
-  //     console.log(event.container)
   //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   //   } else {
   //     transferArrayItem(

@@ -27,8 +27,6 @@ export class UsersComponent {
 
   async create() {
     if(this.user.email != "" || this.user.senha != ""){
-      debugger;
-      console.log(this.user);
       /*if (this.user && this.user.id > 0) {
         if (confirm("Deseja mesmo atualizar esse usuário?")) {
           await this.userService.updateUser({
@@ -48,12 +46,9 @@ export class UsersComponent {
           senha: this.user.senha,
           nivel: this.user.nivel.toLowerCase(),
         }).then(_ => location.reload());
-      
-    }else{
-      this.mensagem = "Usuário ou senha inválidos"
-    }
-  }
-  showObject(){
-    console.log(this.user);
+        alert("Usuário criado com sucesso");
+      }else{
+        this.mensagem = "Usuário ou senha inválidos"
+      }
   }
 }

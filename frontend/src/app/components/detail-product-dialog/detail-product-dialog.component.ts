@@ -25,21 +25,17 @@ export class DetailProductDialogComponent {
 
   // selectProduct(producte: Product){
   //   this.product = producte;
-  //   console.log(producte)
-  //   console.log(this.product)
   // }
 
 // save(){
 //     // if(this.product.id && this.product.id != 0){
 //     //     const update = await this.productService.updateProduct(this.product);
 //     //     // this.router.navigateByUrl("products");
-//     //     console.log(update);
 //     // }
 
 //     // const update = await this.productService.updateProduct(this.dialogRef.componentInstance.product)
 //     let a = this.dialogRef.componentInstance.product
 //     const update = this.productService.updateProduct(a)
-//     console.log(a)
 //   }
 
    async save(){

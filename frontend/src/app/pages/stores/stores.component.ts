@@ -69,13 +69,11 @@ export class StoresComponent implements OnInit {
 //     let lon = r.results[0].geometry.location.lng
 //     this.store.latitude = lat
 //     this.store.longitude = lon
-//     console.log(r.results[0].geometry.location)
 //   })
 // }
 
 
   clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
   }
   //Pins no mapa
   markers = [
@@ -113,8 +111,6 @@ export class StoresComponent implements OnInit {
   estadoFiltro: string;
   cidadeFiltro: string;
   onFilterChange() {
-    console.log(this.estadoFiltro);
-    console.log(this.cidadeFiltro);
     //aqui você pode filtrar seus marcadores com base na variavel estadoFiltro
   }
 
@@ -130,7 +126,6 @@ export class StoresComponent implements OnInit {
   //     })
   //     this.latForm = latNoClique;
   //     this.lngForm = lngNoClique;
-  //     console.log(`latitude: ${latNoClique} e longitude: ${lngNoClique}`);
   //     //this.lat = clique.coords.lat;
   //   }
   // }
@@ -170,8 +165,6 @@ export class StoresComponent implements OnInit {
         longitude: this.lngForm.toString()
       })
     }
-    console.log(this.latForm.toString());
-    console.log(this.lngForm.toString());
     this.getStores();
   }
 
@@ -187,7 +180,6 @@ export class StoresComponent implements OnInit {
   }
 
   public async editStore(id: number) {
-    console.log(id);
     this.store = await this.storeService.getStorebyId(id);
     this.latForm = Number(this.store.latitude);
     this.lngForm = Number(this.store.longitude);

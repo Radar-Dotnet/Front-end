@@ -37,7 +37,6 @@ export class UpdateFormComponent implements OnInit{
       if(this.clientbyId){
         this.client = this.clientbyId;
       }
-      console.log(this.clientbyId);
   }
 
 
