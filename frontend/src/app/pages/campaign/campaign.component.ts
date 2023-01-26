@@ -32,7 +32,7 @@ export class CampaignComponent {
   ){}
 
   ngOnInit(): void {
-    this.getCampamnhas()
+    this.getCampanhas()
   }
 
 
@@ -55,7 +55,7 @@ export class CampaignComponent {
   }
 }
 
-  async getCampamnhas(){
+  async getCampanhas(){
    let get = await this.campanhaService.getCampaign()
    .then((r:any) => this.campanhasLista = r);
    this.mostraCampanhaMetodo()
@@ -85,8 +85,10 @@ export class CampaignComponent {
  }
 
   async deleteCampanha(id:number){
-    await this.campanhaService.deleteCampaign(id)
-    await this.getCampamnhas();
+  if (confirm("Tem certeza que deseja apagar essa campanha?")) {
+      await this.campanhaService.deleteCampaign(id)
+      await this.getCampanhas();
+    }
   }
 
 }

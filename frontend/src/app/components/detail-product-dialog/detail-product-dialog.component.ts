@@ -39,13 +39,37 @@ export class DetailProductDialogComponent {
 //   }
 
    async save(){
-     const a = await this.teste.atualizaProduto(this.product).then(_ => location.reload())
-    // if(this.product.id && this.product.id != 0){
-    //     const update = await this.productService.updateProduct(this.product);
-        // this.router.navigateByUrl("clients"s);
-    // }
+    let produto = this.verificaValorVazio();
+    if(produto){
+      const a = await this.teste.atualizaProduto(produto).then(_ => location.reload())
+      // if(this.product.id && this.product.id != 0){
+      //     const update = await this.productService.updateProduct(this.product);
+          // this.router.navigateByUrl("clients"s);
+      // }
+    }
   }
-
+  verificaValorVazio(){
+    debugger
+    if(this.product.nome === "" || this.product.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.product.qtdEstoque == undefined || this.product.qtdEstoque.toString() == ""){
+      alert("Por favor, digite uma quantidade válida");
+      return undefined
+    }
+    if(this.product.valor == undefined || this.product.valor.toString() == ""){
+      alert("Por favor, digite um valor válido");
+      return undefined
+    }
+    if(this.product.descricao === "" || this.product.descricao == undefined){
+      alert("Por favor, digite uma descrição válida");
+      return undefined
+    }
+    this.product.id = 0;
+    console.log(this.product);
+    return this.product
+  }
   closeDialog(): void {
     this.dialogRef.close();
   }

@@ -41,9 +41,13 @@ export class UpdateFormComponent implements OnInit{
 
 
   async save(){
-    if(this.client.id && this.client.id != 0){
-        const update = await this.clientService.updateClient(this.client).then(_ => location.reload());
-        this.router.navigateByUrl("clients");
+    let cliente = this.verificaValorVazio();
+    if(cliente){
+      if(this.client.id && this.client.id != 0){
+          const update = await this.clientService.updateClient(cliente).then(_ => location.reload());
+          alert("Cliente atualizado");
+          this.router.navigateByUrl("clients");
+      }
     }
   }
   
@@ -54,6 +58,52 @@ export class UpdateFormComponent implements OnInit{
       this.getClient(id);
     }
   }
+
+  verificaValorVazio(){
+    if(this.client.nome === "" || this.client.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.client.telefone === "" || this.client.telefone == undefined){
+      alert("Por favor, digite um telefone válido");
+      return undefined
+    }
+    if(this.client.cpf === "" || this.client.cpf == undefined){
+      alert("Por favor, digite um CPF válido");
+      return undefined
+    }
+    if(this.client.email === "" || this.client.email == undefined){
+      alert("Por favor, digite um email válido");
+      return undefined
+    }
+    if(this.client.cep === "" || this.client.cep == undefined){
+      alert("Por favor, digite um CEP válido");
+      return undefined
+    }
+    if(this.client.cidade === "" || this.client.cidade == undefined){
+      alert("Por favor, digite uma cidade válida");
+      return undefined
+    }
+    if(this.client.estado === "" || this.client.estado == undefined){
+      alert("Por favor, digite um estado válido");
+      return undefined
+    }
+    if(this.client.logradouro === "" || this.client.logradouro == undefined){
+      alert("Por favor, digite um logradouro válido");
+      return undefined
+    }
+    if(this.client.numero == undefined || this.client.numero.toString() === "" ){
+      alert("Por favor, digite um número válido");
+      return undefined
+    }
+    if(this.client.bairro === "" || this.client.bairro == undefined){
+      alert("Por favor, digite um bairro válido");
+      return undefined
+    }
+    this.client.id = 0;
+    return this.client
+  }
+
   closeDialog(): void {
     this.dialogRef.close();
   }

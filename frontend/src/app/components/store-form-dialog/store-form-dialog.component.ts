@@ -104,41 +104,54 @@ export class StoreFormDialogComponent {
   }
 
   async create() {
-    if (this.store && this.store.id > 0) {
-      if (confirm("Deseja mesmo atualizar essa loja?")) {
-        await this.storeService.updateStore({
-          id: this.store.id,
-          nome: this.store.nome,
-          observacao: this.store.observacao,
-          cep: this.store.cep,
-          logradouro: this.store.logradouro,
-          numero: this.store.numero,
-          bairro: this.store.bairro,
-          cidade: this.store.cidade,
-          estado: this.store.estado,
-          complemento: this.store.complemento,
-          latitude: this.store.latitude.toString(),
-          longitude: this.store.longitude.toString()
-        });
-      }
+    let loja = this.verificaValorVazio();
+    if(loja){
+        await this.storeService.createStore(loja)
+        .then(_ => location.reload())
+      this.getStores();
     }
-    else {
-      await this.storeService.createStore({
-        id: this.store.id,
-        nome: this.store.nome,
-        observacao: this.store.observacao,
-        cep: this.store.cep,
-        logradouro: this.store.logradouro,
-        numero: this.store.numero,
-        bairro: this.store.bairro,
-        cidade: this.store.cidade,
-        estado: this.store.estado,
-        complemento: this.store.complemento,
-        latitude: this.store.latitude.toString(),
-        longitude:  this.store.longitude.toString()
-      }).then(_ => location.reload())
+  }
+  verificaValorVazio(){
+    if(this.store.nome === "" || this.store.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
     }
-    this.getStores();
+    if(this.store.cep === "" || this.store.cep == undefined){
+      alert("Por favor, digite um CEP válido");
+      return undefined
+    }
+    if(this.store.cidade === "" || this.store.cidade == undefined){
+      alert("Por favor, digite uma cidade válida");
+      return undefined
+    }
+    if(this.store.estado === "" || this.store.estado == undefined){
+      alert("Por favor, digite um estado válido");
+      return undefined
+    }
+    if(this.store.logradouro === "" || this.store.logradouro == undefined){
+      alert("Por favor, digite um logradouro válido");
+      return undefined
+    }
+    if(this.store.numero == undefined || this.store.numero.toString() === "" ){
+      alert("Por favor, digite um número válido");
+      return undefined
+    }
+    if(this.store.bairro === "" || this.store.bairro == undefined){
+      alert("Por favor, digite um bairro válido");
+      return undefined
+    }
+    if(this.store.latitude === "" || this.store.latitude == undefined){
+      alert("Por favor, digite uma latitude válida");
+      return undefined
+    }
+    if(this.store.longitude === "" || this.store.longitude == undefined){
+      alert("Por favor, digite uma longitude válida");
+      return undefined
+    }
+    this.store.latitude = this.store.latitude.toString();
+    this.store.longitude = this.store.longitude.toString();
+    this.store.id = 0;
+    return this.store
   }
 
 }

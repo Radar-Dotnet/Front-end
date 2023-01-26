@@ -11,44 +11,44 @@
       </div>
     </div>
     <div class="col-md-4 input-box">
-      <label for="nome" class="form-label">Nome</label>
+      <label for="nome" class="form-label">Nome *</label>
       <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="client.nome">
     </div>
     <div class="col-md-4 input-box">
-      <label for="telefone" class="form-label">Telefone</label>
+      <label for="telefone" class="form-label">Telefone *</label>
       <input type="text" class="form-control " id="telefone" name="telefone" [(ngModel)]="client.telefone">
     </div>
     <div class="col-md-4 input-box">
-      <label for="cpf" class="form-label">CPF</label>
+      <label for="cpf" class="form-label">CPF *</label>
       <input type="text" class="form-control " id="cpf" name="cpf" [(ngModel)]="client.cpf">
     </div>
     <div class="col-md-3 input-box">
-      <label for="email" class="form-label">E-mail</label>
+      <label for="email" class="form-label">E-mail *</label>
       <input type="email" class="form-control " id="email" name="email" [(ngModel)]="client.email">
     </div>
     <div class="col-md-3 input-box">
-      <label for="cidade" class="form-label">Cidade</label>
+      <label for="cidade" class="form-label">Cidade *</label>
       <input type="text" class="form-control " id="cidade" name="cidade" [(ngModel)]="client.cidade">
     </div>
 
     <div class="col-md-3 input-box">
-      <label for="estado" class="form-label">Estado</label>
+      <label for="estado" class="form-label">Estado *</label>
       <input type="text" class="form-control " id="estado" name="estado" [(ngModel)]="client.estado">
     </div>
     <div class="col-md-3 input-box">
-      <label for="cep" class="form-label">CEP</label>
+      <label for="cep" class="form-label">CEP *</label>
       <input type="text" class="form-control " id="cep" name="cep" [(ngModel)]="client.cep">
     </div>
     <div class="col-md-3 input-box">
-      <label for="logradouro" class="form-label">Logradouro</label>
+      <label for="logradouro" class="form-label">Logradouro *</label>
       <input type="text" class="form-control " id="logradouro" name="logradouro" [(ngModel)]="client.logradouro">
     </div>
     <div class="col-md-3 input-box">
-      <label for="numero" class="form-label">Numero</label>
+      <label for="numero" class="form-label">Numero *</label>
       <input type="number" class="form-control " id="numero" name="numero" [(ngModel)]="client.numero">
     </div>
     <div class="col-md-3 input-box">
-      <label for="bairro" class="form-label">Bairro</label>
+      <label for="bairro" class="form-label">Bairro *</label>
       <input type="text" class="form-control " id="bairro" name="bairro" [(ngModel)]="client.bairro">
     </div>
     <div class="col-md-3 input-box">
@@ -57,6 +57,7 @@
     </div>
     <div class="col-12 ">
       <button class="btn" type="submit" (click)="save()">Salva alterações</button>
+      <label for="campos" style="margin-left: 1rem;" class="form-label"><b>Todos os campos com * são obrigatórios</b></label>
     </div>
   </form>
 </div>

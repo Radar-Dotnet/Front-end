@@ -26,29 +26,28 @@ export class UsersComponent {
   public ademir :string = "admin"
 
   async create() {
-    if(this.user.email != "" || this.user.senha != ""){
-      /*if (this.user && this.user.id > 0) {
-        if (confirm("Deseja mesmo atualizar esse usuário?")) {
-          await this.userService.updateUser({
-            id: this.user.id,
-            nome: this.user.nome,
-            email: this.user.email,
-            senha: this.user.senha,
-            nivel: this.user.nivel,
-          });
-        }
-      }*/
-      
-        await this.userService.createUser({
-          id: this.user.id,
-          nome: this.user.nome,
-          email: this.user.email,
-          senha: this.user.senha,
-          nivel: this.user.nivel.toLowerCase(),
-        }).then(_ => location.reload());
+    let user = this.verificaValorVazio();
+    if(user){
+        await this.userService.createUser(user).then(_ => location.reload());
         alert("Usuário criado com sucesso");
-      }else{
-        this.mensagem = "Usuário ou senha inválidos"
-      }
+    }
+  }
+
+  verificaValorVazio(){
+    if(this.user.nome === "" || this.user.nome == undefined){
+      this.mensagem = "Nome é obrigatório"
+      return undefined
+    }
+    if(this.user.email === "" || this.user.email == undefined){
+      this.mensagem = "Email inválido"
+      return undefined
+    }
+    if(this.user.senha === "" || this.user.senha == undefined){
+      this.mensagem = "Senha inválida"
+      return undefined
+    }
+    this.user.id = 0;
+    this.user.nivel = this.user.nivel.toLowerCase();
+    return this.user
   }
 }

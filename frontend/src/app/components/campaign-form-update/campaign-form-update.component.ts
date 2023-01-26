@@ -57,14 +57,11 @@ export class CampaignFormUpdateComponent {
   listaBasket: any = [this.basket, this.basket1, this.basket2, this.basket3, this.basket4];
 
   async AtualizaCampanha() {
-    await this.campaignService.atualizaCampaign({
-      id: this.data.id,
-      nome: this.campaign.nome,
-      descricao: this.campaign.descricao,
-      data: this.campaign.data,
-      urlFotoPrateleira: JSON.stringify(new Array(this.basket, this.basket1, this.basket2, this.basket3, this.basket4))
+    let campanha = this.verificaValorVazio();
+    if(campanha){
+      await this.campaignService.atualizaCampaign(campanha)
+      .then(_ => location.reload())
     }
-    ).then(_ => location.reload())
   }
 
   async getProduto() {
@@ -130,6 +127,24 @@ export class CampaignFormUpdateComponent {
         event.currentIndex,
       );
     }
+  }
+
+  verificaValorVazio(){
+    if(this.campaign.nome === "" || this.campaign.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.campaign.descricao === "" || this.campaign.descricao == undefined){
+      alert("Por favor, digite uma descrição válida");
+      return undefined
+    }
+    if(this.campaign.data == undefined){
+      alert("Por favor, digite uma data válida");
+      return undefined
+    }
+    this.campaign.id = this.data.id;
+    this.campaign.urlFotoPrateleira = JSON.stringify(new Array(this.basket, this.basket1, this.basket2, this.basket3, this.basket4));
+    return this.campaign
   }
 
   closeDialog(): void {

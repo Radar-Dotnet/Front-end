@@ -49,22 +49,13 @@ export class FormDialogComponent {
   }
 
   async create() {
-    await this.clientService.createClient({
-      id: 0,
-      nome: this.client.nome,
-      bairro: this.client.bairro,
-      cep: this.client.cep,
-      cidade: this.client.cidade,
-      complemento: this.client.complemento,
-      cpf: this.client.cpf,
-      email: this.client.email,
-      estado: this.client.estado,
-      telefone: this.client.telefone,
-      logradouro: this.client.logradouro,
-      numero: this.client.numero
-    }).then(_ => location.reload());
-    this.getClients();
-    this.clientObserver.updateQty();
+    let cliente = this.verificaValorVazio();
+    if(cliente){
+      await this.clientService.createClient(cliente)
+      .then(_ => location.reload());
+      this.getClients();
+      this.clientObserver.updateQty();
+    }
   }
 
   async save() {
@@ -89,5 +80,49 @@ export class FormDialogComponent {
         this.client.estado = cepLocalizado.uf
         this.client.complemento = cepLocalizado.complemento
       })
+  }
+  verificaValorVazio(){
+    if(this.client.nome === "" || this.client.nome == undefined){
+      alert("Por favor, digite um nome válido");
+      return undefined
+    }
+    if(this.client.telefone === "" || this.client.telefone == undefined){
+      alert("Por favor, digite um telefone válido");
+      return undefined
+    }
+    if(this.client.cpf === "" || this.client.cpf == undefined){
+      alert("Por favor, digite um CPF válido");
+      return undefined
+    }
+    if(this.client.email === "" || this.client.email == undefined){
+      alert("Por favor, digite um email válido");
+      return undefined
+    }
+    if(this.client.cep === "" || this.client.cep == undefined){
+      alert("Por favor, digite um CEP válido");
+      return undefined
+    }
+    if(this.client.cidade === "" || this.client.cidade == undefined){
+      alert("Por favor, digite uma cidade válida");
+      return undefined
+    }
+    if(this.client.estado === "" || this.client.estado == undefined){
+      alert("Por favor, digite um estado válido");
+      return undefined
+    }
+    if(this.client.logradouro === "" || this.client.logradouro == undefined){
+      alert("Por favor, digite um logradouro válido");
+      return undefined
+    }
+    if(this.client.numero == undefined || this.client.numero.toString() === "" ){
+      alert("Por favor, digite um número válido");
+      return undefined
+    }
+    if(this.client.bairro === "" || this.client.bairro == undefined){
+      alert("Por favor, digite um bairro válido");
+      return undefined
+    }
+    this.client.id = 0;
+    return this.client
   }
 }

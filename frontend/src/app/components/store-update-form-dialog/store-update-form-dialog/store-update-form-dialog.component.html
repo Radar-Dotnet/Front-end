@@ -12,7 +12,7 @@
       </div>
       
       <div class="col-md-6">
-        <label for="nome" class="form-label">Nome</label>
+        <label for="nome" class="form-label">Nome *</label>
         <input type="text" class="form-control" [(ngModel)]="store.nome" name="nome">
       </div>
       <div class="col-md-6">
@@ -20,18 +20,18 @@
         <input type="text" class="form-control" [(ngModel)]="store.observacao" name="observacao">
       </div>
       <div class="col-md-6">
-        <label for="cep" class="form-label">CEP</label>
+        <label for="cep" class="form-label">CEP *</label>
         <input type="text" (focusout)="buscarCep()" class="form-control" id="cep-loja" name="cep-loja"
           placeholder="Digite seu CEP - 00000-000" [(ngModel)]="store.cep">
       </div>
 
       <div class="col-md-6">
-        <label for="logradouro" class="form-label">Logradouro</label>
+        <label for="logradouro" class="form-label">Logradouro *</label>
         <input type="text" class="form-control" id="logradouro-loja" name="logradouro-loja"
           [(ngModel)]="store.logradouro">
       </div>
       <div class="col-md-6">
-        <label for="numero" class="form-label">Número</label>
+        <label for="numero" class="form-label">Número *</label>
         <input type="text" class="form-control" id="numero-loja" name="numero-loja" placeholder="Número"
           [(ngModel)]="store.numero">
       </div>
@@ -41,30 +41,31 @@
           [(ngModel)]="store.complemento">
       </div>
       <div class="col-md-6">
-        <label for="cidade" class="form-label">Cidade</label>
+        <label for="cidade" class="form-label">Cidade *</label>
         <input type="text" class="form-control" id="cidade-loja" name="cidade-loja" [(ngModel)]="store.cidade">
       </div>
       <div class="col-md-6">
-        <label for="bairro" class="form-label">Bairro</label>
+        <label for="bairro" class="form-label">Bairro *</label>
         <input type="text" class="form-control" id="bairro-loja" name="bairro-loja" [(ngModel)]="store.bairro">
       </div>
       <div class="col-md-4">
-        <label for="listagem-estado">Estado</label>
+        <label for="listagem-estado">Estado *</label>
         <select class="form-control" id="listagem-estado" name="listagem-estado" [(ngModel)]="store.estado">
           <option *ngFor="let estado of estados" id="{{estado.id}}"> {{estado.sigla}} </option>
         </select>
       </div>
       <div class="col-md-6">
-        <label for="Latitude" class="form-label">Latitude</label>
+        <label for="Latitude" class="form-label">Latitude *</label>
         <input type="text" class="form-control" [(ngModel)]="store.latitude" name="latitude">
       </div>
       <div class="col-md-6">
-        <label for="Longitude" class="form-label">Longitude</label>
+        <label for="Longitude" class="form-label">Longitude *</label>
         <input type="text" class="form-control" [(ngModel)]="store.longitude" name="longitude">
       </div>
   
       <div class="col-12">
         <button class="btn btn-primary" type="button" (click)="save()">Salvar Alterações</button>
+        <label for="campos" style="margin-left: 1rem;" class="form-label"><b>Todos os campos com * são obrigatórios</b></label>
         <!-- <button class="btn btn-primary" type="button" (click)="save()">Salvar Alteracao</button> -->
       </div>
     </form>

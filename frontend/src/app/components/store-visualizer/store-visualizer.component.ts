@@ -1,6 +1,7 @@
 import { StoreService } from 'src/app/services/store/store.service';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from 'src/app/interfaces/store.interface';
 
 @Component({
   selector: 'app-store-visualizer',
@@ -13,7 +14,7 @@ export class StoreVisualizerComponent {
     private storeService: StoreService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ){}
-
+  public store: Store = {} as Store
   storeLat:any;
   storeLng:any;
 
@@ -29,12 +30,15 @@ export class StoreVisualizerComponent {
   async getStoreValues(){
     await this.storeService.getStorebyId(this.data.id)
     .then(r => {
-     this.storeLat = r.latitude,
-     this.storeLng = r.longitude,
-     this.storeLatNum = Number(r.latitude)
+      this.store.latitude = r.latitude,
+      this.store.longitude = r.longitude,
+      this.store.nome = r.nome,
+     this.store.logradouro = r.logradouro,
+     this.store.estado = r.estado,
+     this.store.cidade = r.cidade,
+     this.store.cep = r.cep,
+     this.storeLatNum = Number(r.latitude),
      this.storeLngNum = Number(r.longitude)
-     this.storeName = r.nome
-
     })
   }
 }
