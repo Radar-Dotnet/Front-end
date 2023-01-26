@@ -13,9 +13,12 @@
 
                 <agm-info-window>
                     <strong>
-                        <b>Nome: {{storeName}}</b> <br>
-                        <!-- Endereço: {{store.logradouro}} <br>
-                        Cidade/UF: {{store.cidade}}/{{store.estado}}<br> -->
+                      <b>Nome: {{store.nome}}</b> <br>
+                      Endereço: {{store.logradouro}}, {{store.numero}} <br>
+                      Cidade/UF: {{store.cidade}}, {{store.estado}}<br>
+                      CEP: {{store.cep}}<br>
+                      Latitude: {{store.latitude}}<br>
+                      Longitude: {{store.longitude}}
                     </strong><br />
                 </agm-info-window>
 
